@@ -1,4 +1,2449 @@
-var Po=Object.defineProperty;var Eo=(n,e,t)=>e in n?Po(n,e,{enumerable:!0,configurable:!0,writable:!0,value:t}):n[e]=t;var Me=(n,e,t)=>Eo(n,typeof e!="symbol"?e+"":e,t);var we,N,nn,So,Z,Qe,on,tn,Ue,_e,le,an,He,Ie,Le,rn,ve={},he=[],Ao=/acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i,Re=Array.isArray;function G(n,e){for(var t in e)n[t]=e[t];return n}function Ve(n){n&&n.parentNode&&n.parentNode.removeChild(n)}function qo(n,e,t){var r,i,a,p={};for(a in e)a=="key"?r=e[a]:a=="ref"?i=e[a]:p[a]=e[a];if(arguments.length>2&&(p.children=arguments.length>3?we.call(arguments,2):t),typeof n=="function"&&n.defaultProps!=null)for(a in n.defaultProps)p[a]===void 0&&(p[a]=n.defaultProps[a]);return fe(n,p,r,i,null)}function fe(n,e,t,r,i){var a={type:n,props:e,key:t,ref:r,__k:null,__:null,__b:0,__e:null,__c:null,constructor:void 0,__v:i??++nn,__i:-1,__u:0};return i==null&&N.vnode!=null&&N.vnode(a),a}function J(n){return n.children}function ye(n,e){this.props=n,this.context=e}function re(n,e){if(e==null)return n.__?re(n.__,n.__i+1):null;for(var t;e<n.__k.length;e++)if((t=n.__k[e])!=null&&t.__e!=null)return t.__e;return typeof n.type=="function"?re(n):null}function To(n){if(n.__P&&n.__d){var e=n.__v,t=e.__e,r=[],i=[],a=G({},e);a.__v=e.__v+1,N.vnode&&N.vnode(a),Fe(n.__P,a,e,n.__n,n.__P.namespaceURI,32&e.__u?[t]:null,r,t??re(e),!!(32&e.__u),i),a.__v=e.__v,a.__.__k[a.__i]=a,cn(r,a,i),e.__e=e.__=null,a.__e!=t&&sn(a)}}function sn(n){if((n=n.__)!=null&&n.__c!=null)return n.__e=n.__c.base=null,n.__k.some(function(e){if(e!=null&&e.__e!=null)return n.__e=n.__c.base=e.__e}),sn(n)}function We(n){(!n.__d&&(n.__d=!0)&&Z.push(n)&&!be.__r++||Qe!=N.debounceRendering)&&((Qe=N.debounceRendering)||on)(be)}function be(){try{for(var n,e=1;Z.length;)Z.length>e&&Z.sort(tn),n=Z.shift(),e=Z.length,To(n)}finally{Z.length=be.__r=0}}function pn(n,e,t,r,i,a,p,c,f,l,_){var s,u,m,P,I,E,C,R=r&&r.__k||he,D=e.length;for(f=Mo(t,e,R,f,D),s=0;s<D;s++)(m=t.__k[s])!=null&&(u=m.__i!=-1&&R[m.__i]||ve,m.__i=s,E=Fe(n,m,u,i,a,p,c,f,l,_),P=m.__e,m.ref&&u.ref!=m.ref&&(u.ref&&$e(u.ref,null,m),_.push(m.ref,m.__c||P,m)),I==null&&P!=null&&(I=P),(C=!!(4&m.__u))||u.__k===m.__k?(f=ln(m,f,n,C),C&&u.__e&&(u.__e=null)):typeof m.type=="function"&&E!==void 0?f=E:P&&(f=P.nextSibling),m.__u&=-7);return t.__e=I,f}function Mo(n,e,t,r,i){var a,p,c,f,l,_=t.length,s=_,u=0;for(n.__k=new Array(i),a=0;a<i;a++)(p=e[a])!=null&&typeof p!="boolean"&&typeof p!="function"?(typeof p=="string"||typeof p=="number"||typeof p=="bigint"||p.constructor==String?p=n.__k[a]=fe(null,p,null,null,null):Re(p)?p=n.__k[a]=fe(J,{children:p},null,null,null):p.constructor===void 0&&p.__b>0?p=n.__k[a]=fe(p.type,p.props,p.key,p.ref?p.ref:null,p.__v):n.__k[a]=p,f=a+u,p.__=n,p.__b=n.__b+1,c=null,(l=p.__i=Uo(p,t,f,s))!=-1&&(s--,(c=t[l])&&(c.__u|=2)),c==null||c.__v==null?(l==-1&&(i>_?u--:i<_&&u++),typeof p.type!="function"&&(p.__u|=4)):l!=f&&(l==f-1?u--:l==f+1?u++:(l>f?u--:u++,p.__u|=4))):n.__k[a]=null;if(s)for(a=0;a<_;a++)(c=t[a])!=null&&(2&c.__u)==0&&(c.__e==r&&(r=re(c)),mn(c,c));return r}function ln(n,e,t,r){var i,a;if(typeof n.type=="function"){for(i=n.__k,a=0;i&&a<i.length;a++)i[a]&&(i[a].__=n,e=ln(i[a],e,t,r));return e}n.__e!=e&&(r&&(e&&n.type&&!e.parentNode&&(e=re(n)),t.insertBefore(n.__e,e||null)),e=n.__e);do e=e&&e.nextSibling;while(e!=null&&e.nodeType==8);return e}function Uo(n,e,t,r){var i,a,p,c=n.key,f=n.type,l=e[t],_=l!=null&&(2&l.__u)==0;if(l===null&&c==null||_&&c==l.key&&f==l.type)return t;if(r>(_?1:0)){for(i=t-1,a=t+1;i>=0||a<e.length;)if((l=e[p=i>=0?i--:a++])!=null&&(2&l.__u)==0&&c==l.key&&f==l.type)return p}return-1}function Ze(n,e,t){e[0]=="-"?n.setProperty(e,t??""):n[e]=t==null?"":typeof t!="number"||Ao.test(e)?t:t+"px"}function ge(n,e,t,r,i){var a,p;e:if(e=="style")if(typeof t=="string")n.style.cssText=t;else{if(typeof r=="string"&&(n.style.cssText=r=""),r)for(e in r)t&&e in t||Ze(n.style,e,"");if(t)for(e in t)r&&t[e]==r[e]||Ze(n.style,e,t[e])}else if(e[0]=="o"&&e[1]=="n")a=e!=(e=e.replace(an,"$1")),p=e.toLowerCase(),e=p in n||e=="onFocusOut"||e=="onFocusIn"?p.slice(2):e.slice(2),n.l||(n.l={}),n.l[e+a]=t,t?r?t[le]=r[le]:(t[le]=He,n.addEventListener(e,a?Le:Ie,a)):n.removeEventListener(e,a?Le:Ie,a);else{if(i=="http://www.w3.org/2000/svg")e=e.replace(/xlink(H|:h)/,"h").replace(/sName$/,"s");else if(e!="width"&&e!="height"&&e!="href"&&e!="list"&&e!="form"&&e!="tabIndex"&&e!="download"&&e!="rowSpan"&&e!="colSpan"&&e!="role"&&e!="popover"&&e in n)try{n[e]=t??"";break e}catch{}typeof t=="function"||(t==null||t===!1&&e[4]!="-"?n.removeAttribute(e):n.setAttribute(e,e=="popover"&&t==1?"":t))}}function en(n){return function(e){if(this.l){var t=this.l[e.type+n];if(e[_e]==null)e[_e]=He++;else if(e[_e]<t[le])return;return t(N.event?N.event(e):e)}}}function Fe(n,e,t,r,i,a,p,c,f,l){var _,s,u,m,P,I,E,C,R,D,M,V,F,d,b,w=e.type;if(e.constructor!==void 0)return null;128&t.__u&&(f=!!(32&t.__u),a=[c=e.__e=t.__e]),(_=N.__b)&&_(e);e:if(typeof w=="function")try{if(C=e.props,R=w.prototype&&w.prototype.render,D=(_=w.contextType)&&r[_.__c],M=_?D?D.props.value:_.__:r,t.__c?E=(s=e.__c=t.__c).__=s.__E:(R?e.__c=s=new w(C,M):(e.__c=s=new ye(C,M),s.constructor=w,s.render=Lo),D&&D.sub(s),s.state||(s.state={}),s.__n=r,u=s.__d=!0,s.__h=[],s._sb=[]),R&&s.__s==null&&(s.__s=s.state),R&&w.getDerivedStateFromProps!=null&&(s.__s==s.state&&(s.__s=G({},s.__s)),G(s.__s,w.getDerivedStateFromProps(C,s.__s))),m=s.props,P=s.state,s.__v=e,u)R&&w.getDerivedStateFromProps==null&&s.componentWillMount!=null&&s.componentWillMount(),R&&s.componentDidMount!=null&&s.__h.push(s.componentDidMount);else{if(R&&w.getDerivedStateFromProps==null&&C!==m&&s.componentWillReceiveProps!=null&&s.componentWillReceiveProps(C,M),e.__v==t.__v||!s.__e&&s.shouldComponentUpdate!=null&&s.shouldComponentUpdate(C,s.__s,M)===!1){e.__v!=t.__v&&(s.props=C,s.state=s.__s,s.__d=!1),e.__e=t.__e,e.__k=t.__k,e.__k.some(function(U){U&&(U.__=e)}),he.push.apply(s.__h,s._sb),s._sb=[],s.__h.length&&p.push(s);break e}s.componentWillUpdate!=null&&s.componentWillUpdate(C,s.__s,M),R&&s.componentDidUpdate!=null&&s.__h.push(function(){s.componentDidUpdate(m,P,I)})}if(s.context=M,s.props=C,s.__P=n,s.__e=!1,V=N.__r,F=0,R)s.state=s.__s,s.__d=!1,V&&V(e),_=s.render(s.props,s.state,s.context),he.push.apply(s.__h,s._sb),s._sb=[];else do s.__d=!1,V&&V(e),_=s.render(s.props,s.state,s.context),s.state=s.__s;while(s.__d&&++F<25);s.state=s.__s,s.getChildContext!=null&&(r=G(G({},r),s.getChildContext())),R&&!u&&s.getSnapshotBeforeUpdate!=null&&(I=s.getSnapshotBeforeUpdate(m,P)),d=_!=null&&_.type===J&&_.key==null?dn(_.props.children):_,c=pn(n,Re(d)?d:[d],e,t,r,i,a,p,c,f,l),s.base=e.__e,e.__u&=-161,s.__h.length&&p.push(s),E&&(s.__E=s.__=null)}catch(U){if(e.__v=null,f||a!=null)if(U.then){for(e.__u|=f?160:128;c&&c.nodeType==8&&c.nextSibling;)c=c.nextSibling;a[a.indexOf(c)]=null,e.__e=c}else{for(b=a.length;b--;)Ve(a[b]);De(e)}else e.__e=t.__e,e.__k=t.__k,U.then||De(e);N.__e(U,e,t)}else a==null&&e.__v==t.__v?(e.__k=t.__k,e.__e=t.__e):c=e.__e=Io(t.__e,e,t,r,i,a,p,f,l);return(_=N.diffed)&&_(e),128&e.__u?void 0:c}function De(n){n&&(n.__c&&(n.__c.__e=!0),n.__k&&n.__k.some(De))}function cn(n,e,t){for(var r=0;r<t.length;r++)$e(t[r],t[++r],t[++r]);N.__c&&N.__c(e,n),n.some(function(i){try{n=i.__h,i.__h=[],n.some(function(a){a.call(i)})}catch(a){N.__e(a,i.__v)}})}function dn(n){return typeof n!="object"||n==null||n.__b>0?n:Re(n)?n.map(dn):G({},n)}function Io(n,e,t,r,i,a,p,c,f){var l,_,s,u,m,P,I,E=t.props||ve,C=e.props,R=e.type;if(R=="svg"?i="http://www.w3.org/2000/svg":R=="math"?i="http://www.w3.org/1998/Math/MathML":i||(i="http://www.w3.org/1999/xhtml"),a!=null){for(l=0;l<a.length;l++)if((m=a[l])&&"setAttribute"in m==!!R&&(R?m.localName==R:m.nodeType==3)){n=m,a[l]=null;break}}if(n==null){if(R==null)return document.createTextNode(C);n=document.createElementNS(i,R,C.is&&C),c&&(N.__m&&N.__m(e,a),c=!1),a=null}if(R==null)E===C||c&&n.data==C||(n.data=C);else{if(a=a&&we.call(n.childNodes),!c&&a!=null)for(E={},l=0;l<n.attributes.length;l++)E[(m=n.attributes[l]).name]=m.value;for(l in E)m=E[l],l=="dangerouslySetInnerHTML"?s=m:l=="children"||l in C||l=="value"&&"defaultValue"in C||l=="checked"&&"defaultChecked"in C||ge(n,l,null,m,i);for(l in C)m=C[l],l=="children"?u=m:l=="dangerouslySetInnerHTML"?_=m:l=="value"?P=m:l=="checked"?I=m:c&&typeof m!="function"||E[l]===m||ge(n,l,m,E[l],i);if(_)c||s&&(_.__html==s.__html||_.__html==n.innerHTML)||(n.innerHTML=_.__html),e.__k=[];else if(s&&(n.innerHTML=""),pn(e.type=="template"?n.content:n,Re(u)?u:[u],e,t,r,R=="foreignObject"?"http://www.w3.org/1999/xhtml":i,a,p,a?a[0]:t.__k&&re(t,0),c,f),a!=null)for(l=a.length;l--;)Ve(a[l]);c||(l="value",R=="progress"&&P==null?n.removeAttribute("value"):P!=null&&(P!==n[l]||R=="progress"&&!P||R=="option"&&P!=E[l])&&ge(n,l,P,E[l],i),l="checked",I!=null&&I!=n[l]&&ge(n,l,I,E[l],i))}return n}function $e(n,e,t){try{if(typeof n=="function"){var r=typeof n.__u=="function";r&&n.__u(),r&&e==null||(n.__u=n(e))}else n.current=e}catch(i){N.__e(i,t)}}function mn(n,e,t){var r,i;if(N.unmount&&N.unmount(n),(r=n.ref)&&(r.current&&r.current!=n.__e||$e(r,null,e)),(r=n.__c)!=null){if(r.componentWillUnmount)try{r.componentWillUnmount()}catch(a){N.__e(a,e)}r.base=r.__P=null}if(r=n.__k)for(i=0;i<r.length;i++)r[i]&&mn(r[i],e,t||typeof n.type!="function");t||Ve(n.__e),n.__c=n.__=n.__e=void 0}function Lo(n,e,t){return this.constructor(n,t)}function un(n,e,t){var r,i,a,p;e==document&&(e=document.documentElement),N.__&&N.__(n,e),i=(r=typeof t=="function")?null:t&&t.__k||e.__k,a=[],p=[],Fe(e,n=(!r&&t||e).__k=qo(J,null,[n]),i||ve,ve,e.namespaceURI,!r&&t?[t]:i?null:e.firstChild?we.call(e.childNodes):null,a,!r&&t?t:i?i.__e:e.firstChild,r,p),cn(a,n,p)}function Ce(n){function e(t){var r,i;return this.getChildContext||(r=new Set,(i={})[e.__c]=this,this.getChildContext=function(){return i},this.componentWillUnmount=function(){r=null},this.shouldComponentUpdate=function(a){this.props.value!=a.value&&r.forEach(function(p){p.__e=!0,We(p)})},this.sub=function(a){r.add(a);var p=a.componentWillUnmount;a.componentWillUnmount=function(){r&&r.delete(a),p&&p.call(a)}}),t.children}return e.__c="__cC"+rn++,e.__=n,e.Provider=e.__l=(e.Consumer=function(t,r){return t.children(r)}).contextType=e,e}we=he.slice,N={__e:function(n,e,t,r){for(var i,a,p;e=e.__;)if((i=e.__c)&&!i.__)try{if((a=i.constructor)&&a.getDerivedStateFromError!=null&&(i.setState(a.getDerivedStateFromError(n)),p=i.__d),i.componentDidCatch!=null&&(i.componentDidCatch(n,r||{}),p=i.__d),p)return i.__E=i}catch(c){n=c}throw n}},nn=0,So=function(n){return n!=null&&n.constructor===void 0},ye.prototype.setState=function(n,e){var t;t=this.__s!=null&&this.__s!=this.state?this.__s:this.__s=G({},this.state),typeof n=="function"&&(n=n(G({},t),this.props)),n&&G(t,n),n!=null&&this.__v&&(e&&this._sb.push(e),We(this))},ye.prototype.forceUpdate=function(n){this.__v&&(this.__e=!0,n&&this.__h.push(n),We(this))},ye.prototype.render=J,Z=[],on=typeof Promise=="function"?Promise.prototype.then.bind(Promise.resolve()):setTimeout,tn=function(n,e){return n.__v.__b-e.__v.__b},be.__r=0,Ue=Math.random().toString(8),_e="__d"+Ue,le="__a"+Ue,an=/(PointerCapture)$|Capture$/i,He=0,Ie=en(!1),Le=en(!0),rn=0;var ce,q,Be,gn,je=0,Rn=[],W=N,_n=W.__b,fn=W.__r,yn=W.diffed,vn=W.__c,hn=W.unmount,bn=W.__;function Oe(n,e){W.__h&&W.__h(q,n,je||e),je=0;var t=q.__H||(q.__H={__:[],__h:[]});return n>=t.__.length&&t.__.push({}),t.__[n]}function x(n){return je=1,Wo(Cn,n)}function Wo(n,e,t){var r=Oe(ce++,2);if(r.t=n,!r.__c&&(r.__=[t?t(e):Cn(void 0,e),function(c){var f=r.__N?r.__N[0]:r.__[0],l=r.t(f,c);f!==l&&(r.__N=[l,r.__[1]],r.__c.setState({}))}],r.__c=q,!q.__f)){var i=function(c,f,l){if(!r.__c.__H)return!0;var _=r.__c.__H.__.filter(function(u){return u.__c});if(_.every(function(u){return!u.__N}))return!a||a.call(this,c,f,l);var s=r.__c.props!==c;return _.some(function(u){if(u.__N){var m=u.__[0];u.__=u.__N,u.__N=void 0,m!==u.__[0]&&(s=!0)}}),a&&a.call(this,c,f,l)||s};q.__f=!0;var a=q.shouldComponentUpdate,p=q.componentWillUpdate;q.componentWillUpdate=function(c,f,l){if(this.__e){var _=a;a=void 0,i(c,f,l),a=_}p&&p.call(this,c,f,l)},q.shouldComponentUpdate=i}return r.__N||r.__}function ne(n,e){var t=Oe(ce++,3);!W.__s&&Vo(t.__H,e)&&(t.__=n,t.u=e,q.__H.__h.push(t))}function xe(n){var e=q.context[n.__c],t=Oe(ce++,9);return t.c=n,e?(t.__==null&&(t.__=!0,e.sub(q)),e.props.value):n.__}function Do(){for(var n;n=Rn.shift();){var e=n.__H;if(n.__P&&e)try{e.__h.some(ke),e.__h.some(ze),e.__h=[]}catch(t){e.__h=[],W.__e(t,n.__v)}}}W.__b=function(n){q=null,_n&&_n(n)},W.__=function(n,e){n&&e.__k&&e.__k.__m&&(n.__m=e.__k.__m),bn&&bn(n,e)},W.__r=function(n){fn&&fn(n),ce=0;var e=(q=n.__c).__H;e&&(Be===q?(e.__h=[],q.__h=[],e.__.some(function(t){t.__N&&(t.__=t.__N),t.u=t.__N=void 0})):(e.__h.some(ke),e.__h.some(ze),e.__h=[],ce=0)),Be=q},W.diffed=function(n){yn&&yn(n);var e=n.__c;e&&e.__H&&(e.__H.__h.length&&(Rn.push(e)!==1&&gn===W.requestAnimationFrame||((gn=W.requestAnimationFrame)||Ho)(Do)),e.__H.__.some(function(t){t.u&&(t.__H=t.u),t.u=void 0})),Be=q=null},W.__c=function(n,e){e.some(function(t){try{t.__h.some(ke),t.__h=t.__h.filter(function(r){return!r.__||ze(r)})}catch(r){e.some(function(i){i.__h&&(i.__h=[])}),e=[],W.__e(r,t.__v)}}),vn&&vn(n,e)},W.unmount=function(n){hn&&hn(n);var e,t=n.__c;t&&t.__H&&(t.__H.__.some(function(r){try{ke(r)}catch(i){e=i}}),t.__H=void 0,e&&W.__e(e,t.__v))};var wn=typeof requestAnimationFrame=="function";function Ho(n){var e,t=function(){clearTimeout(r),wn&&cancelAnimationFrame(e),setTimeout(n)},r=setTimeout(t,35);wn&&(e=requestAnimationFrame(t))}function ke(n){var e=q,t=n.__c;typeof t=="function"&&(n.__c=void 0,t()),q=e}function ze(n){var e=q;n.__c=n.__(),q=e}function Vo(n,e){return!n||n.length!==e.length||e.some(function(t,r){return t!==n[r]})}function Cn(n,e){return typeof e=="function"?e(n):e}var Fo=0;function o(n,e,t,r,i,a){e||(e={});var p,c,f=e;if("ref"in f)for(c in f={},e)c=="ref"?p=e[c]:f[c]=e[c];var l={type:n,props:f,key:t,ref:p,__k:null,__:null,__b:0,__e:null,__c:null,constructor:void 0,__v:--Fo,__i:-1,__u:0,__source:i,__self:a};if(typeof n=="function"&&(p=n.defaultProps))for(c in p)f[c]===void 0&&(f[c]=p[c]);return N.vnode&&N.vnode(l),l}function T({children:n,className:e=""}){return o("div",{className:["surface",e].filter(Boolean).join(" "),children:n})}var $o=[["Public company directory","List companies and inspect company payloads without authentication."],["Company bootstrap","Create a company and admin employee from the frontend."],["Employee auth","Sign in as an employee and unlock permission-based mutations."],["Company auth","Sign in as a company for read-only authenticated access."],["Company updates","Rename a company or rotate the company password when the actor has update permission."],["Role upsert","Create or update visible company roles and assign permission sets."],["Employee lifecycle","Create, update, reassign manager, grant roles, revoke roles, and remove employees."],["Session controls","Restore active session with `/auth/me` and terminate it with logout."]];function kn(){return o(J,{children:[o("section",{className:"about-hero",children:[o("span",{className:"eyebrow",children:"Frontend scope"}),o("h1",{children:"Backend v1 abilities are now reachable from the client without changing the API."}),o("p",{children:"The frontend still uses the existing custom router and thin architecture layers, but the landing dashboard has been replaced with real org-management workflows wired into `/api/v1`."})]}),o(T,{className:"notes-panel",children:[o("h2",{children:"Capability map"}),o("div",{className:"guide-list",children:$o.map(([n,e])=>o("div",{className:"guide-row",children:[o("strong",{children:n}),o("p",{children:e})]},n))})]}),o(T,{className:"notes-panel",children:[o("h2",{children:"Backend notes"}),o("p",{children:"Company-authenticated sessions stay intentionally read-only because the backend mutation routes require an employee principal and, for most actions, specific permissions derived from assigned roles."}),o("p",{children:"Feature packages under `backend/app/features/` remain untouched and are intentionally excluded from the UI in this pass."})]})]})}var X={apiBasePath:"/api",name:"Corp Ladder",sessionStorageKey:"corp-ladder.session-token",summary:"Frontend control plane for company auth, hierarchy management, and role-based org administration."};var de=class extends Error{constructor(t,r,i){super(t);Me(this,"data");Me(this,"status");this.name="ApiError",this.data=i,this.status=r}};function Bo(n,e){if(typeof e=="object"&&e!==null){let t="detail"in e?e.detail:void 0,r="message"in e?e.message:void 0;if(typeof t=="string")return t;if(typeof r=="string")return r}return`Request failed with status ${n}.`}async function H(n,e){let t=n.startsWith("/")?n:`/${n}`,r=new Headers(e?.headers);r.set("Accept","application/json"),e?.json!==void 0&&r.set("Content-Type","application/json"),e?.token&&r.set("Authorization",`Bearer ${e.token}`);let i=await fetch(`${X.apiBasePath}${t}`,{...e,body:e?.json===void 0?e?.body:JSON.stringify(e.json),headers:{...Object.fromEntries(r.entries())}}),p=(i.headers.get("content-type")??"").includes("application/json")?await i.json():await i.text();if(!i.ok)throw new de(Bo(i.status,p),i.status,p);return p}function Ke(n){return`/v1/company/${encodeURIComponent(n)}`}function xn(){return H("/v1/company")}function Nn(n){return H(Ke(n))}function Pn(n){return H("/v1/company",{json:n,method:"POST"})}function En(n,e,t){return H(Ke(n),{json:e,method:"PATCH",token:t})}function Sn(n,e,t){return H(`${Ke(n)}/roles`,{json:e,method:"POST",token:t})}function me(n){return`/v1/employee/${encodeURIComponent(n)}`}function An(n,e){return H("/v1/employee",{json:n,method:"POST",token:e})}function qn(n,e,t){return H(me(n),{json:e,method:"PATCH",token:t})}function Tn(n,e,t){return H(`${me(n)}/manager`,{json:e,method:"PATCH",token:t})}function Mn(n,e,t){return H(`${me(n)}/roles`,{json:e,method:"POST",token:t})}function Un(n,e,t){return H(`${me(n)}/roles/${encodeURIComponent(e)}`,{method:"DELETE",token:t})}function In(n,e){return H(me(n),{method:"DELETE",token:e})}var Ne=null,oe=null,Pe=new Map,se=new Map;function Je(n){return Pe.set(n.id,n),n}function te(n){Pe.delete(n),se.delete(n)}function ie(){Ne=null,oe=null}async function Ln(n=!1){return!n&&Ne?Ne:(!n&&oe||(oe=xn().then(e=>(Ne=e.companies,oe=null,e.companies)).catch(e=>{throw oe=null,e})),oe)}async function Q(n,e=!1){if(!e&&Pe.has(n))return Pe.get(n);if(!e&&se.has(n))return se.get(n);let t=Nn(n).then(r=>(se.delete(n),Je(r.company))).catch(r=>{throw se.delete(n),r});return se.set(n,t),t}async function Wn(n){let e=await Pn(n);return ie(),Je(e.company),e}async function Dn(n,e,t){let r=await En(n,e,t);return ie(),Je(r.company)}async function Hn(n,e,t){return await Sn(n,e,t),te(n),ie(),Q(n,!0)}async function Vn(n,e){return await An(n,e),te(n.company_id),ie(),Q(n.company_id,!0)}async function Fn(n,e,t,r){return await qn(n,t,r),te(e),Q(e,!0)}async function $n(n,e,t,r){return await Tn(n,t,r),te(e),ie(),Q(e,!0)}async function Bn(n,e,t,r){return await Mn(n,t,r),te(e),Q(e,!0)}async function jn(n,e,t,r){return await Un(n,t,r),te(e),Q(e,!0)}async function zn(n,e,t){return await In(n,t),te(e),ie(),Q(e,!0)}function On(n){return H("/v1/auth/employee/login",{json:n,method:"POST"})}function Kn(n){return H("/v1/auth/company/login",{json:n,method:"POST"})}function Jn(n){return H("/v1/auth/me",{token:n})}function Yn(n){return H("/v1/auth/logout",{method:"POST",token:n})}function Gn(n){return Jn(n).then(e=>e.session)}function Xn(n){return On(n)}function Qn(n){return Kn(n)}function Zn(n){return Yn(n).then(()=>{})}function jo(n,e){return n.name.localeCompare(e.name)||n.id.localeCompare(e.id)}function zo(n,e){let t=0,r=n,i=new Set([n.id]);for(;r.reports;){let a=e[r.reports];if(!a||i.has(a.id))break;i.add(a.id),r=a,t+=1}return t}function Oo(n){return n.reduce((e,t)=>(e[t.id]=t,e),{})}function K(n){let e=Oo(n.roles),t=n.employees.reduce((a,p)=>(a[p.id]=p,a),{}),r=n.employees.map(a=>({...a,directReportCount:a.reporting.length,isBoardMember:n.board.includes(a.id),level:zo(a,t),managerName:a.reports?t[a.reports]?.name??a.reports:null,roleLabels:a.roles.map(p=>e[p]?.id??p)})).sort((a,p)=>a.level-p.level||jo(a,p)),i=r.reduce((a,p)=>(a[p.id]=p,a),{});return{boardMembers:n.board.map(a=>i[a]).filter(Boolean),company:n,employeeIndex:i,employees:r,roleIndex:e,roles:n.roles}}var eo=Ce(null);function Ye(n){return n instanceof Error?n.message:"Unexpected request failure."}function Ge(n){return n instanceof de&&n.status===401}function no({children:n}){let[e,t]=x("loading"),[r,i]=x("idle"),[a,p]=x("idle"),[c,f]=x([]),[l,_]=x(null),[s,u]=x(null),[m,P]=x(null),[I,E]=x(null),[C,R]=x(null),[D,M]=x(null),V=s?.principal_type==="employee"?s.employee.id:null,F=s?.principal_type==="employee"?s.employee.permissions:[],d=v=>{if(P(v),v){window.localStorage.setItem(X.sessionStorageKey,v);return}window.localStorage.removeItem(X.sessionStorageKey)},b=()=>{d(null),u(null)},w=async(v=!1)=>{i("loading");try{let y=await Ln(v);return f(y),i("ready"),y}catch(y){throw i("error"),y}},U=async(v,y=!1)=>{p("loading");try{let k=await Q(v,y);_(K(k)),p("ready")}catch(k){throw p("error"),k}},L=async v=>{let y=v??c;if(y.length===0){_(null),p("idle");return}await U(y[0].id,!0)},z=async v=>{if(Ge(v)){b();let y=await w(!0);await L(y),M("Your session expired. Please sign in again.");return}M(Ye(v))},A=async(v,y)=>{E(v),M(null);try{return await y()}catch(k){throw await z(k),k}finally{E(null)}},ae=async()=>{await A("Refreshing companies",async()=>{let v=await w(!0);s||await L(v)})},h=async()=>{if(s){await A("Refreshing workspace",async()=>{await w(!0),await U(s.company_id,!0)});return}await ae()},O=async(v,y,k)=>{if(d(v),u(y),await w(!0),k){_(k),p("ready");return}await U(y.company_id,!0)};ne(()=>{(async()=>{R(null),t("loading");try{let y=window.localStorage.getItem(X.sessionStorageKey),k=await w(!1);if(y)try{let j=await Gn(y);d(y),u(j),await U(j.company_id,!1)}catch(j){b(),await L(k),M(Ge(j)?"Your previous session is no longer valid.":Ye(j))}else await L(k)}catch(y){R(Ye(y))}finally{t("ready")}})()},[]);let B=()=>{if(!m||!s)throw new Error("Authentication required.");return m},Y=async v=>{await A("Creating company",async()=>{let y=await Wn(v);await O(y.token,y.session,K(y.company))})},ue=async v=>{await A("Signing in employee",async()=>{let y=await Xn(v);await O(y.token,y.session)})},Te=async v=>{await A("Signing in company",async()=>{let y=await Qn(v);await O(y.token,y.session)})},g=async()=>{await A("Ending session",async()=>{let v=m;if(v)try{await Zn(v)}catch(k){if(!Ge(k))throw k}b();let y=await w(!0);await L(y)})},S=async v=>{s||await A("Loading company",async()=>{await U(v,!0)})},$=async v=>{await A("Updating company",async()=>{let y=B(),k=await Dn(s.company_id,v,y);_(K(k)),await w(!0)})},ho=async v=>{await A("Saving role",async()=>{let y=B(),k=await Hn(s.company_id,v,y);_(K(k)),await w(!0)})},bo=async v=>{await A("Adding employee",async()=>{let y=B(),k=await Vn(v,y);_(K(k)),await w(!0)})},wo=async(v,y)=>{await A("Updating employee",async()=>{let k=B(),j=await Fn(v,s.company_id,y,k);_(K(j)),await w(!0)})},Ro=async(v,y)=>{await A("Rewiring reporting line",async()=>{let k=B(),j=await $n(v,s.company_id,y,k);_(K(j)),await w(!0)})},Co=async(v,y)=>{await A("Assigning role",async()=>{let k=B(),j=await Bn(v,s.company_id,y,k);_(K(j)),await w(!0)})},ko=async(v,y)=>{await A("Revoking role",async()=>{let k=B(),j=await jn(v,s.company_id,y,k);_(K(j)),await w(!0)})},xo=async v=>{await A("Removing employee",async()=>{let y=B(),k=await zn(v,s.company_id,y);_(K(k)),await w(!0)})},No={actionError:D,activeCompany:l,bootstrapStatus:e,companies:c,companiesStatus:r,createCompany:Y,createEmployee:bo,createRole:ho,currentEmployeeId:V,isAuthenticated:!!s,isEmployeeSession:s?.principal_type==="employee",loginCompany:Te,loginEmployee:ue,logout:g,pageError:C,pendingAction:I,permissions:F,refreshCompanies:ae,refreshWorkspace:h,removeEmployee:xo,revokeRole:ko,selectPublicCompany:S,session:s,updateCompany:$,updateEmployee:wo,assignRole:Co,changeManager:Ro,workspaceStatus:a};return o(eo.Provider,{value:No,children:n})}function ee(){let n=xe(eo);if(!n)throw new Error("useAppModel must be used within AppProvider.");return n}var oo={admin:{id:"",name:"",password:"",role:""},id:"",name:"",password:""};function to(){let{actionError:n,activeCompany:e,companies:t,companiesStatus:r,createCompany:i,loginCompany:a,loginEmployee:p,pageError:c,pendingAction:f,refreshCompanies:l,selectPublicCompany:_,workspaceStatus:s}=ee(),[u,m]=x(oo),[P,I]=x(""),[E,C]=x(""),[R,D]=x(""),[M,V]=x(""),F=async()=>{await i({admin:{...u.admin,id:u.admin.id.trim(),name:u.admin.name.trim(),password:u.admin.password,role:u.admin.role.trim()},id:u.id.trim(),name:u.name.trim(),password:u.password}),m(oo)};return o("div",{className:"page-stack",children:[o("section",{className:"hero hero--ops",children:[o("div",{className:"hero__copy",children:[o("span",{className:"eyebrow",children:"v1 control surface"}),o("h1",{children:"Run the org chart from the frontend, against the existing API."}),o("p",{children:"Every current backend v1 ability is exposed here except modular feature packages: company signup, employee and company auth, roles, employee lifecycle, reporting lines, and read-only company browsing."}),o("div",{className:"hero__metrics",children:[o("div",{className:"metric-chip",children:[o("strong",{children:t.length}),o("span",{children:"companies"})]}),o("div",{className:"metric-chip",children:[o("strong",{children:e?.employees.length??0}),o("span",{children:"visible employees"})]}),o("div",{className:"metric-chip",children:[o("strong",{children:e?.roles.length??0}),o("span",{children:"visible roles"})]})]})]}),o(T,{className:"hero-panel hero-panel--status",children:[o("span",{className:"eyebrow",children:"Public mode"}),o("h2",{children:"Browse companies or sign in."}),o("p",{children:"Unauthenticated users can inspect companies. Mutations unlock after employee auth, while company auth stays read-only by backend design."}),o("div",{className:"status-list",children:[o("div",{className:"status-row",children:[o("span",{children:"Companies"}),o("strong",{children:r})]}),o("div",{className:"status-row",children:[o("span",{children:"Preview"}),o("strong",{children:s})]}),o("div",{className:"status-row",children:[o("span",{children:"Action"}),o("strong",{children:f??"idle"})]})]}),o("button",{className:"button button--secondary",onClick:()=>void l(),type:"button",children:"Refresh catalog"})]})]}),(c||n)&&o(T,{className:"notice-panel notice-panel--error",children:[o("strong",{children:"Request issue"}),o("p",{children:n??c})]}),o("div",{className:"content-grid",children:[o("div",{className:"content-grid__main",children:[o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Directory"}),o("h2",{children:"Companies"})]}),o("span",{children:t.length===0?"No companies yet":`${t.length} available`})]}),o("div",{className:"company-list",children:[t.map(d=>o("button",{className:["company-card",e?.company.id===d.id?"company-card--active":""].filter(Boolean).join(" "),onClick:()=>{_(d.id)},type:"button",children:[o("strong",{children:d.name}),o("span",{children:d.id}),o("small",{children:[d.board.length," board members"]})]},d.id)),t.length===0&&o("p",{className:"muted-copy",children:"Create the first company to seed the directory and bootstrap the admin session."})]})]}),o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Preview"}),o("h2",{children:e?.company.name??"No company selected"})]}),e&&o("span",{children:e.company.id})]}),e?o(J,{children:[o("div",{className:"stats-grid stats-grid--dense",children:[o("div",{className:"stat-block",children:[o("strong",{children:e.boardMembers.length}),o("span",{children:"board members"})]}),o("div",{className:"stat-block",children:[o("strong",{children:e.employees.length}),o("span",{children:"employees"})]}),o("div",{className:"stat-block",children:[o("strong",{children:e.roles.length}),o("span",{children:"roles"})]})]}),o("div",{className:"preview-columns",children:[o("div",{className:"preview-column",children:[o("h3",{children:"Board"}),o("div",{className:"pill-list",children:e.boardMembers.map(d=>o("span",{className:"pill",children:d.name},d.id))})]}),o("div",{className:"preview-column",children:[o("h3",{children:"Roles"}),o("div",{className:"role-grid",children:e.roles.map(d=>o("div",{className:"role-card role-card--compact",children:[o("strong",{children:d.id}),o("div",{className:"pill-list",children:d.permissions.map(b=>o("span",{className:"pill pill--accent",children:b},b))})]},d.id))})]})]}),o("div",{className:"employee-list employee-list--preview",children:e.employees.map(d=>o("div",{className:"employee-card employee-card--preview",children:[o("div",{className:"employee-card__summary",children:[o("div",{children:[o("strong",{children:d.name}),o("span",{children:d.id})]}),o("span",{children:d.role})]}),o("p",{className:"muted-copy",children:["Reports to ",d.managerName??"board"," and manages ",d.directReportCount," people."]})]},d.id))})]}):o("p",{className:"muted-copy",children:"Pick a company from the directory to inspect its public org data."})]})]}),o("div",{className:"content-grid__side",children:[o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Bootstrap"}),o("h2",{children:"Create company"})]}),o("span",{children:"Returns an employee admin session"})]}),o("form",{className:"form-grid",onSubmit:d=>{d.preventDefault(),F()},children:[o("label",{className:"field",children:[o("span",{children:"Company id"}),o("input",{onInput:d=>m(b=>({...b,id:d.currentTarget.value})),placeholder:"acme",required:!0,value:u.id})]}),o("label",{className:"field",children:[o("span",{children:"Company name"}),o("input",{onInput:d=>m(b=>({...b,name:d.currentTarget.value})),placeholder:"Acme Corp",required:!0,value:u.name})]}),o("label",{className:"field",children:[o("span",{children:"Company password"}),o("input",{onInput:d=>m(b=>({...b,password:d.currentTarget.value})),required:!0,type:"password",value:u.password})]}),o("label",{className:"field",children:[o("span",{children:"Admin id"}),o("input",{onInput:d=>{let b=d.currentTarget.value;m(w=>({...w,admin:{...w.admin,id:b}}))},placeholder:"ceo-1",required:!0,value:u.admin.id})]}),o("label",{className:"field",children:[o("span",{children:"Admin name"}),o("input",{onInput:d=>{let b=d.currentTarget.value;m(w=>({...w,admin:{...w.admin,name:b}}))},placeholder:"Avery Stone",required:!0,value:u.admin.name})]}),o("label",{className:"field",children:[o("span",{children:"Admin role title"}),o("input",{onInput:d=>{let b=d.currentTarget.value;m(w=>({...w,admin:{...w.admin,role:b}}))},placeholder:"Chief Executive Officer",required:!0,value:u.admin.role})]}),o("label",{className:"field",children:[o("span",{children:"Admin password"}),o("input",{onInput:d=>{let b=d.currentTarget.value;m(w=>({...w,admin:{...w.admin,password:b}}))},required:!0,type:"password",value:u.admin.password})]}),o("button",{className:"button",type:"submit",children:"Create company"})]})]}),o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Auth"}),o("h2",{children:"Employee login"})]}),o("span",{children:"Full mutation access depends on permissions"})]}),o("form",{className:"form-grid",onSubmit:d=>{d.preventDefault(),p({employee_id:P.trim(),password:E})},children:[o("label",{className:"field",children:[o("span",{children:"Employee id"}),o("input",{onInput:d=>I(d.currentTarget.value),required:!0,value:P})]}),o("label",{className:"field",children:[o("span",{children:"Password"}),o("input",{onInput:d=>C(d.currentTarget.value),required:!0,type:"password",value:E})]}),o("button",{className:"button",type:"submit",children:"Sign in as employee"})]})]}),o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Auth"}),o("h2",{children:"Company login"})]}),o("span",{children:"Useful for read-only company sessions"})]}),o("form",{className:"form-grid",onSubmit:d=>{d.preventDefault(),a({company_id:R.trim(),password:M})},children:[o("label",{className:"field",children:[o("span",{children:"Company id"}),o("input",{onInput:d=>D(d.currentTarget.value),required:!0,value:R})]}),o("label",{className:"field",children:[o("span",{children:"Password"}),o("input",{onInput:d=>V(d.currentTarget.value),required:!0,type:"password",value:M})]}),o("button",{className:"button button--secondary",type:"submit",children:"Sign in as company"})]})]})]})]})]})}var ao=["invite","manage","assign","revoke","remove","update"];function pe(n,e){return n.includes(e)}function Ee(n){return n??""}function Ko({canAssign:n,canManage:e,canRemove:t,canUpdateOthers:r,currentEmployeeId:i,employee:a,employees:p,onAssignRole:c,onChangeManager:f,onRemove:l,onRevokeRole:_,onUpdate:s,roles:u}){let[m,P]=x(a.name),[I,E]=x(a.role),[C,R]=x(""),[D,M]=x(Ee(a.reports)),[V,F]=x(""),[d,b]=x(null);ne(()=>{P(a.name),E(a.role),R(""),M(Ee(a.reports)),F(""),b(null)},[a.id,a.name,a.reports,a.role,a.roles.join(",")]);let U=i===a.id||r,L=n&&i!==a.id,z=n&&i!==a.id,A=p.filter(h=>h.id!==a.id),ae=u.filter(h=>!a.roles.includes(h));return o("div",{className:"employee-card",children:[o("div",{className:"employee-card__summary",children:[o("div",{children:[o("strong",{children:a.name}),o("span",{children:a.id})]}),o("span",{children:a.role})]}),o("div",{className:"employee-card__meta",children:[o("span",{children:["Reports to ",a.managerName??"board"]}),o("span",{children:[a.directReportCount," direct reports"]}),o("span",{children:a.isBoardMember?"Board":`Level ${a.level+1}`})]}),o("div",{className:"pill-list",children:[a.roles.length===0&&o("span",{className:"pill",children:"no assigned roles"}),a.roles.map(h=>o("span",{className:"pill",children:[h,z&&o("button",{className:"pill__action",onClick:()=>{_(a.id,h)},type:"button",children:"remove"})]},h))]}),o("div",{className:"pill-list",children:[a.permissions.length===0&&o("span",{className:"pill pill--muted",children:"no effective permissions"}),a.permissions.map(h=>o("span",{className:"pill pill--accent",children:h},h))]}),d&&o("p",{className:"muted-copy",children:d}),o("div",{className:"employee-card__forms",children:[o("form",{className:"mini-form",onSubmit:h=>{h.preventDefault();let O={},B=m.trim(),Y=I.trim();if(B!==a.name&&(O.name=B),Y!==a.role&&(O.role=Y),C.trim()&&(O.password=C),!U){b("You cannot update this employee.");return}if(Object.keys(O).length===0){b("No employee changes to save.");return}b(null),s(a.id,O).then(()=>{R(""),b("Employee updated.")}).catch(()=>{})},children:[o("label",{className:"field",children:[o("span",{children:"Name"}),o("input",{disabled:!U,onInput:h=>P(h.currentTarget.value),value:m})]}),o("label",{className:"field",children:[o("span",{children:"Role title"}),o("input",{disabled:!U,onInput:h=>E(h.currentTarget.value),value:I})]}),o("label",{className:"field",children:[o("span",{children:"New password"}),o("input",{disabled:!U,onInput:h=>R(h.currentTarget.value),placeholder:"Leave blank to keep current",type:"password",value:C})]}),o("button",{className:"button button--secondary",disabled:!U,type:"submit",children:"Save employee"})]}),o("form",{className:"mini-form",onSubmit:h=>{if(h.preventDefault(),!e){b("You do not have manage permission.");return}if(D===Ee(a.reports)){b("Manager did not change.");return}b(null),f(a.id,D||null).then(()=>{b("Reporting line updated.")}).catch(()=>{})},children:[o("label",{className:"field",children:[o("span",{children:"Manager"}),o("select",{disabled:!e,onInput:h=>M(h.currentTarget.value),value:D,children:[o("option",{value:"",children:"Board / none"}),A.map(h=>o("option",{value:h.id,children:[h.name," (",h.id,")"]},h.id))]})]}),o("button",{className:"button button--secondary",disabled:!e,type:"submit",children:"Update manager"})]}),o("form",{className:"mini-form",onSubmit:h=>{if(h.preventDefault(),!L){b("You cannot assign roles to this employee.");return}if(!V){b("Pick a role to assign.");return}b(null),c(a.id,V).then(()=>{F(""),b("Role assigned.")}).catch(()=>{})},children:[o("label",{className:"field",children:[o("span",{children:"Assign role"}),o("select",{disabled:!L,onInput:h=>F(h.currentTarget.value),value:V,children:[o("option",{value:"",children:"Select role"}),ae.map(h=>o("option",{value:h,children:h},h))]})]}),o("button",{className:"button button--secondary",disabled:!L,type:"submit",children:"Assign role"})]})]}),o("button",{className:"button button--danger",disabled:!t||i===a.id,onClick:()=>{!t||i===a.id||window.confirm(`Remove ${a.name} from ${a.company_id}?`)&&l(a.id)},type:"button",children:"Remove employee"})]})}function ro(){let{actionError:n,activeCompany:e,currentEmployeeId:t,isEmployeeSession:r,logout:i,pageError:a,pendingAction:p,permissions:c,refreshWorkspace:f,removeEmployee:l,revokeRole:_,session:s,updateCompany:u,updateEmployee:m,assignRole:P,changeManager:I,createEmployee:E,createRole:C,workspaceStatus:R}=ee(),[D,M]=x(e?.company.name??""),[V,F]=x(""),[d,b]=x(""),[w,U]=x([]),[L,z]=x({company_id:e?.company.id??"",id:"",name:"",password:"",reports:null,role:""});if(ne(()=>{M(e?.company.name??""),F(""),z({company_id:e?.company.id??"",id:"",name:"",password:"",reports:null,role:""})},[e?.company.id,e?.company.name]),!s||!e)return o(T,{className:"notice-panel",children:[o("strong",{children:"No active session"}),o("p",{children:"Sign in to load the authenticated workspace."})]});let A=r&&pe(c,"invite"),ae=r&&pe(c,"manage"),h=r&&pe(c,"assign"),O=r&&pe(c,"remove"),B=r&&pe(c,"update"),Y=r&&pe(c,"update"),ue=e.roles.map(g=>g.id),Te=g=>{U(S=>S.includes(g)?S.filter($=>$!==g):[...S,g])};return o("div",{className:"page-stack",children:[o("section",{className:"hero hero--workspace",children:[o("div",{className:"hero__copy",children:[o("span",{className:"eyebrow",children:[s.principal_type," session"]}),o("h1",{children:e.company.name}),o("p",{children:"Manage employees, reporting lines, roles, and company settings from one place. The API remains unchanged; this UI now consumes the existing v1 routes directly."}),o("div",{className:"hero__metrics",children:[o("div",{className:"metric-chip",children:[o("strong",{children:e.employees.length}),o("span",{children:"employees"})]}),o("div",{className:"metric-chip",children:[o("strong",{children:e.boardMembers.length}),o("span",{children:"board"})]}),o("div",{className:"metric-chip",children:[o("strong",{children:e.roles.length}),o("span",{children:"roles"})]})]})]}),o(T,{className:"hero-panel hero-panel--status",children:[o("span",{className:"eyebrow",children:"Session"}),o("h2",{children:s.company_id}),o("div",{className:"status-list",children:[o("div",{className:"status-row",children:[o("span",{children:"Workspace"}),o("strong",{children:R})]}),o("div",{className:"status-row",children:[o("span",{children:"Principal"}),o("strong",{children:s.principal_type})]}),o("div",{className:"status-row",children:[o("span",{children:"Current action"}),o("strong",{children:p??"idle"})]})]}),o("div",{className:"hero-panel__actions",children:[o("button",{className:"button button--secondary",onClick:()=>void f(),type:"button",children:"Refresh"}),o("button",{className:"button",onClick:()=>void i(),type:"button",children:"Logout"})]})]})]}),(a||n)&&o(T,{className:"notice-panel notice-panel--error",children:[o("strong",{children:"Request issue"}),o("p",{children:n??a})]}),o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Access"}),o("h2",{children:"Effective permissions"})]}),o("span",{children:t??s.company_id})]}),o("div",{className:"pill-list",children:[c.length===0&&o("span",{className:"pill pill--muted",children:"read-only session"}),c.map(g=>o("span",{className:"pill pill--accent",children:g},g))]}),!r&&o("p",{className:"muted-copy",children:"Company sessions can browse the workspace and use `/auth/me` plus logout, but mutations require an employee session with the relevant permissions."})]}),o("div",{className:"workspace-grid",children:[o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Company"}),o("h2",{children:"Settings"})]}),o("span",{children:e.company.id})]}),o("form",{className:"form-grid",onSubmit:g=>{g.preventDefault();let S={},$=D.trim();$&&$!==e.company.name&&(S.name=$),V.trim()&&(S.password=V),Y&&Object.keys(S).length!==0&&u(S).then(()=>{F("")}).catch(()=>{})},children:[o("label",{className:"field",children:[o("span",{children:"Company name"}),o("input",{disabled:!Y,onInput:g=>M(g.currentTarget.value),value:D})]}),o("label",{className:"field",children:[o("span",{children:"Rotate company password"}),o("input",{disabled:!Y,onInput:g=>F(g.currentTarget.value),placeholder:"New company password",type:"password",value:V})]}),o("button",{className:"button button--secondary",disabled:!Y,type:"submit",children:"Save company"})]})]}),o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Hierarchy"}),o("h2",{children:"Board"})]}),o("span",{children:[e.boardMembers.length," members"]})]}),o("div",{className:"employee-list employee-list--preview",children:e.boardMembers.map(g=>o("div",{className:"employee-card employee-card--preview",children:[o("div",{className:"employee-card__summary",children:[o("div",{children:[o("strong",{children:g.name}),o("span",{children:g.id})]}),o("span",{children:g.role})]}),o("p",{className:"muted-copy",children:[g.directReportCount," direct reports and ",g.roles.length," assigned roles."]})]},g.id))})]})]}),o("div",{className:"workspace-grid",children:[o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Roles"}),o("h2",{children:"Role registry"})]}),o("span",{children:[e.roles.length," roles"]})]}),o("div",{className:"role-grid",children:e.roles.map(g=>o("div",{className:"role-card",children:[o("strong",{children:g.id}),o("div",{className:"pill-list",children:g.permissions.map(S=>o("span",{className:"pill pill--accent",children:S},S))})]},g.id))}),o("form",{className:"form-grid",onSubmit:g=>{g.preventDefault(),!(!h||!d.trim())&&C({id:d.trim(),permissions:w}).then(()=>{b(""),U([])}).catch(()=>{})},children:[o("label",{className:"field",children:[o("span",{children:"Role id"}),o("input",{disabled:!h,onInput:g=>b(g.currentTarget.value),placeholder:"ops-manager",value:d})]}),o("div",{className:"field field--full",children:[o("span",{children:"Permissions"}),o("div",{className:"checkbox-grid",children:ao.map(g=>o("label",{className:"checkbox",children:[o("input",{checked:w.includes(g),disabled:!h,onInput:()=>Te(g),type:"checkbox"}),o("span",{children:g})]},g))})]}),o("button",{className:"button button--secondary",disabled:!h,type:"submit",children:"Save role"})]})]}),o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Hiring"}),o("h2",{children:"Add employee"})]}),o("span",{children:"Invite permission required"})]}),o("form",{className:"form-grid",onSubmit:g=>{g.preventDefault(),A&&E({...L,company_id:e.company.id,id:L.id.trim(),name:L.name.trim(),reports:L.reports||null,role:L.role.trim()}).then(()=>{z({company_id:e.company.id,id:"",name:"",password:"",reports:null,role:""})}).catch(()=>{})},children:[o("label",{className:"field",children:[o("span",{children:"Employee id"}),o("input",{disabled:!A,onInput:g=>z(S=>({...S,id:g.currentTarget.value})),required:!0,value:L.id})]}),o("label",{className:"field",children:[o("span",{children:"Name"}),o("input",{disabled:!A,onInput:g=>z(S=>({...S,name:g.currentTarget.value})),required:!0,value:L.name})]}),o("label",{className:"field",children:[o("span",{children:"Role title"}),o("input",{disabled:!A,onInput:g=>z(S=>({...S,role:g.currentTarget.value})),required:!0,value:L.role})]}),o("label",{className:"field",children:[o("span",{children:"Password"}),o("input",{disabled:!A,onInput:g=>z(S=>({...S,password:g.currentTarget.value})),required:!0,type:"password",value:L.password})]}),o("label",{className:"field",children:[o("span",{children:"Manager"}),o("select",{disabled:!A,onInput:g=>{let S=g.currentTarget.value;z($=>({...$,reports:S||null}))},value:Ee(L.reports),children:[o("option",{value:"",children:"Board / none"}),e.employees.map(g=>o("option",{value:g.id,children:[g.name," (",g.id,")"]},g.id))]})]}),o("button",{className:"button button--secondary",disabled:!A,type:"submit",children:"Add employee"})]})]})]}),o(T,{className:"stack-panel",children:[o("div",{className:"panel-heading",children:[o("div",{children:[o("span",{className:"eyebrow",children:"Employees"}),o("h2",{children:"Org roster"})]}),o("span",{children:[e.employees.length," people"]})]}),o("div",{className:"employee-list",children:e.employees.map(g=>o(Ko,{canAssign:h,canManage:ae,canRemove:O,canUpdateOthers:B,currentEmployeeId:t,employee:g,employees:e.employees,onAssignRole:async(S,$)=>{ue.includes($)&&await P(S,{role_id:$})},onChangeManager:async(S,$)=>{await I(S,{reports:$})},onRemove:l,onRevokeRole:_,onUpdate:m,roles:ue},g.id))})]})]})}function so(){let{bootstrapStatus:n,isAuthenticated:e}=ee();return n==="loading"?o("section",{className:"boot-panel",children:[o("span",{className:"eyebrow",children:"Booting"}),o("h1",{children:"Loading company data and restoring session."}),o("p",{children:"The frontend is hydrating the directory, current company preview, and any persisted auth state."})]}):e?o(ro,{}):o(to,{})}function io(){return o(T,{className:"notes-panel",children:[o("span",{className:"eyebrow",children:"404"}),o("h1",{children:"Page not found."}),o("p",{children:"The current path does not match a registered route."}),o("div",{className:"hero__actions",children:o(Se,{href:"/",variant:"solid",children:"Back home"})})]})}var po=[{id:"home",label:"Workspace",path:"/",title:"Corp Ladder",description:"Company directory, auth flows, and org management UI for Corp Ladder."},{id:"about",label:"Guide",path:"/about",title:"Guide | Corp Ladder",description:"Frontend capability map for the current Corp Ladder backend v1 API."}];var Yo={about:kn,home:so},Xe=po.map(n=>({...n,view:Yo[n.id]})),Go={description:"The requested page could not be found.",id:"not-found",label:"Not found",path:"/404",title:"Not Found | Corp Ladder",view:io};function lo(n){return Xe.find(e=>e.path===n)??Go}function Ae(n){if(!n||n==="/")return"/";let e=n.replace(/\/+$/,"");return e.startsWith("/")?e:`/${e}`}function co(n){return!n.defaultPrevented&&n.button===0&&!n.metaKey&&!n.ctrlKey&&!n.shiftKey&&!n.altKey}var mo=Ce(null);function uo({children:n}){let[e,t]=x(()=>Ae(window.location.pathname));ne(()=>{let a=()=>{t(Ae(window.location.pathname))};return window.addEventListener("popstate",a),()=>window.removeEventListener("popstate",a)},[]);let r=a=>{let p=Ae(a);p!==e&&(window.history.pushState({},"",p),t(p))},i={currentPath:e,currentRoute:lo(e),navigate:r,routes:Xe};return o(mo.Provider,{value:i,children:n})}function qe(){let n=xe(mo);if(!n)throw new Error("useRouter must be used within RouterProvider.");return n}function Se({children:n,className:e,href:t,onClick:r,variant:i="ghost",...a}){let{currentPath:p,navigate:c}=qe(),f=p===t;return o("a",{...a,"aria-current":f?"page":void 0,className:["app-link",`app-link--${i}`,f?"is-active":"",e??""].filter(Boolean).join(" "),href:t,onClick:l=>{r?.(l),!(!co(l)||l.defaultPrevented)&&(l.preventDefault(),c(t))},children:n})}function Xo(){let{currentRoute:n,routes:e}=qe(),{isAuthenticated:t,pendingAction:r,session:i}=ee(),a=n.view,p=i?i.principal_type==="employee"?`${i.employee.name} \xB7 ${i.company_id}`:`${i.company.name} \xB7 ${i.company_id}`:"public access";return o("div",{className:"app-shell",children:[o("header",{className:"topbar",children:[o("div",{className:"brand-block",children:[o("strong",{children:X.name}),o("span",{children:t?p:X.summary})]}),o("div",{className:"topbar__meta",children:[o("span",{className:"topbar__status",children:r??p}),o("nav",{"aria-label":"Primary",children:e.map(c=>o(Se,{href:c.path,children:c.label},c.id))})]})]}),o("main",{className:"app-content",children:o(a,{})})]})}function go(){return o(uo,{children:o(no,{children:o(Xo,{})})})}function _o(){return`
+var __defProp = Object.defineProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+
+// node_modules/preact/dist/preact.module.js
+var n;
+var l;
+var u;
+var t;
+var i;
+var r;
+var o;
+var e;
+var f;
+var c;
+var s;
+var a;
+var h;
+var p;
+var v;
+var y;
+var d = {};
+var w = [];
+var _ = /acit|ex(?:s|g|n|p|$)|rph|grid|ows|mnc|ntw|ine[ch]|zoo|^ord|itera/i;
+var g = Array.isArray;
+function m(n2, l3) {
+  for (var u4 in l3) n2[u4] = l3[u4];
+  return n2;
+}
+function b(n2) {
+  n2 && n2.parentNode && n2.parentNode.removeChild(n2);
+}
+function k(l3, u4, t3) {
+  var i3, r3, o3, e3 = {};
+  for (o3 in u4) "key" == o3 ? i3 = u4[o3] : "ref" == o3 ? r3 = u4[o3] : e3[o3] = u4[o3];
+  if (arguments.length > 2 && (e3.children = arguments.length > 3 ? n.call(arguments, 2) : t3), "function" == typeof l3 && null != l3.defaultProps) for (o3 in l3.defaultProps) void 0 === e3[o3] && (e3[o3] = l3.defaultProps[o3]);
+  return x(l3, e3, i3, r3, null);
+}
+function x(n2, t3, i3, r3, o3) {
+  var e3 = { type: n2, props: t3, key: i3, ref: r3, __k: null, __: null, __b: 0, __e: null, __c: null, constructor: void 0, __v: null == o3 ? ++u : o3, __i: -1, __u: 0 };
+  return null == o3 && null != l.vnode && l.vnode(e3), e3;
+}
+function S(n2) {
+  return n2.children;
+}
+function C(n2, l3) {
+  this.props = n2, this.context = l3;
+}
+function $(n2, l3) {
+  if (null == l3) return n2.__ ? $(n2.__, n2.__i + 1) : null;
+  for (var u4; l3 < n2.__k.length; l3++) if (null != (u4 = n2.__k[l3]) && null != u4.__e) return u4.__e;
+  return "function" == typeof n2.type ? $(n2) : null;
+}
+function I(n2) {
+  if (n2.__P && n2.__d) {
+    var u4 = n2.__v, t3 = u4.__e, i3 = [], r3 = [], o3 = m({}, u4);
+    o3.__v = u4.__v + 1, l.vnode && l.vnode(o3), q(n2.__P, o3, u4, n2.__n, n2.__P.namespaceURI, 32 & u4.__u ? [t3] : null, i3, null == t3 ? $(u4) : t3, !!(32 & u4.__u), r3), o3.__v = u4.__v, o3.__.__k[o3.__i] = o3, D(i3, o3, r3), u4.__e = u4.__ = null, o3.__e != t3 && P(o3);
+  }
+}
+function P(n2) {
+  if (null != (n2 = n2.__) && null != n2.__c) return n2.__e = n2.__c.base = null, n2.__k.some(function(l3) {
+    if (null != l3 && null != l3.__e) return n2.__e = n2.__c.base = l3.__e;
+  }), P(n2);
+}
+function A(n2) {
+  (!n2.__d && (n2.__d = true) && i.push(n2) && !H.__r++ || r != l.debounceRendering) && ((r = l.debounceRendering) || o)(H);
+}
+function H() {
+  try {
+    for (var n2, l3 = 1; i.length; ) i.length > l3 && i.sort(e), n2 = i.shift(), l3 = i.length, I(n2);
+  } finally {
+    i.length = H.__r = 0;
+  }
+}
+function L(n2, l3, u4, t3, i3, r3, o3, e3, f4, c3, s3) {
+  var a3, h3, p3, v3, y3, _2, g2, m3 = t3 && t3.__k || w, b2 = l3.length;
+  for (f4 = T(u4, l3, m3, f4, b2), a3 = 0; a3 < b2; a3++) null != (p3 = u4.__k[a3]) && (h3 = -1 != p3.__i && m3[p3.__i] || d, p3.__i = a3, _2 = q(n2, p3, h3, i3, r3, o3, e3, f4, c3, s3), v3 = p3.__e, p3.ref && h3.ref != p3.ref && (h3.ref && J(h3.ref, null, p3), s3.push(p3.ref, p3.__c || v3, p3)), null == y3 && null != v3 && (y3 = v3), (g2 = !!(4 & p3.__u)) || h3.__k === p3.__k ? (f4 = j(p3, f4, n2, g2), g2 && h3.__e && (h3.__e = null)) : "function" == typeof p3.type && void 0 !== _2 ? f4 = _2 : v3 && (f4 = v3.nextSibling), p3.__u &= -7);
+  return u4.__e = y3, f4;
+}
+function T(n2, l3, u4, t3, i3) {
+  var r3, o3, e3, f4, c3, s3 = u4.length, a3 = s3, h3 = 0;
+  for (n2.__k = new Array(i3), r3 = 0; r3 < i3; r3++) null != (o3 = l3[r3]) && "boolean" != typeof o3 && "function" != typeof o3 ? ("string" == typeof o3 || "number" == typeof o3 || "bigint" == typeof o3 || o3.constructor == String ? o3 = n2.__k[r3] = x(null, o3, null, null, null) : g(o3) ? o3 = n2.__k[r3] = x(S, { children: o3 }, null, null, null) : void 0 === o3.constructor && o3.__b > 0 ? o3 = n2.__k[r3] = x(o3.type, o3.props, o3.key, o3.ref ? o3.ref : null, o3.__v) : n2.__k[r3] = o3, f4 = r3 + h3, o3.__ = n2, o3.__b = n2.__b + 1, e3 = null, -1 != (c3 = o3.__i = O(o3, u4, f4, a3)) && (a3--, (e3 = u4[c3]) && (e3.__u |= 2)), null == e3 || null == e3.__v ? (-1 == c3 && (i3 > s3 ? h3-- : i3 < s3 && h3++), "function" != typeof o3.type && (o3.__u |= 4)) : c3 != f4 && (c3 == f4 - 1 ? h3-- : c3 == f4 + 1 ? h3++ : (c3 > f4 ? h3-- : h3++, o3.__u |= 4))) : n2.__k[r3] = null;
+  if (a3) for (r3 = 0; r3 < s3; r3++) null != (e3 = u4[r3]) && 0 == (2 & e3.__u) && (e3.__e == t3 && (t3 = $(e3)), K(e3, e3));
+  return t3;
+}
+function j(n2, l3, u4, t3) {
+  var i3, r3;
+  if ("function" == typeof n2.type) {
+    for (i3 = n2.__k, r3 = 0; i3 && r3 < i3.length; r3++) i3[r3] && (i3[r3].__ = n2, l3 = j(i3[r3], l3, u4, t3));
+    return l3;
+  }
+  n2.__e != l3 && (t3 && (l3 && n2.type && !l3.parentNode && (l3 = $(n2)), u4.insertBefore(n2.__e, l3 || null)), l3 = n2.__e);
+  do {
+    l3 = l3 && l3.nextSibling;
+  } while (null != l3 && 8 == l3.nodeType);
+  return l3;
+}
+function O(n2, l3, u4, t3) {
+  var i3, r3, o3, e3 = n2.key, f4 = n2.type, c3 = l3[u4], s3 = null != c3 && 0 == (2 & c3.__u);
+  if (null === c3 && null == e3 || s3 && e3 == c3.key && f4 == c3.type) return u4;
+  if (t3 > (s3 ? 1 : 0)) {
+    for (i3 = u4 - 1, r3 = u4 + 1; i3 >= 0 || r3 < l3.length; ) if (null != (c3 = l3[o3 = i3 >= 0 ? i3-- : r3++]) && 0 == (2 & c3.__u) && e3 == c3.key && f4 == c3.type) return o3;
+  }
+  return -1;
+}
+function z(n2, l3, u4) {
+  "-" == l3[0] ? n2.setProperty(l3, null == u4 ? "" : u4) : n2[l3] = null == u4 ? "" : "number" != typeof u4 || _.test(l3) ? u4 : u4 + "px";
+}
+function N(n2, l3, u4, t3, i3) {
+  var r3, o3;
+  n: if ("style" == l3) if ("string" == typeof u4) n2.style.cssText = u4;
+  else {
+    if ("string" == typeof t3 && (n2.style.cssText = t3 = ""), t3) for (l3 in t3) u4 && l3 in u4 || z(n2.style, l3, "");
+    if (u4) for (l3 in u4) t3 && u4[l3] == t3[l3] || z(n2.style, l3, u4[l3]);
+  }
+  else if ("o" == l3[0] && "n" == l3[1]) r3 = l3 != (l3 = l3.replace(a, "$1")), o3 = l3.toLowerCase(), l3 = o3 in n2 || "onFocusOut" == l3 || "onFocusIn" == l3 ? o3.slice(2) : l3.slice(2), n2.l || (n2.l = {}), n2.l[l3 + r3] = u4, u4 ? t3 ? u4[s] = t3[s] : (u4[s] = h, n2.addEventListener(l3, r3 ? v : p, r3)) : n2.removeEventListener(l3, r3 ? v : p, r3);
+  else {
+    if ("http://www.w3.org/2000/svg" == i3) l3 = l3.replace(/xlink(H|:h)/, "h").replace(/sName$/, "s");
+    else if ("width" != l3 && "height" != l3 && "href" != l3 && "list" != l3 && "form" != l3 && "tabIndex" != l3 && "download" != l3 && "rowSpan" != l3 && "colSpan" != l3 && "role" != l3 && "popover" != l3 && l3 in n2) try {
+      n2[l3] = null == u4 ? "" : u4;
+      break n;
+    } catch (n3) {
+    }
+    "function" == typeof u4 || (null == u4 || false === u4 && "-" != l3[4] ? n2.removeAttribute(l3) : n2.setAttribute(l3, "popover" == l3 && 1 == u4 ? "" : u4));
+  }
+}
+function V(n2) {
+  return function(u4) {
+    if (this.l) {
+      var t3 = this.l[u4.type + n2];
+      if (null == u4[c]) u4[c] = h++;
+      else if (u4[c] < t3[s]) return;
+      return t3(l.event ? l.event(u4) : u4);
+    }
+  };
+}
+function q(n2, u4, t3, i3, r3, o3, e3, f4, c3, s3) {
+  var a3, h3, p3, v3, y3, d3, _2, k3, x3, M, $2, I2, P2, A2, H2, T2 = u4.type;
+  if (void 0 !== u4.constructor) return null;
+  128 & t3.__u && (c3 = !!(32 & t3.__u), o3 = [f4 = u4.__e = t3.__e]), (a3 = l.__b) && a3(u4);
+  n: if ("function" == typeof T2) try {
+    if (k3 = u4.props, x3 = T2.prototype && T2.prototype.render, M = (a3 = T2.contextType) && i3[a3.__c], $2 = a3 ? M ? M.props.value : a3.__ : i3, t3.__c ? _2 = (h3 = u4.__c = t3.__c).__ = h3.__E : (x3 ? u4.__c = h3 = new T2(k3, $2) : (u4.__c = h3 = new C(k3, $2), h3.constructor = T2, h3.render = Q), M && M.sub(h3), h3.state || (h3.state = {}), h3.__n = i3, p3 = h3.__d = true, h3.__h = [], h3._sb = []), x3 && null == h3.__s && (h3.__s = h3.state), x3 && null != T2.getDerivedStateFromProps && (h3.__s == h3.state && (h3.__s = m({}, h3.__s)), m(h3.__s, T2.getDerivedStateFromProps(k3, h3.__s))), v3 = h3.props, y3 = h3.state, h3.__v = u4, p3) x3 && null == T2.getDerivedStateFromProps && null != h3.componentWillMount && h3.componentWillMount(), x3 && null != h3.componentDidMount && h3.__h.push(h3.componentDidMount);
+    else {
+      if (x3 && null == T2.getDerivedStateFromProps && k3 !== v3 && null != h3.componentWillReceiveProps && h3.componentWillReceiveProps(k3, $2), u4.__v == t3.__v || !h3.__e && null != h3.shouldComponentUpdate && false === h3.shouldComponentUpdate(k3, h3.__s, $2)) {
+        u4.__v != t3.__v && (h3.props = k3, h3.state = h3.__s, h3.__d = false), u4.__e = t3.__e, u4.__k = t3.__k, u4.__k.some(function(n3) {
+          n3 && (n3.__ = u4);
+        }), w.push.apply(h3.__h, h3._sb), h3._sb = [], h3.__h.length && e3.push(h3);
+        break n;
+      }
+      null != h3.componentWillUpdate && h3.componentWillUpdate(k3, h3.__s, $2), x3 && null != h3.componentDidUpdate && h3.__h.push(function() {
+        h3.componentDidUpdate(v3, y3, d3);
+      });
+    }
+    if (h3.context = $2, h3.props = k3, h3.__P = n2, h3.__e = false, I2 = l.__r, P2 = 0, x3) h3.state = h3.__s, h3.__d = false, I2 && I2(u4), a3 = h3.render(h3.props, h3.state, h3.context), w.push.apply(h3.__h, h3._sb), h3._sb = [];
+    else do {
+      h3.__d = false, I2 && I2(u4), a3 = h3.render(h3.props, h3.state, h3.context), h3.state = h3.__s;
+    } while (h3.__d && ++P2 < 25);
+    h3.state = h3.__s, null != h3.getChildContext && (i3 = m(m({}, i3), h3.getChildContext())), x3 && !p3 && null != h3.getSnapshotBeforeUpdate && (d3 = h3.getSnapshotBeforeUpdate(v3, y3)), A2 = null != a3 && a3.type === S && null == a3.key ? E(a3.props.children) : a3, f4 = L(n2, g(A2) ? A2 : [A2], u4, t3, i3, r3, o3, e3, f4, c3, s3), h3.base = u4.__e, u4.__u &= -161, h3.__h.length && e3.push(h3), _2 && (h3.__E = h3.__ = null);
+  } catch (n3) {
+    if (u4.__v = null, c3 || null != o3) if (n3.then) {
+      for (u4.__u |= c3 ? 160 : 128; f4 && 8 == f4.nodeType && f4.nextSibling; ) f4 = f4.nextSibling;
+      o3[o3.indexOf(f4)] = null, u4.__e = f4;
+    } else {
+      for (H2 = o3.length; H2--; ) b(o3[H2]);
+      B(u4);
+    }
+    else u4.__e = t3.__e, u4.__k = t3.__k, n3.then || B(u4);
+    l.__e(n3, u4, t3);
+  }
+  else null == o3 && u4.__v == t3.__v ? (u4.__k = t3.__k, u4.__e = t3.__e) : f4 = u4.__e = G(t3.__e, u4, t3, i3, r3, o3, e3, c3, s3);
+  return (a3 = l.diffed) && a3(u4), 128 & u4.__u ? void 0 : f4;
+}
+function B(n2) {
+  n2 && (n2.__c && (n2.__c.__e = true), n2.__k && n2.__k.some(B));
+}
+function D(n2, u4, t3) {
+  for (var i3 = 0; i3 < t3.length; i3++) J(t3[i3], t3[++i3], t3[++i3]);
+  l.__c && l.__c(u4, n2), n2.some(function(u5) {
+    try {
+      n2 = u5.__h, u5.__h = [], n2.some(function(n3) {
+        n3.call(u5);
+      });
+    } catch (n3) {
+      l.__e(n3, u5.__v);
+    }
+  });
+}
+function E(n2) {
+  return "object" != typeof n2 || null == n2 || n2.__b > 0 ? n2 : g(n2) ? n2.map(E) : m({}, n2);
+}
+function G(u4, t3, i3, r3, o3, e3, f4, c3, s3) {
+  var a3, h3, p3, v3, y3, w3, _2, m3 = i3.props || d, k3 = t3.props, x3 = t3.type;
+  if ("svg" == x3 ? o3 = "http://www.w3.org/2000/svg" : "math" == x3 ? o3 = "http://www.w3.org/1998/Math/MathML" : o3 || (o3 = "http://www.w3.org/1999/xhtml"), null != e3) {
+    for (a3 = 0; a3 < e3.length; a3++) if ((y3 = e3[a3]) && "setAttribute" in y3 == !!x3 && (x3 ? y3.localName == x3 : 3 == y3.nodeType)) {
+      u4 = y3, e3[a3] = null;
+      break;
+    }
+  }
+  if (null == u4) {
+    if (null == x3) return document.createTextNode(k3);
+    u4 = document.createElementNS(o3, x3, k3.is && k3), c3 && (l.__m && l.__m(t3, e3), c3 = false), e3 = null;
+  }
+  if (null == x3) m3 === k3 || c3 && u4.data == k3 || (u4.data = k3);
+  else {
+    if (e3 = e3 && n.call(u4.childNodes), !c3 && null != e3) for (m3 = {}, a3 = 0; a3 < u4.attributes.length; a3++) m3[(y3 = u4.attributes[a3]).name] = y3.value;
+    for (a3 in m3) y3 = m3[a3], "dangerouslySetInnerHTML" == a3 ? p3 = y3 : "children" == a3 || a3 in k3 || "value" == a3 && "defaultValue" in k3 || "checked" == a3 && "defaultChecked" in k3 || N(u4, a3, null, y3, o3);
+    for (a3 in k3) y3 = k3[a3], "children" == a3 ? v3 = y3 : "dangerouslySetInnerHTML" == a3 ? h3 = y3 : "value" == a3 ? w3 = y3 : "checked" == a3 ? _2 = y3 : c3 && "function" != typeof y3 || m3[a3] === y3 || N(u4, a3, y3, m3[a3], o3);
+    if (h3) c3 || p3 && (h3.__html == p3.__html || h3.__html == u4.innerHTML) || (u4.innerHTML = h3.__html), t3.__k = [];
+    else if (p3 && (u4.innerHTML = ""), L("template" == t3.type ? u4.content : u4, g(v3) ? v3 : [v3], t3, i3, r3, "foreignObject" == x3 ? "http://www.w3.org/1999/xhtml" : o3, e3, f4, e3 ? e3[0] : i3.__k && $(i3, 0), c3, s3), null != e3) for (a3 = e3.length; a3--; ) b(e3[a3]);
+    c3 || (a3 = "value", "progress" == x3 && null == w3 ? u4.removeAttribute("value") : null != w3 && (w3 !== u4[a3] || "progress" == x3 && !w3 || "option" == x3 && w3 != m3[a3]) && N(u4, a3, w3, m3[a3], o3), a3 = "checked", null != _2 && _2 != u4[a3] && N(u4, a3, _2, m3[a3], o3));
+  }
+  return u4;
+}
+function J(n2, u4, t3) {
+  try {
+    if ("function" == typeof n2) {
+      var i3 = "function" == typeof n2.__u;
+      i3 && n2.__u(), i3 && null == u4 || (n2.__u = n2(u4));
+    } else n2.current = u4;
+  } catch (n3) {
+    l.__e(n3, t3);
+  }
+}
+function K(n2, u4, t3) {
+  var i3, r3;
+  if (l.unmount && l.unmount(n2), (i3 = n2.ref) && (i3.current && i3.current != n2.__e || J(i3, null, u4)), null != (i3 = n2.__c)) {
+    if (i3.componentWillUnmount) try {
+      i3.componentWillUnmount();
+    } catch (n3) {
+      l.__e(n3, u4);
+    }
+    i3.base = i3.__P = null;
+  }
+  if (i3 = n2.__k) for (r3 = 0; r3 < i3.length; r3++) i3[r3] && K(i3[r3], u4, t3 || "function" != typeof n2.type);
+  t3 || b(n2.__e), n2.__c = n2.__ = n2.__e = void 0;
+}
+function Q(n2, l3, u4) {
+  return this.constructor(n2, u4);
+}
+function R(u4, t3, i3) {
+  var r3, o3, e3, f4;
+  t3 == document && (t3 = document.documentElement), l.__ && l.__(u4, t3), o3 = (r3 = "function" == typeof i3) ? null : i3 && i3.__k || t3.__k, e3 = [], f4 = [], q(t3, u4 = (!r3 && i3 || t3).__k = k(S, null, [u4]), o3 || d, d, t3.namespaceURI, !r3 && i3 ? [i3] : o3 ? null : t3.firstChild ? n.call(t3.childNodes) : null, e3, !r3 && i3 ? i3 : o3 ? o3.__e : t3.firstChild, r3, f4), D(e3, u4, f4);
+}
+function X(n2) {
+  function l3(n3) {
+    var u4, t3;
+    return this.getChildContext || (u4 = /* @__PURE__ */ new Set(), (t3 = {})[l3.__c] = this, this.getChildContext = function() {
+      return t3;
+    }, this.componentWillUnmount = function() {
+      u4 = null;
+    }, this.shouldComponentUpdate = function(n4) {
+      this.props.value != n4.value && u4.forEach(function(n5) {
+        n5.__e = true, A(n5);
+      });
+    }, this.sub = function(n4) {
+      u4.add(n4);
+      var l4 = n4.componentWillUnmount;
+      n4.componentWillUnmount = function() {
+        u4 && u4.delete(n4), l4 && l4.call(n4);
+      };
+    }), n3.children;
+  }
+  return l3.__c = "__cC" + y++, l3.__ = n2, l3.Provider = l3.__l = (l3.Consumer = function(n3, l4) {
+    return n3.children(l4);
+  }).contextType = l3, l3;
+}
+n = w.slice, l = { __e: function(n2, l3, u4, t3) {
+  for (var i3, r3, o3; l3 = l3.__; ) if ((i3 = l3.__c) && !i3.__) try {
+    if ((r3 = i3.constructor) && null != r3.getDerivedStateFromError && (i3.setState(r3.getDerivedStateFromError(n2)), o3 = i3.__d), null != i3.componentDidCatch && (i3.componentDidCatch(n2, t3 || {}), o3 = i3.__d), o3) return i3.__E = i3;
+  } catch (l4) {
+    n2 = l4;
+  }
+  throw n2;
+} }, u = 0, t = function(n2) {
+  return null != n2 && void 0 === n2.constructor;
+}, C.prototype.setState = function(n2, l3) {
+  var u4;
+  u4 = null != this.__s && this.__s != this.state ? this.__s : this.__s = m({}, this.state), "function" == typeof n2 && (n2 = n2(m({}, u4), this.props)), n2 && m(u4, n2), null != n2 && this.__v && (l3 && this._sb.push(l3), A(this));
+}, C.prototype.forceUpdate = function(n2) {
+  this.__v && (this.__e = true, n2 && this.__h.push(n2), A(this));
+}, C.prototype.render = S, i = [], o = "function" == typeof Promise ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, e = function(n2, l3) {
+  return n2.__v.__b - l3.__v.__b;
+}, H.__r = 0, f = Math.random().toString(8), c = "__d" + f, s = "__a" + f, a = /(PointerCapture)$|Capture$/i, h = 0, p = V(false), v = V(true), y = 0;
+
+// node_modules/preact/hooks/dist/hooks.module.js
+var t2;
+var r2;
+var u2;
+var i2;
+var o2 = 0;
+var f2 = [];
+var c2 = l;
+var e2 = c2.__b;
+var a2 = c2.__r;
+var v2 = c2.diffed;
+var l2 = c2.__c;
+var m2 = c2.unmount;
+var s2 = c2.__;
+function p2(n2, t3) {
+  c2.__h && c2.__h(r2, n2, o2 || t3), o2 = 0;
+  var u4 = r2.__H || (r2.__H = { __: [], __h: [] });
+  return n2 >= u4.__.length && u4.__.push({}), u4.__[n2];
+}
+function d2(n2) {
+  return o2 = 1, h2(D2, n2);
+}
+function h2(n2, u4, i3) {
+  var o3 = p2(t2++, 2);
+  if (o3.t = n2, !o3.__c && (o3.__ = [i3 ? i3(u4) : D2(void 0, u4), function(n3) {
+    var t3 = o3.__N ? o3.__N[0] : o3.__[0], r3 = o3.t(t3, n3);
+    t3 !== r3 && (o3.__N = [r3, o3.__[1]], o3.__c.setState({}));
+  }], o3.__c = r2, !r2.__f)) {
+    var f4 = function(n3, t3, r3) {
+      if (!o3.__c.__H) return true;
+      var u5 = o3.__c.__H.__.filter(function(n4) {
+        return n4.__c;
+      });
+      if (u5.every(function(n4) {
+        return !n4.__N;
+      })) return !c3 || c3.call(this, n3, t3, r3);
+      var i4 = o3.__c.props !== n3;
+      return u5.some(function(n4) {
+        if (n4.__N) {
+          var t4 = n4.__[0];
+          n4.__ = n4.__N, n4.__N = void 0, t4 !== n4.__[0] && (i4 = true);
+        }
+      }), c3 && c3.call(this, n3, t3, r3) || i4;
+    };
+    r2.__f = true;
+    var c3 = r2.shouldComponentUpdate, e3 = r2.componentWillUpdate;
+    r2.componentWillUpdate = function(n3, t3, r3) {
+      if (this.__e) {
+        var u5 = c3;
+        c3 = void 0, f4(n3, t3, r3), c3 = u5;
+      }
+      e3 && e3.call(this, n3, t3, r3);
+    }, r2.shouldComponentUpdate = f4;
+  }
+  return o3.__N || o3.__;
+}
+function y2(n2, u4) {
+  var i3 = p2(t2++, 3);
+  !c2.__s && C2(i3.__H, u4) && (i3.__ = n2, i3.u = u4, r2.__H.__h.push(i3));
+}
+function x2(n2) {
+  var u4 = r2.context[n2.__c], i3 = p2(t2++, 9);
+  return i3.c = n2, u4 ? (null == i3.__ && (i3.__ = true, u4.sub(r2)), u4.props.value) : n2.__;
+}
+function j2() {
+  for (var n2; n2 = f2.shift(); ) {
+    var t3 = n2.__H;
+    if (n2.__P && t3) try {
+      t3.__h.some(z2), t3.__h.some(B2), t3.__h = [];
+    } catch (r3) {
+      t3.__h = [], c2.__e(r3, n2.__v);
+    }
+  }
+}
+c2.__b = function(n2) {
+  r2 = null, e2 && e2(n2);
+}, c2.__ = function(n2, t3) {
+  n2 && t3.__k && t3.__k.__m && (n2.__m = t3.__k.__m), s2 && s2(n2, t3);
+}, c2.__r = function(n2) {
+  a2 && a2(n2), t2 = 0;
+  var i3 = (r2 = n2.__c).__H;
+  i3 && (u2 === r2 ? (i3.__h = [], r2.__h = [], i3.__.some(function(n3) {
+    n3.__N && (n3.__ = n3.__N), n3.u = n3.__N = void 0;
+  })) : (i3.__h.some(z2), i3.__h.some(B2), i3.__h = [], t2 = 0)), u2 = r2;
+}, c2.diffed = function(n2) {
+  v2 && v2(n2);
+  var t3 = n2.__c;
+  t3 && t3.__H && (t3.__H.__h.length && (1 !== f2.push(t3) && i2 === c2.requestAnimationFrame || ((i2 = c2.requestAnimationFrame) || w2)(j2)), t3.__H.__.some(function(n3) {
+    n3.u && (n3.__H = n3.u), n3.u = void 0;
+  })), u2 = r2 = null;
+}, c2.__c = function(n2, t3) {
+  t3.some(function(n3) {
+    try {
+      n3.__h.some(z2), n3.__h = n3.__h.filter(function(n4) {
+        return !n4.__ || B2(n4);
+      });
+    } catch (r3) {
+      t3.some(function(n4) {
+        n4.__h && (n4.__h = []);
+      }), t3 = [], c2.__e(r3, n3.__v);
+    }
+  }), l2 && l2(n2, t3);
+}, c2.unmount = function(n2) {
+  m2 && m2(n2);
+  var t3, r3 = n2.__c;
+  r3 && r3.__H && (r3.__H.__.some(function(n3) {
+    try {
+      z2(n3);
+    } catch (n4) {
+      t3 = n4;
+    }
+  }), r3.__H = void 0, t3 && c2.__e(t3, r3.__v));
+};
+var k2 = "function" == typeof requestAnimationFrame;
+function w2(n2) {
+  var t3, r3 = function() {
+    clearTimeout(u4), k2 && cancelAnimationFrame(t3), setTimeout(n2);
+  }, u4 = setTimeout(r3, 35);
+  k2 && (t3 = requestAnimationFrame(r3));
+}
+function z2(n2) {
+  var t3 = r2, u4 = n2.__c;
+  "function" == typeof u4 && (n2.__c = void 0, u4()), r2 = t3;
+}
+function B2(n2) {
+  var t3 = r2;
+  n2.__c = n2.__(), r2 = t3;
+}
+function C2(n2, t3) {
+  return !n2 || n2.length !== t3.length || t3.some(function(t4, r3) {
+    return t4 !== n2[r3];
+  });
+}
+function D2(n2, t3) {
+  return "function" == typeof t3 ? t3(n2) : t3;
+}
+
+// node_modules/preact/jsx-runtime/dist/jsxRuntime.module.js
+var f3 = 0;
+function u3(e3, t3, n2, o3, i3, u4) {
+  t3 || (t3 = {});
+  var a3, c3, p3 = t3;
+  if ("ref" in p3) for (c3 in p3 = {}, t3) "ref" == c3 ? a3 = t3[c3] : p3[c3] = t3[c3];
+  var l3 = { type: e3, props: p3, key: n2, ref: a3, __k: null, __: null, __b: 0, __e: null, __c: null, constructor: void 0, __v: --f3, __i: -1, __u: 0, __source: i3, __self: u4 };
+  if ("function" == typeof e3 && (a3 = e3.defaultProps)) for (c3 in a3) void 0 === p3[c3] && (p3[c3] = a3[c3]);
+  return l.vnode && l.vnode(l3), l3;
+}
+
+// src/components/ui/Surface.tsx
+function Surface({ children, className = "" }) {
+  return /* @__PURE__ */ u3("div", { className: ["surface", className].filter(Boolean).join(" "), children });
+}
+
+// src/registry/site.ts
+var siteConfig = {
+  apiBasePath: "/api",
+  name: "Corp Ladder",
+  sessionStorageKey: "corp-ladder.session-token",
+  summary: "Frontend control plane for company auth, hierarchy management, and role-based org administration."
+};
+
+// src/api/http.ts
+var ApiError = class extends Error {
+  constructor(message, status, data) {
+    super(message);
+    __publicField(this, "data");
+    __publicField(this, "status");
+    this.name = "ApiError";
+    this.data = data;
+    this.status = status;
+  }
+};
+function getErrorMessage(status, data) {
+  if (typeof data === "object" && data !== null) {
+    const detail = "detail" in data ? data.detail : void 0;
+    const message = "message" in data ? data.message : void 0;
+    if (typeof detail === "string") {
+      return detail;
+    }
+    if (typeof message === "string") {
+      return message;
+    }
+  }
+  return `Request failed with status ${status}.`;
+}
+async function requestJson(resourcePath, init) {
+  const normalizedPath = resourcePath.startsWith("/") ? resourcePath : `/${resourcePath}`;
+  const headers = new Headers(init?.headers);
+  headers.set("Accept", "application/json");
+  if (init?.json !== void 0) {
+    headers.set("Content-Type", "application/json");
+  }
+  if (init?.token) {
+    headers.set("Authorization", `Bearer ${init.token}`);
+  }
+  const url = `${siteConfig.apiBasePath}${normalizedPath}`;
+  const requestBody = init?.json === void 0 ? init?.body : JSON.stringify(init.json);
+  console.debug(`[API] ${init?.method || "GET"} ${url}`, {
+    hasBody: !!requestBody,
+    headers: Object.fromEntries(headers.entries())
+  });
+  const response = await fetch(url, {
+    ...init,
+    body: requestBody,
+    headers: {
+      ...Object.fromEntries(headers.entries())
+    }
+  });
+  const contentType = response.headers.get("content-type") ?? "";
+  const responseData = contentType.includes("application/json") ? await response.json() : await response.text();
+  console.debug(`[API] Response ${response.status}:`, {
+    ok: response.ok,
+    contentType,
+    dataType: typeof responseData
+  });
+  if (!response.ok) {
+    console.error(`[API] Request failed:`, responseData);
+    throw new ApiError(getErrorMessage(response.status, responseData), response.status, responseData);
+  }
+  return responseData;
+}
+
+// src/api/company.ts
+function companyPath(companyId) {
+  return `/v1/company/${encodeURIComponent(companyId)}`;
+}
+function listCompanies() {
+  return requestJson("/v1/company");
+}
+function readCompany(companyId) {
+  return requestJson(companyPath(companyId));
+}
+function createCompany(payload) {
+  return requestJson("/v1/company", {
+    json: payload,
+    method: "POST"
+  });
+}
+function updateCompany(companyId, payload, token) {
+  return requestJson(companyPath(companyId), {
+    json: payload,
+    method: "PATCH",
+    token
+  });
+}
+function upsertCompanyRole(companyId, payload, token) {
+  return requestJson(`${companyPath(companyId)}/roles`, {
+    json: payload,
+    method: "POST",
+    token
+  });
+}
+
+// src/api/employee.ts
+function employeePath(employeeId) {
+  return `/v1/employee/${encodeURIComponent(employeeId)}`;
+}
+function createEmployee(payload, token) {
+  return requestJson("/v1/employee", {
+    json: payload,
+    method: "POST",
+    token
+  });
+}
+function updateEmployee(employeeId, payload, token) {
+  return requestJson(employeePath(employeeId), {
+    json: payload,
+    method: "PATCH",
+    token
+  });
+}
+function changeEmployeeManager(employeeId, payload, token) {
+  return requestJson(`${employeePath(employeeId)}/manager`, {
+    json: payload,
+    method: "PATCH",
+    token
+  });
+}
+function assignEmployeeRole(employeeId, payload, token) {
+  return requestJson(`${employeePath(employeeId)}/roles`, {
+    json: payload,
+    method: "POST",
+    token
+  });
+}
+function revokeEmployeeRole(employeeId, roleId, token) {
+  return requestJson(`${employeePath(employeeId)}/roles/${encodeURIComponent(roleId)}`, {
+    method: "DELETE",
+    token
+  });
+}
+function removeEmployee(employeeId, token) {
+  return requestJson(employeePath(employeeId), {
+    method: "DELETE",
+    token
+  });
+}
+
+// src/data/organization.ts
+var companyCatalogCache = null;
+var companyCatalogInFlight = null;
+var companyWorkspaceCache = /* @__PURE__ */ new Map();
+var companyWorkspaceInFlight = /* @__PURE__ */ new Map();
+function primeWorkspace(company) {
+  companyWorkspaceCache.set(company.id, company);
+  return company;
+}
+function invalidateCompany(companyId) {
+  companyWorkspaceCache.delete(companyId);
+  companyWorkspaceInFlight.delete(companyId);
+}
+function invalidateCatalog() {
+  companyCatalogCache = null;
+  companyCatalogInFlight = null;
+}
+async function getCompanyCatalog(forceRefresh = false) {
+  if (!forceRefresh && companyCatalogCache) {
+    return companyCatalogCache;
+  }
+  if (!forceRefresh && companyCatalogInFlight) {
+    return companyCatalogInFlight;
+  }
+  companyCatalogInFlight = listCompanies().then((response) => {
+    companyCatalogCache = response.companies;
+    companyCatalogInFlight = null;
+    return response.companies;
+  }).catch((error) => {
+    companyCatalogInFlight = null;
+    throw error;
+  });
+  return companyCatalogInFlight;
+}
+async function getCompanyWorkspace(companyId, forceRefresh = false) {
+  if (!forceRefresh && companyWorkspaceCache.has(companyId)) {
+    return companyWorkspaceCache.get(companyId);
+  }
+  if (!forceRefresh && companyWorkspaceInFlight.has(companyId)) {
+    return companyWorkspaceInFlight.get(companyId);
+  }
+  const request = readCompany(companyId).then((response) => {
+    companyWorkspaceInFlight.delete(companyId);
+    return primeWorkspace(response.company);
+  }).catch((error) => {
+    companyWorkspaceInFlight.delete(companyId);
+    throw error;
+  });
+  companyWorkspaceInFlight.set(companyId, request);
+  return request;
+}
+async function createCompanyAccount(payload) {
+  const response = await createCompany(payload);
+  invalidateCatalog();
+  primeWorkspace(response.company);
+  return response;
+}
+async function updateCompanyAccount(companyId, payload, token) {
+  const response = await updateCompany(companyId, payload, token);
+  invalidateCatalog();
+  return primeWorkspace(response.company);
+}
+async function upsertRoleAndReload(companyId, payload, token) {
+  await upsertCompanyRole(companyId, payload, token);
+  invalidateCompany(companyId);
+  invalidateCatalog();
+  return getCompanyWorkspace(companyId, true);
+}
+async function createEmployeeAndReload(payload, token) {
+  await createEmployee(payload, token);
+  invalidateCompany(payload.company_id);
+  invalidateCatalog();
+  return getCompanyWorkspace(payload.company_id, true);
+}
+async function updateEmployeeAndReload(employeeId, companyId, payload, token) {
+  await updateEmployee(employeeId, payload, token);
+  invalidateCompany(companyId);
+  return getCompanyWorkspace(companyId, true);
+}
+async function changeManagerAndReload(employeeId, companyId, payload, token) {
+  await changeEmployeeManager(employeeId, payload, token);
+  invalidateCompany(companyId);
+  invalidateCatalog();
+  return getCompanyWorkspace(companyId, true);
+}
+async function assignRoleAndReload(employeeId, companyId, payload, token) {
+  await assignEmployeeRole(employeeId, payload, token);
+  invalidateCompany(companyId);
+  return getCompanyWorkspace(companyId, true);
+}
+async function revokeRoleAndReload(employeeId, companyId, roleId, token) {
+  await revokeEmployeeRole(employeeId, roleId, token);
+  invalidateCompany(companyId);
+  return getCompanyWorkspace(companyId, true);
+}
+async function removeEmployeeAndReload(employeeId, companyId, token) {
+  await removeEmployee(employeeId, token);
+  invalidateCompany(companyId);
+  invalidateCatalog();
+  return getCompanyWorkspace(companyId, true);
+}
+
+// src/api/auth.ts
+function loginEmployee(payload) {
+  return requestJson("/v1/auth/employee/login", {
+    json: payload,
+    method: "POST"
+  });
+}
+function loginCompany(payload) {
+  return requestJson("/v1/auth/company/login", {
+    json: payload,
+    method: "POST"
+  });
+}
+function readCurrentSession(token) {
+  return requestJson("/v1/auth/me", {
+    token
+  });
+}
+function logoutSession(token) {
+  return requestJson("/v1/auth/logout", {
+    method: "POST",
+    token
+  });
+}
+
+// src/data/session.ts
+function restoreSession(token) {
+  return readCurrentSession(token).then((response) => response.session);
+}
+function createEmployeeSession(payload) {
+  return loginEmployee(payload);
+}
+function createCompanySession(payload) {
+  return loginCompany(payload);
+}
+function destroySession(token) {
+  return logoutSession(token).then(() => void 0);
+}
+
+// src/transformers/workspace.ts
+function sortByName(left, right) {
+  return left.name.localeCompare(right.name) || left.id.localeCompare(right.id);
+}
+function getReportingLevel(employee, employeeIndex) {
+  let level = 0;
+  let cursor = employee;
+  const seen = /* @__PURE__ */ new Set([employee.id]);
+  while (cursor.reports) {
+    const manager = employeeIndex[cursor.reports];
+    if (!manager || seen.has(manager.id)) {
+      break;
+    }
+    seen.add(manager.id);
+    cursor = manager;
+    level += 1;
+  }
+  return level;
+}
+function toRoleIndex(roles) {
+  return roles.reduce((index, role) => {
+    index[role.id] = role;
+    return index;
+  }, {});
+}
+function toWorkspaceViewModel(company) {
+  const roleIndex = toRoleIndex(company.roles);
+  const rawEmployeeIndex = company.employees.reduce((index, employee) => {
+    index[employee.id] = employee;
+    return index;
+  }, {});
+  const employees = company.employees.map((employee) => ({
+    ...employee,
+    directReportCount: employee.reporting.length,
+    isBoardMember: company.board.includes(employee.id),
+    level: getReportingLevel(employee, rawEmployeeIndex),
+    managerName: employee.reports ? rawEmployeeIndex[employee.reports]?.name ?? employee.reports : null,
+    roleLabels: employee.roles.map((roleId) => roleIndex[roleId]?.id ?? roleId)
+  })).sort((left, right) => left.level - right.level || sortByName(left, right));
+  const employeeIndex = employees.reduce((index, employee) => {
+    index[employee.id] = employee;
+    return index;
+  }, {});
+  return {
+    boardMembers: company.board.map((employeeId) => employeeIndex[employeeId]).filter(Boolean),
+    company,
+    employeeIndex,
+    employees,
+    roleIndex,
+    roles: company.roles
+  };
+}
+
+// src/contexts/app-context.tsx
+var AppContext = X(null);
+function getErrorMessage2(error) {
+  if (error instanceof Error) {
+    return error.message;
+  }
+  return "Unexpected request failure.";
+}
+function isUnauthorized(error) {
+  return error instanceof ApiError && error.status === 401;
+}
+function AppProvider({ children }) {
+  const [bootstrapStatus, setBootstrapStatus] = d2("loading");
+  const [companiesStatus, setCompaniesStatus] = d2("idle");
+  const [workspaceStatus, setWorkspaceStatus] = d2("idle");
+  const [companies, setCompanies] = d2([]);
+  const [activeCompany, setActiveCompany] = d2(null);
+  const [session, setSession] = d2(null);
+  const [token, setToken] = d2(null);
+  const [pendingAction, setPendingAction] = d2(null);
+  const [pageError, setPageError] = d2(null);
+  const [actionError, setActionError] = d2(null);
+  const currentEmployeeId = session?.principal_type === "employee" ? session.employee.id : null;
+  const permissions = session?.principal_type === "employee" ? session.employee.permissions : [];
+  const syncToken = (nextToken) => {
+    setToken(nextToken);
+    if (nextToken) {
+      window.localStorage.setItem(siteConfig.sessionStorageKey, nextToken);
+      return;
+    }
+    window.localStorage.removeItem(siteConfig.sessionStorageKey);
+  };
+  const clearSessionState = () => {
+    syncToken(null);
+    setSession(null);
+  };
+  const loadCatalog = async (forceRefresh = false) => {
+    setCompaniesStatus("loading");
+    try {
+      const nextCompanies = await getCompanyCatalog(forceRefresh);
+      setCompanies(nextCompanies);
+      setCompaniesStatus("ready");
+      return nextCompanies;
+    } catch (error) {
+      setCompaniesStatus("error");
+      throw error;
+    }
+  };
+  const loadCompany = async (companyId, forceRefresh = false) => {
+    setWorkspaceStatus("loading");
+    try {
+      const workspace = await getCompanyWorkspace(companyId, forceRefresh);
+      setActiveCompany(toWorkspaceViewModel(workspace));
+      setWorkspaceStatus("ready");
+    } catch (error) {
+      setWorkspaceStatus("error");
+      throw error;
+    }
+  };
+  const resetPublicWorkspace = async (nextCompanies) => {
+    const companyCatalog = nextCompanies ?? companies;
+    if (companyCatalog.length === 0) {
+      setActiveCompany(null);
+      setWorkspaceStatus("idle");
+      return;
+    }
+    await loadCompany(companyCatalog[0].id, true);
+  };
+  const captureActionError = async (error) => {
+    if (isUnauthorized(error)) {
+      clearSessionState();
+      const nextCompanies = await loadCatalog(true);
+      await resetPublicWorkspace(nextCompanies);
+      setActionError("Your session expired. Please sign in again.");
+      return;
+    }
+    setActionError(getErrorMessage2(error));
+  };
+  const runAction = async (label, action) => {
+    setPendingAction(label);
+    setActionError(null);
+    try {
+      return await action();
+    } catch (error) {
+      await captureActionError(error);
+      throw error;
+    } finally {
+      setPendingAction(null);
+    }
+  };
+  const refreshCompanies = async () => {
+    await runAction("Refreshing companies", async () => {
+      const nextCompanies = await loadCatalog(true);
+      if (!session) {
+        await resetPublicWorkspace(nextCompanies);
+      }
+    });
+  };
+  const refreshWorkspace = async () => {
+    if (session) {
+      await runAction("Refreshing workspace", async () => {
+        await loadCatalog(true);
+        await loadCompany(session.company_id, true);
+      });
+      return;
+    }
+    await refreshCompanies();
+  };
+  const finalizeAuthentication = async (nextToken, nextSession, preloadCompany) => {
+    syncToken(nextToken);
+    setSession(nextSession);
+    await loadCatalog(true);
+    if (preloadCompany) {
+      setActiveCompany(preloadCompany);
+      setWorkspaceStatus("ready");
+      return;
+    }
+    await loadCompany(nextSession.company_id, true);
+  };
+  y2(() => {
+    const bootstrap = async () => {
+      setPageError(null);
+      setBootstrapStatus("loading");
+      try {
+        const storedToken = window.localStorage.getItem(siteConfig.sessionStorageKey);
+        const nextCompanies = await loadCatalog(false);
+        if (storedToken) {
+          try {
+            const restored = await restoreSession(storedToken);
+            syncToken(storedToken);
+            setSession(restored);
+            await loadCompany(restored.company_id, false);
+          } catch (error) {
+            clearSessionState();
+            await resetPublicWorkspace(nextCompanies);
+            setActionError(isUnauthorized(error) ? "Your previous session is no longer valid." : getErrorMessage2(error));
+          }
+        } else {
+          await resetPublicWorkspace(nextCompanies);
+        }
+      } catch (error) {
+        setPageError(getErrorMessage2(error));
+      } finally {
+        setBootstrapStatus("ready");
+      }
+    };
+    void bootstrap();
+  }, []);
+  const requireToken = () => {
+    if (!token || !session) {
+      throw new Error("Authentication required.");
+    }
+    return token;
+  };
+  const createCompany2 = async (payload) => {
+    await runAction("Creating company", async () => {
+      const response = await createCompanyAccount(payload);
+      await finalizeAuthentication(response.token, response.session, toWorkspaceViewModel(response.company));
+    });
+  };
+  const loginEmployee2 = async (payload) => {
+    await runAction("Signing in employee", async () => {
+      console.debug("[LOGIN] Starting employee login with ID:", payload.employee_id);
+      try {
+        const response = await createEmployeeSession(payload);
+        console.debug("[LOGIN] Received auth response:", {
+          hasToken: !!response.token,
+          hasSession: !!response.session,
+          sessionType: response.session?.principal_type
+        });
+        await finalizeAuthentication(response.token, response.session);
+        console.debug("[LOGIN] Authentication finalized successfully");
+      } catch (error) {
+        console.error("[LOGIN] Error during login:", error);
+        throw error;
+      }
+    });
+  };
+  const loginCompany2 = async (payload) => {
+    await runAction("Signing in company", async () => {
+      const response = await createCompanySession(payload);
+      await finalizeAuthentication(response.token, response.session);
+    });
+  };
+  const logout = async () => {
+    await runAction("Ending session", async () => {
+      const currentToken = token;
+      if (currentToken) {
+        try {
+          await destroySession(currentToken);
+        } catch (error) {
+          if (!isUnauthorized(error)) {
+            throw error;
+          }
+        }
+      }
+      clearSessionState();
+      const nextCompanies = await loadCatalog(true);
+      await resetPublicWorkspace(nextCompanies);
+    });
+  };
+  const selectPublicCompany = async (companyId) => {
+    if (session) {
+      return;
+    }
+    await runAction("Loading company", async () => {
+      await loadCompany(companyId, true);
+    });
+  };
+  const updateCompanyRecord = async (payload) => {
+    await runAction("Updating company", async () => {
+      const currentToken = requireToken();
+      const updatedCompany = await updateCompanyAccount(session.company_id, payload, currentToken);
+      setActiveCompany(toWorkspaceViewModel(updatedCompany));
+      await loadCatalog(true);
+    });
+  };
+  const createRole = async (payload) => {
+    await runAction("Saving role", async () => {
+      const currentToken = requireToken();
+      const workspace = await upsertRoleAndReload(session.company_id, payload, currentToken);
+      setActiveCompany(toWorkspaceViewModel(workspace));
+      await loadCatalog(true);
+    });
+  };
+  const createEmployeeRecord = async (payload) => {
+    await runAction("Adding employee", async () => {
+      const currentToken = requireToken();
+      const workspace = await createEmployeeAndReload(payload, currentToken);
+      setActiveCompany(toWorkspaceViewModel(workspace));
+      await loadCatalog(true);
+    });
+  };
+  const updateEmployeeRecord = async (employeeId, payload) => {
+    await runAction("Updating employee", async () => {
+      const currentToken = requireToken();
+      const workspace = await updateEmployeeAndReload(employeeId, session.company_id, payload, currentToken);
+      setActiveCompany(toWorkspaceViewModel(workspace));
+      await loadCatalog(true);
+    });
+  };
+  const changeManager = async (employeeId, payload) => {
+    await runAction("Rewiring reporting line", async () => {
+      const currentToken = requireToken();
+      const workspace = await changeManagerAndReload(employeeId, session.company_id, payload, currentToken);
+      setActiveCompany(toWorkspaceViewModel(workspace));
+      await loadCatalog(true);
+    });
+  };
+  const assignRole = async (employeeId, payload) => {
+    await runAction("Assigning role", async () => {
+      const currentToken = requireToken();
+      const workspace = await assignRoleAndReload(employeeId, session.company_id, payload, currentToken);
+      setActiveCompany(toWorkspaceViewModel(workspace));
+      await loadCatalog(true);
+    });
+  };
+  const revokeRole = async (employeeId, roleId) => {
+    await runAction("Revoking role", async () => {
+      const currentToken = requireToken();
+      const workspace = await revokeRoleAndReload(employeeId, session.company_id, roleId, currentToken);
+      setActiveCompany(toWorkspaceViewModel(workspace));
+      await loadCatalog(true);
+    });
+  };
+  const removeEmployeeRecord = async (employeeId) => {
+    await runAction("Removing employee", async () => {
+      const currentToken = requireToken();
+      const workspace = await removeEmployeeAndReload(employeeId, session.company_id, currentToken);
+      setActiveCompany(toWorkspaceViewModel(workspace));
+      await loadCatalog(true);
+    });
+  };
+  const value = {
+    actionError,
+    activeCompany,
+    bootstrapStatus,
+    companies,
+    companiesStatus,
+    createCompany: createCompany2,
+    createEmployee: createEmployeeRecord,
+    createRole,
+    currentEmployeeId,
+    isAuthenticated: Boolean(session),
+    isEmployeeSession: session?.principal_type === "employee",
+    loginCompany: loginCompany2,
+    loginEmployee: loginEmployee2,
+    logout,
+    pageError,
+    pendingAction,
+    permissions,
+    refreshCompanies,
+    refreshWorkspace,
+    removeEmployee: removeEmployeeRecord,
+    revokeRole,
+    selectPublicCompany,
+    session,
+    token,
+    updateCompany: updateCompanyRecord,
+    updateEmployee: updateEmployeeRecord,
+    assignRole,
+    changeManager,
+    workspaceStatus
+  };
+  return /* @__PURE__ */ u3(AppContext.Provider, { value, children });
+}
+function useAppModel() {
+  const value = x2(AppContext);
+  if (!value) {
+    throw new Error("useAppModel must be used within AppProvider.");
+  }
+  return value;
+}
+
+// src/components/sections/PublicPortalSection.tsx
+var emptyCompanyForm = {
+  admin: {
+    id: "",
+    name: "",
+    password: "",
+    role: ""
+  },
+  id: "",
+  name: "",
+  password: ""
+};
+function PublicPortalSection() {
+  const {
+    actionError,
+    activeCompany,
+    companies,
+    companiesStatus,
+    createCompany: createCompany2,
+    loginCompany: loginCompany2,
+    loginEmployee: loginEmployee2,
+    pageError,
+    pendingAction,
+    refreshCompanies,
+    selectPublicCompany,
+    workspaceStatus
+  } = useAppModel();
+  const [companyForm, setCompanyForm] = d2(emptyCompanyForm);
+  const [employeeId, setEmployeeId] = d2("");
+  const [employeePassword, setEmployeePassword] = d2("");
+  const [companyId, setCompanyId] = d2("");
+  const [companyPassword, setCompanyPassword] = d2("");
+  const handleCompanyCreate = async () => {
+    await createCompany2({
+      admin: {
+        ...companyForm.admin,
+        id: companyForm.admin.id.trim(),
+        name: companyForm.admin.name.trim(),
+        password: companyForm.admin.password,
+        role: companyForm.admin.role.trim()
+      },
+      id: companyForm.id.trim(),
+      name: companyForm.name.trim(),
+      password: companyForm.password
+    });
+    setCompanyForm(emptyCompanyForm);
+  };
+  return /* @__PURE__ */ u3("div", { className: "page-stack", children: [
+    /* @__PURE__ */ u3("section", { className: "hero hero--ops", children: [
+      /* @__PURE__ */ u3("div", { className: "hero__copy", children: [
+        /* @__PURE__ */ u3("span", { className: "eyebrow", children: "v1 control surface" }),
+        /* @__PURE__ */ u3("h1", { children: "Run the org chart from the frontend, against the existing API." }),
+        /* @__PURE__ */ u3("p", { children: "Every current backend v1 ability is exposed here except modular feature packages: company signup, employee and company auth, roles, employee lifecycle, reporting lines, and read-only company browsing." }),
+        /* @__PURE__ */ u3("div", { className: "hero__metrics", children: [
+          /* @__PURE__ */ u3("div", { className: "metric-chip", children: [
+            /* @__PURE__ */ u3("strong", { children: companies.length }),
+            /* @__PURE__ */ u3("span", { children: "companies" })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "metric-chip", children: [
+            /* @__PURE__ */ u3("strong", { children: activeCompany?.employees.length ?? 0 }),
+            /* @__PURE__ */ u3("span", { children: "visible employees" })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "metric-chip", children: [
+            /* @__PURE__ */ u3("strong", { children: activeCompany?.roles.length ?? 0 }),
+            /* @__PURE__ */ u3("span", { children: "visible roles" })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ u3(Surface, { className: "hero-panel hero-panel--status", children: [
+        /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Public mode" }),
+        /* @__PURE__ */ u3("h2", { children: "Browse companies or sign in." }),
+        /* @__PURE__ */ u3("p", { children: "Unauthenticated users can inspect companies. Mutations unlock after employee auth, while company auth stays read-only by backend design." }),
+        /* @__PURE__ */ u3("div", { className: "status-list", children: [
+          /* @__PURE__ */ u3("div", { className: "status-row", children: [
+            /* @__PURE__ */ u3("span", { children: "Companies" }),
+            /* @__PURE__ */ u3("strong", { children: companiesStatus })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "status-row", children: [
+            /* @__PURE__ */ u3("span", { children: "Preview" }),
+            /* @__PURE__ */ u3("strong", { children: workspaceStatus })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "status-row", children: [
+            /* @__PURE__ */ u3("span", { children: "Action" }),
+            /* @__PURE__ */ u3("strong", { children: pendingAction ?? "idle" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("button", { className: "button button--secondary", onClick: () => void refreshCompanies(), type: "button", children: "Refresh catalog" })
+      ] })
+    ] }),
+    (pageError || actionError) && /* @__PURE__ */ u3(Surface, { className: "notice-panel notice-panel--error", children: [
+      /* @__PURE__ */ u3("strong", { children: "Request issue" }),
+      /* @__PURE__ */ u3("p", { children: actionError ?? pageError })
+    ] }),
+    /* @__PURE__ */ u3("div", { className: "content-grid", children: [
+      /* @__PURE__ */ u3("div", { className: "content-grid__main", children: [
+        /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+            /* @__PURE__ */ u3("div", { children: [
+              /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Directory" }),
+              /* @__PURE__ */ u3("h2", { children: "Companies" })
+            ] }),
+            /* @__PURE__ */ u3("span", { children: companies.length === 0 ? "No companies yet" : `${companies.length} available` })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "company-list", children: [
+            companies.map((company) => /* @__PURE__ */ u3(
+              "button",
+              {
+                className: [
+                  "company-card",
+                  activeCompany?.company.id === company.id ? "company-card--active" : ""
+                ].filter(Boolean).join(" "),
+                onClick: () => {
+                  void selectPublicCompany(company.id);
+                },
+                type: "button",
+                children: [
+                  /* @__PURE__ */ u3("strong", { children: company.name }),
+                  /* @__PURE__ */ u3("span", { children: company.id }),
+                  /* @__PURE__ */ u3("small", { children: [
+                    company.board.length,
+                    " board members"
+                  ] })
+                ]
+              },
+              company.id
+            )),
+            companies.length === 0 && /* @__PURE__ */ u3("p", { className: "muted-copy", children: "Create the first company to seed the directory and bootstrap the admin session." })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+            /* @__PURE__ */ u3("div", { children: [
+              /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Preview" }),
+              /* @__PURE__ */ u3("h2", { children: activeCompany?.company.name ?? "No company selected" })
+            ] }),
+            activeCompany && /* @__PURE__ */ u3("span", { children: activeCompany.company.id })
+          ] }),
+          activeCompany ? /* @__PURE__ */ u3(S, { children: [
+            /* @__PURE__ */ u3("div", { className: "stats-grid stats-grid--dense", children: [
+              /* @__PURE__ */ u3("div", { className: "stat-block", children: [
+                /* @__PURE__ */ u3("strong", { children: activeCompany.boardMembers.length }),
+                /* @__PURE__ */ u3("span", { children: "board members" })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "stat-block", children: [
+                /* @__PURE__ */ u3("strong", { children: activeCompany.employees.length }),
+                /* @__PURE__ */ u3("span", { children: "employees" })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "stat-block", children: [
+                /* @__PURE__ */ u3("strong", { children: activeCompany.roles.length }),
+                /* @__PURE__ */ u3("span", { children: "roles" })
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "preview-columns", children: [
+              /* @__PURE__ */ u3("div", { className: "preview-column", children: [
+                /* @__PURE__ */ u3("h3", { children: "Board" }),
+                /* @__PURE__ */ u3("div", { className: "pill-list", children: activeCompany.boardMembers.map((employee) => /* @__PURE__ */ u3("span", { className: "pill", children: employee.name }, employee.id)) })
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "preview-column", children: [
+                /* @__PURE__ */ u3("h3", { children: "Roles" }),
+                /* @__PURE__ */ u3("div", { className: "role-grid", children: activeCompany.roles.map((role) => /* @__PURE__ */ u3("div", { className: "role-card role-card--compact", children: [
+                  /* @__PURE__ */ u3("strong", { children: role.id }),
+                  /* @__PURE__ */ u3("div", { className: "pill-list", children: role.permissions.map((permission) => /* @__PURE__ */ u3("span", { className: "pill pill--accent", children: permission }, permission)) })
+                ] }, role.id)) })
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("div", { className: "employee-list employee-list--preview", children: activeCompany.employees.map((employee) => /* @__PURE__ */ u3("div", { className: "employee-card employee-card--preview", children: [
+              /* @__PURE__ */ u3("div", { className: "employee-card__summary", children: [
+                /* @__PURE__ */ u3("div", { children: [
+                  /* @__PURE__ */ u3("strong", { children: employee.name }),
+                  /* @__PURE__ */ u3("span", { children: employee.id })
+                ] }),
+                /* @__PURE__ */ u3("span", { children: employee.role })
+              ] }),
+              /* @__PURE__ */ u3("p", { className: "muted-copy", children: [
+                "Reports to ",
+                employee.managerName ?? "board",
+                " and manages ",
+                employee.directReportCount,
+                " people."
+              ] })
+            ] }, employee.id)) })
+          ] }) : /* @__PURE__ */ u3("p", { className: "muted-copy", children: "Pick a company from the directory to inspect its public org data." })
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "content-grid__side", children: [
+        /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+            /* @__PURE__ */ u3("div", { children: [
+              /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Bootstrap" }),
+              /* @__PURE__ */ u3("h2", { children: "Create company" })
+            ] }),
+            /* @__PURE__ */ u3("span", { children: "Returns an employee admin session" })
+          ] }),
+          /* @__PURE__ */ u3(
+            "form",
+            {
+              className: "form-grid",
+              onSubmit: (event) => {
+                event.preventDefault();
+                void handleCompanyCreate();
+              },
+              children: [
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Company id" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      onInput: (event) => setCompanyForm((current) => ({ ...current, id: event.currentTarget.value })),
+                      placeholder: "acme",
+                      required: true,
+                      value: companyForm.id
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Company name" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      onInput: (event) => setCompanyForm((current) => ({ ...current, name: event.currentTarget.value })),
+                      placeholder: "Acme Corp",
+                      required: true,
+                      value: companyForm.name
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Company password" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      onInput: (event) => setCompanyForm((current) => ({ ...current, password: event.currentTarget.value })),
+                      required: true,
+                      type: "password",
+                      value: companyForm.password
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Admin id" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      onInput: (event) => {
+                        const value = event.currentTarget.value;
+                        setCompanyForm((current) => ({ ...current, admin: { ...current.admin, id: value } }));
+                      },
+                      placeholder: "ceo-1",
+                      required: true,
+                      value: companyForm.admin.id
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Admin name" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      onInput: (event) => {
+                        const value = event.currentTarget.value;
+                        setCompanyForm((current) => ({ ...current, admin: { ...current.admin, name: value } }));
+                      },
+                      placeholder: "Avery Stone",
+                      required: true,
+                      value: companyForm.admin.name
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Admin role title" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      onInput: (event) => {
+                        const value = event.currentTarget.value;
+                        setCompanyForm((current) => ({ ...current, admin: { ...current.admin, role: value } }));
+                      },
+                      placeholder: "Chief Executive Officer",
+                      required: true,
+                      value: companyForm.admin.role
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Admin password" }),
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      onInput: (event) => {
+                        const value = event.currentTarget.value;
+                        setCompanyForm((current) => ({ ...current, admin: { ...current.admin, password: value } }));
+                      },
+                      required: true,
+                      type: "password",
+                      value: companyForm.admin.password
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ u3("button", { className: "button", type: "submit", children: "Create company" })
+              ]
+            }
+          )
+        ] }),
+        /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+            /* @__PURE__ */ u3("div", { children: [
+              /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Auth" }),
+              /* @__PURE__ */ u3("h2", { children: "Employee login" })
+            ] }),
+            /* @__PURE__ */ u3("span", { children: "Full mutation access depends on permissions" })
+          ] }),
+          /* @__PURE__ */ u3(
+            "form",
+            {
+              className: "form-grid",
+              onSubmit: (event) => {
+                event.preventDefault();
+                console.debug("[FORM] Employee login form submitted", { employeeId: employeeId.trim() });
+                void loginEmployee2({
+                  employee_id: employeeId.trim(),
+                  password: employeePassword
+                });
+              },
+              children: [
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Employee id" }),
+                  /* @__PURE__ */ u3("input", { onInput: (event) => setEmployeeId(event.currentTarget.value), required: true, value: employeeId })
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Password" }),
+                  /* @__PURE__ */ u3("input", { onInput: (event) => setEmployeePassword(event.currentTarget.value), required: true, type: "password", value: employeePassword })
+                ] }),
+                /* @__PURE__ */ u3("button", { className: "button", type: "submit", children: "Sign in as employee" })
+              ]
+            }
+          )
+        ] }),
+        /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+          /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+            /* @__PURE__ */ u3("div", { children: [
+              /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Auth" }),
+              /* @__PURE__ */ u3("h2", { children: "Company login" })
+            ] }),
+            /* @__PURE__ */ u3("span", { children: "Useful for read-only company sessions" })
+          ] }),
+          /* @__PURE__ */ u3(
+            "form",
+            {
+              className: "form-grid",
+              onSubmit: (event) => {
+                event.preventDefault();
+                console.debug("[FORM] Company login form submitted", { companyId: companyId.trim() });
+                void loginCompany2({
+                  company_id: companyId.trim(),
+                  password: companyPassword
+                });
+              },
+              children: [
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Company id" }),
+                  /* @__PURE__ */ u3("input", { onInput: (event) => setCompanyId(event.currentTarget.value), required: true, value: companyId })
+                ] }),
+                /* @__PURE__ */ u3("label", { className: "field", children: [
+                  /* @__PURE__ */ u3("span", { children: "Password" }),
+                  /* @__PURE__ */ u3("input", { onInput: (event) => setCompanyPassword(event.currentTarget.value), required: true, type: "password", value: companyPassword })
+                ] }),
+                /* @__PURE__ */ u3("button", { className: "button button--secondary", type: "submit", children: "Sign in as company" })
+              ]
+            }
+          )
+        ] })
+      ] })
+    ] })
+  ] });
+}
+
+// src/components/views/AuthView.tsx
+function AuthView() {
+  return /* @__PURE__ */ u3(PublicPortalSection, {});
+}
+
+// src/components/kit/FeatureCard.tsx
+function FeatureCard({ feature }) {
+  return /* @__PURE__ */ u3(Surface, { className: "feature-card", children: [
+    /* @__PURE__ */ u3("div", { className: "feature-card__header", children: [
+      /* @__PURE__ */ u3("h3", { className: "feature-card__title", children: feature.name }),
+      feature.enabled && /* @__PURE__ */ u3("span", { className: "feature-card__badge", children: "Available" })
+    ] }),
+    /* @__PURE__ */ u3("p", { className: "feature-card__description", children: feature.description })
+  ] });
+}
+
+// src/components/kit/TreeView.tsx
+function TreeNode({ employee, employeeIndex, level }) {
+  const directReports = employee.reporting;
+  const hasChildren = directReports.length > 0;
+  return /* @__PURE__ */ u3("div", { className: "tree-node", children: [
+    /* @__PURE__ */ u3("div", { className: "tree-node__content", children: /* @__PURE__ */ u3("div", { className: "tree-node__item", children: [
+      Array(level).fill(0).map((_2, idx) => /* @__PURE__ */ u3("span", { className: "tree-node__indent" }, idx)),
+      /* @__PURE__ */ u3("span", { className: "tree-node__name", children: employee.name }),
+      /* @__PURE__ */ u3("span", { className: "tree-node__role", children: employee.role })
+    ] }) }),
+    hasChildren && /* @__PURE__ */ u3("div", { className: "tree-node__children", children: directReports.map((reportId) => {
+      const report = employeeIndex[reportId];
+      if (!report) return null;
+      return /* @__PURE__ */ u3(
+        TreeNode,
+        {
+          employee: report,
+          employeeIndex,
+          level: level + 1
+        },
+        reportId
+      );
+    }) })
+  ] });
+}
+function TreeView({ employees, boardMembers }) {
+  const board = boardMembers ?? [];
+  if (board.length === 0) {
+    for (const emp of employees) {
+      if (emp.reports === null) {
+        board.push(emp.id);
+      }
+    }
+  }
+  const employeeIndex = {};
+  employees.forEach((emp) => {
+    employeeIndex[emp.id] = emp;
+  });
+  const rootEmployees = board.map((id) => employeeIndex[id]).filter((emp) => emp !== void 0);
+  if (rootEmployees.length === 0) {
+    return /* @__PURE__ */ u3("div", { className: "tree-view", children: /* @__PURE__ */ u3("p", { className: "tree-view__empty", children: "No employees in organization" }) });
+  }
+  return /* @__PURE__ */ u3("div", { className: "tree-view", children: rootEmployees.map((employee) => /* @__PURE__ */ u3(
+    TreeNode,
+    {
+      employee,
+      employeeIndex,
+      level: 0
+    },
+    employee.id
+  )) });
+}
+
+// src/api/features.ts
+function listFeatures(token) {
+  return requestJson("/v1/features", { token });
+}
+
+// src/components/sections/FeaturesSection.tsx
+function FeaturesSection() {
+  const { activeCompany, workspaceStatus, token } = useAppModel();
+  const [features, setFeatures] = d2([]);
+  const [featuresStatus, setFeaturesStatus] = d2("loading");
+  const [errorMessage, setErrorMessage] = d2(null);
+  y2(() => {
+    const fetchFeatures = async () => {
+      try {
+        setFeaturesStatus("loading");
+        const response = await listFeatures(token);
+        setFeatures(response.features);
+        setFeaturesStatus("ready");
+        setErrorMessage(null);
+      } catch (error) {
+        setFeaturesStatus("error");
+        setErrorMessage(error instanceof Error ? error.message : "Failed to load features");
+      }
+    };
+    fetchFeatures();
+  }, []);
+  const handleRefresh = async () => {
+    try {
+      setFeaturesStatus("loading");
+      const response = await listFeatures(token);
+      setFeatures(response.features);
+      setFeaturesStatus("ready");
+      setErrorMessage(null);
+    } catch (error) {
+      setFeaturesStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Failed to load features");
+    }
+  };
+  return /* @__PURE__ */ u3("section", { className: "features-section", children: [
+    /* @__PURE__ */ u3("div", { className: "section-heading", children: [
+      /* @__PURE__ */ u3("div", { children: [
+        /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Available capabilities" }),
+        /* @__PURE__ */ u3("h2", { children: "Features" })
+      ] }),
+      /* @__PURE__ */ u3("button", { className: "refresh-button", onClick: handleRefresh, type: "button", children: "Refresh" })
+    ] }),
+    /* @__PURE__ */ u3("div", { className: "features-grid", children: [
+      featuresStatus === "loading" && /* @__PURE__ */ u3("p", { className: "panel-message", children: "Loading features..." }),
+      featuresStatus === "error" && /* @__PURE__ */ u3("p", { className: "panel-message panel-message--error", children: errorMessage ?? "Failed to load features" }),
+      featuresStatus === "ready" && /* @__PURE__ */ u3(S, { children: features.length > 0 ? features.map((feature) => /* @__PURE__ */ u3(FeatureCard, { feature }, feature.id)) : /* @__PURE__ */ u3("p", { className: "panel-message", children: "No features available" }) })
+    ] }),
+    activeCompany && /* @__PURE__ */ u3(Surface, { className: "tree-panel", children: [
+      /* @__PURE__ */ u3("div", { className: "tree-panel__header", children: [
+        /* @__PURE__ */ u3("h3", { children: "Organization Tree" }),
+        /* @__PURE__ */ u3("span", { children: [
+          activeCompany.employees.length,
+          " employee",
+          activeCompany.employees.length !== 1 ? "s" : ""
+        ] })
+      ] }),
+      workspaceStatus === "loading" && /* @__PURE__ */ u3("p", { className: "panel-message", children: "Loading organization data..." }),
+      workspaceStatus === "error" && /* @__PURE__ */ u3("p", { className: "panel-message panel-message--error", children: "Failed to load organization" }),
+      workspaceStatus === "ready" && /* @__PURE__ */ u3(TreeView, { employees: activeCompany.employees, boardMembers: activeCompany.board })
+    ] })
+  ] });
+}
+
+// src/components/views/FeaturesView.tsx
+function FeaturesView() {
+  return /* @__PURE__ */ u3(FeaturesSection, {});
+}
+
+// src/interfaces/organization.ts
+var knownPermissions = ["invite", "manage", "assign", "revoke", "remove", "update"];
+
+// src/components/sections/WorkspaceSection.tsx
+function hasPermission(permissions, permission) {
+  return permissions.includes(permission);
+}
+function toFieldValue(value) {
+  return value ?? "";
+}
+function EmployeeCard({
+  canAssign,
+  canManage,
+  canRemove,
+  canUpdateOthers,
+  currentEmployeeId,
+  employee,
+  employees,
+  onAssignRole,
+  onChangeManager,
+  onRemove,
+  onRevokeRole,
+  onUpdate,
+  roles
+}) {
+  const [name, setName] = d2(employee.name);
+  const [roleTitle, setRoleTitle] = d2(employee.role);
+  const [password, setPassword] = d2("");
+  const [managerId, setManagerId] = d2(toFieldValue(employee.reports));
+  const [roleId, setRoleId] = d2("");
+  const [localMessage, setLocalMessage] = d2(null);
+  y2(() => {
+    setName(employee.name);
+    setRoleTitle(employee.role);
+    setPassword("");
+    setManagerId(toFieldValue(employee.reports));
+    setRoleId("");
+    setLocalMessage(null);
+  }, [employee.id, employee.name, employee.reports, employee.role, employee.roles.join(",")]);
+  const canUpdateSelf = currentEmployeeId === employee.id;
+  const canUpdate = canUpdateSelf || canUpdateOthers;
+  const canMutateRoles = canAssign && currentEmployeeId !== employee.id;
+  const canMutateAssignedRoles = canAssign && currentEmployeeId !== employee.id;
+  const availableManagers = employees.filter((candidate) => candidate.id !== employee.id);
+  const assignableRoles = roles.filter((candidateRole) => !employee.roles.includes(candidateRole));
+  return /* @__PURE__ */ u3("div", { className: "employee-card", children: [
+    /* @__PURE__ */ u3("div", { className: "employee-card__summary", children: [
+      /* @__PURE__ */ u3("div", { children: [
+        /* @__PURE__ */ u3("strong", { children: employee.name }),
+        /* @__PURE__ */ u3("span", { children: employee.id })
+      ] }),
+      /* @__PURE__ */ u3("span", { children: employee.role })
+    ] }),
+    /* @__PURE__ */ u3("div", { className: "employee-card__meta", children: [
+      /* @__PURE__ */ u3("span", { children: [
+        "Reports to ",
+        employee.managerName ?? "board"
+      ] }),
+      /* @__PURE__ */ u3("span", { children: [
+        employee.directReportCount,
+        " direct reports"
+      ] }),
+      /* @__PURE__ */ u3("span", { children: employee.isBoardMember ? "Board" : `Level ${employee.level + 1}` })
+    ] }),
+    /* @__PURE__ */ u3("div", { className: "pill-list", children: [
+      employee.roles.length === 0 && /* @__PURE__ */ u3("span", { className: "pill", children: "no assigned roles" }),
+      employee.roles.map((assignedRole) => /* @__PURE__ */ u3("span", { className: "pill", children: [
+        assignedRole,
+        canMutateAssignedRoles && /* @__PURE__ */ u3(
+          "button",
+          {
+            className: "pill__action",
+            onClick: () => {
+              void onRevokeRole(employee.id, assignedRole);
+            },
+            type: "button",
+            children: "remove"
+          }
+        )
+      ] }, assignedRole))
+    ] }),
+    /* @__PURE__ */ u3("div", { className: "pill-list", children: [
+      employee.permissions.length === 0 && /* @__PURE__ */ u3("span", { className: "pill pill--muted", children: "no effective permissions" }),
+      employee.permissions.map((permission) => /* @__PURE__ */ u3("span", { className: "pill pill--accent", children: permission }, permission))
+    ] }),
+    localMessage && /* @__PURE__ */ u3("p", { className: "muted-copy", children: localMessage }),
+    /* @__PURE__ */ u3("div", { className: "employee-card__forms", children: [
+      /* @__PURE__ */ u3(
+        "form",
+        {
+          className: "mini-form",
+          onSubmit: (event) => {
+            event.preventDefault();
+            const payload = {};
+            const trimmedName = name.trim();
+            const trimmedRole = roleTitle.trim();
+            if (trimmedName !== employee.name) {
+              payload.name = trimmedName;
+            }
+            if (trimmedRole !== employee.role) {
+              payload.role = trimmedRole;
+            }
+            if (password.trim()) {
+              payload.password = password;
+            }
+            if (!canUpdate) {
+              setLocalMessage("You cannot update this employee.");
+              return;
+            }
+            if (Object.keys(payload).length === 0) {
+              setLocalMessage("No employee changes to save.");
+              return;
+            }
+            setLocalMessage(null);
+            void onUpdate(employee.id, payload).then(() => {
+              setPassword("");
+              setLocalMessage("Employee updated.");
+            }).catch(() => void 0);
+          },
+          children: [
+            /* @__PURE__ */ u3("label", { className: "field", children: [
+              /* @__PURE__ */ u3("span", { children: "Name" }),
+              /* @__PURE__ */ u3("input", { disabled: !canUpdate, onInput: (event) => setName(event.currentTarget.value), value: name })
+            ] }),
+            /* @__PURE__ */ u3("label", { className: "field", children: [
+              /* @__PURE__ */ u3("span", { children: "Role title" }),
+              /* @__PURE__ */ u3("input", { disabled: !canUpdate, onInput: (event) => setRoleTitle(event.currentTarget.value), value: roleTitle })
+            ] }),
+            /* @__PURE__ */ u3("label", { className: "field", children: [
+              /* @__PURE__ */ u3("span", { children: "New password" }),
+              /* @__PURE__ */ u3(
+                "input",
+                {
+                  disabled: !canUpdate,
+                  onInput: (event) => setPassword(event.currentTarget.value),
+                  placeholder: "Leave blank to keep current",
+                  type: "password",
+                  value: password
+                }
+              )
+            ] }),
+            /* @__PURE__ */ u3("button", { className: "button button--secondary", disabled: !canUpdate, type: "submit", children: "Save employee" })
+          ]
+        }
+      ),
+      /* @__PURE__ */ u3(
+        "form",
+        {
+          className: "mini-form",
+          onSubmit: (event) => {
+            event.preventDefault();
+            if (!canManage) {
+              setLocalMessage("You do not have manage permission.");
+              return;
+            }
+            if (managerId === toFieldValue(employee.reports)) {
+              setLocalMessage("Manager did not change.");
+              return;
+            }
+            setLocalMessage(null);
+            void onChangeManager(employee.id, managerId || null).then(() => {
+              setLocalMessage("Reporting line updated.");
+            }).catch(() => void 0);
+          },
+          children: [
+            /* @__PURE__ */ u3("label", { className: "field", children: [
+              /* @__PURE__ */ u3("span", { children: "Manager" }),
+              /* @__PURE__ */ u3("select", { disabled: !canManage, onInput: (event) => setManagerId(event.currentTarget.value), value: managerId, children: [
+                /* @__PURE__ */ u3("option", { value: "", children: "Board / none" }),
+                availableManagers.map((candidate) => /* @__PURE__ */ u3("option", { value: candidate.id, children: [
+                  candidate.name,
+                  " (",
+                  candidate.id,
+                  ")"
+                ] }, candidate.id))
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("button", { className: "button button--secondary", disabled: !canManage, type: "submit", children: "Update manager" })
+          ]
+        }
+      ),
+      /* @__PURE__ */ u3(
+        "form",
+        {
+          className: "mini-form",
+          onSubmit: (event) => {
+            event.preventDefault();
+            if (!canMutateRoles) {
+              setLocalMessage("You cannot assign roles to this employee.");
+              return;
+            }
+            if (!roleId) {
+              setLocalMessage("Pick a role to assign.");
+              return;
+            }
+            setLocalMessage(null);
+            void onAssignRole(employee.id, roleId).then(() => {
+              setRoleId("");
+              setLocalMessage("Role assigned.");
+            }).catch(() => void 0);
+          },
+          children: [
+            /* @__PURE__ */ u3("label", { className: "field", children: [
+              /* @__PURE__ */ u3("span", { children: "Assign role" }),
+              /* @__PURE__ */ u3("select", { disabled: !canMutateRoles, onInput: (event) => setRoleId(event.currentTarget.value), value: roleId, children: [
+                /* @__PURE__ */ u3("option", { value: "", children: "Select role" }),
+                assignableRoles.map((candidateRole) => /* @__PURE__ */ u3("option", { value: candidateRole, children: candidateRole }, candidateRole))
+              ] })
+            ] }),
+            /* @__PURE__ */ u3("button", { className: "button button--secondary", disabled: !canMutateRoles, type: "submit", children: "Assign role" })
+          ]
+        }
+      )
+    ] }),
+    /* @__PURE__ */ u3(
+      "button",
+      {
+        className: "button button--danger",
+        disabled: !canRemove || currentEmployeeId === employee.id,
+        onClick: () => {
+          if (!canRemove || currentEmployeeId === employee.id) {
+            return;
+          }
+          if (!window.confirm(`Remove ${employee.name} from ${employee.company_id}?`)) {
+            return;
+          }
+          void onRemove(employee.id);
+        },
+        type: "button",
+        children: "Remove employee"
+      }
+    )
+  ] });
+}
+function WorkspaceSection() {
+  const {
+    actionError,
+    activeCompany,
+    currentEmployeeId,
+    isEmployeeSession,
+    logout,
+    pageError,
+    pendingAction,
+    permissions,
+    refreshWorkspace,
+    removeEmployee: removeEmployee2,
+    revokeRole,
+    session,
+    updateCompany: updateCompany2,
+    updateEmployee: updateEmployee2,
+    assignRole,
+    changeManager,
+    createEmployee: createEmployee2,
+    createRole,
+    workspaceStatus
+  } = useAppModel();
+  const [companyName, setCompanyName] = d2(activeCompany?.company.name ?? "");
+  const [companyPassword, setCompanyPassword] = d2("");
+  const [roleId, setRoleId] = d2("");
+  const [selectedPermissions, setSelectedPermissions] = d2([]);
+  const [employeeForm, setEmployeeForm] = d2({
+    company_id: activeCompany?.company.id ?? "",
+    id: "",
+    name: "",
+    password: "",
+    reports: null,
+    role: ""
+  });
+  y2(() => {
+    setCompanyName(activeCompany?.company.name ?? "");
+    setCompanyPassword("");
+    setEmployeeForm({
+      company_id: activeCompany?.company.id ?? "",
+      id: "",
+      name: "",
+      password: "",
+      reports: null,
+      role: ""
+    });
+  }, [activeCompany?.company.id, activeCompany?.company.name]);
+  if (!session || !activeCompany) {
+    return /* @__PURE__ */ u3(Surface, { className: "notice-panel", children: [
+      /* @__PURE__ */ u3("strong", { children: "No active session" }),
+      /* @__PURE__ */ u3("p", { children: "Sign in to load the authenticated workspace." })
+    ] });
+  }
+  const canInvite = isEmployeeSession && hasPermission(permissions, "invite");
+  const canManage = isEmployeeSession && hasPermission(permissions, "manage");
+  const canAssign = isEmployeeSession && hasPermission(permissions, "assign");
+  const canRemove = isEmployeeSession && hasPermission(permissions, "remove");
+  const canUpdateOthers = isEmployeeSession && hasPermission(permissions, "update");
+  const canUpdateCompany = isEmployeeSession && hasPermission(permissions, "update");
+  const roleIds = activeCompany.roles.map((role) => role.id);
+  const togglePermission = (permission) => {
+    setSelectedPermissions((current) => current.includes(permission) ? current.filter((entry) => entry !== permission) : [...current, permission]);
+  };
+  return /* @__PURE__ */ u3("div", { className: "page-stack", children: [
+    /* @__PURE__ */ u3("section", { className: "hero hero--workspace", children: [
+      /* @__PURE__ */ u3("div", { className: "hero__copy", children: [
+        /* @__PURE__ */ u3("span", { className: "eyebrow", children: [
+          session.principal_type,
+          " session"
+        ] }),
+        /* @__PURE__ */ u3("h1", { children: activeCompany.company.name }),
+        /* @__PURE__ */ u3("p", { children: "Manage employees, reporting lines, roles, and company settings from one place. The API remains unchanged; this UI now consumes the existing v1 routes directly." }),
+        /* @__PURE__ */ u3("div", { className: "hero__metrics", children: [
+          /* @__PURE__ */ u3("div", { className: "metric-chip", children: [
+            /* @__PURE__ */ u3("strong", { children: activeCompany.employees.length }),
+            /* @__PURE__ */ u3("span", { children: "employees" })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "metric-chip", children: [
+            /* @__PURE__ */ u3("strong", { children: activeCompany.boardMembers.length }),
+            /* @__PURE__ */ u3("span", { children: "board" })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "metric-chip", children: [
+            /* @__PURE__ */ u3("strong", { children: activeCompany.roles.length }),
+            /* @__PURE__ */ u3("span", { children: "roles" })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ u3(Surface, { className: "hero-panel hero-panel--status", children: [
+        /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Session" }),
+        /* @__PURE__ */ u3("h2", { children: session.company_id }),
+        /* @__PURE__ */ u3("div", { className: "status-list", children: [
+          /* @__PURE__ */ u3("div", { className: "status-row", children: [
+            /* @__PURE__ */ u3("span", { children: "Workspace" }),
+            /* @__PURE__ */ u3("strong", { children: workspaceStatus })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "status-row", children: [
+            /* @__PURE__ */ u3("span", { children: "Principal" }),
+            /* @__PURE__ */ u3("strong", { children: session.principal_type })
+          ] }),
+          /* @__PURE__ */ u3("div", { className: "status-row", children: [
+            /* @__PURE__ */ u3("span", { children: "Current action" }),
+            /* @__PURE__ */ u3("strong", { children: pendingAction ?? "idle" })
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "hero-panel__actions", children: [
+          /* @__PURE__ */ u3("button", { className: "button button--secondary", onClick: () => void refreshWorkspace(), type: "button", children: "Refresh" }),
+          /* @__PURE__ */ u3("button", { className: "button", onClick: () => void logout(), type: "button", children: "Logout" })
+        ] })
+      ] })
+    ] }),
+    (pageError || actionError) && /* @__PURE__ */ u3(Surface, { className: "notice-panel notice-panel--error", children: [
+      /* @__PURE__ */ u3("strong", { children: "Request issue" }),
+      /* @__PURE__ */ u3("p", { children: actionError ?? pageError })
+    ] }),
+    /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+      /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+        /* @__PURE__ */ u3("div", { children: [
+          /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Access" }),
+          /* @__PURE__ */ u3("h2", { children: "Effective permissions" })
+        ] }),
+        /* @__PURE__ */ u3("span", { children: currentEmployeeId ?? session.company_id })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "pill-list", children: [
+        permissions.length === 0 && /* @__PURE__ */ u3("span", { className: "pill pill--muted", children: "read-only session" }),
+        permissions.map((permission) => /* @__PURE__ */ u3("span", { className: "pill pill--accent", children: permission }, permission))
+      ] }),
+      !isEmployeeSession && /* @__PURE__ */ u3("p", { className: "muted-copy", children: "Company sessions can browse the workspace and use `/auth/me` plus logout, but mutations require an employee session with the relevant permissions." })
+    ] }),
+    /* @__PURE__ */ u3("div", { className: "workspace-grid", children: [
+      /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+        /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+          /* @__PURE__ */ u3("div", { children: [
+            /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Company" }),
+            /* @__PURE__ */ u3("h2", { children: "Settings" })
+          ] }),
+          /* @__PURE__ */ u3("span", { children: activeCompany.company.id })
+        ] }),
+        /* @__PURE__ */ u3(
+          "form",
+          {
+            className: "form-grid",
+            onSubmit: (event) => {
+              event.preventDefault();
+              const payload = {};
+              const trimmedName = companyName.trim();
+              if (trimmedName && trimmedName !== activeCompany.company.name) {
+                payload.name = trimmedName;
+              }
+              if (companyPassword.trim()) {
+                payload.password = companyPassword;
+              }
+              if (!canUpdateCompany) {
+                return;
+              }
+              if (Object.keys(payload).length === 0) {
+                return;
+              }
+              void updateCompany2(payload).then(() => {
+                setCompanyPassword("");
+              }).catch(() => void 0);
+            },
+            children: [
+              /* @__PURE__ */ u3("label", { className: "field", children: [
+                /* @__PURE__ */ u3("span", { children: "Company name" }),
+                /* @__PURE__ */ u3("input", { disabled: !canUpdateCompany, onInput: (event) => setCompanyName(event.currentTarget.value), value: companyName })
+              ] }),
+              /* @__PURE__ */ u3("label", { className: "field", children: [
+                /* @__PURE__ */ u3("span", { children: "Rotate company password" }),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    disabled: !canUpdateCompany,
+                    onInput: (event) => setCompanyPassword(event.currentTarget.value),
+                    placeholder: "New company password",
+                    type: "password",
+                    value: companyPassword
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u3("button", { className: "button button--secondary", disabled: !canUpdateCompany, type: "submit", children: "Save company" })
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+        /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+          /* @__PURE__ */ u3("div", { children: [
+            /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Hierarchy" }),
+            /* @__PURE__ */ u3("h2", { children: "Board" })
+          ] }),
+          /* @__PURE__ */ u3("span", { children: [
+            activeCompany.boardMembers.length,
+            " members"
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "employee-list employee-list--preview", children: activeCompany.boardMembers.map((employee) => /* @__PURE__ */ u3("div", { className: "employee-card employee-card--preview", children: [
+          /* @__PURE__ */ u3("div", { className: "employee-card__summary", children: [
+            /* @__PURE__ */ u3("div", { children: [
+              /* @__PURE__ */ u3("strong", { children: employee.name }),
+              /* @__PURE__ */ u3("span", { children: employee.id })
+            ] }),
+            /* @__PURE__ */ u3("span", { children: employee.role })
+          ] }),
+          /* @__PURE__ */ u3("p", { className: "muted-copy", children: [
+            employee.directReportCount,
+            " direct reports and ",
+            employee.roles.length,
+            " assigned roles."
+          ] })
+        ] }, employee.id)) })
+      ] })
+    ] }),
+    /* @__PURE__ */ u3("div", { className: "workspace-grid", children: [
+      /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+        /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+          /* @__PURE__ */ u3("div", { children: [
+            /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Roles" }),
+            /* @__PURE__ */ u3("h2", { children: "Role registry" })
+          ] }),
+          /* @__PURE__ */ u3("span", { children: [
+            activeCompany.roles.length,
+            " roles"
+          ] })
+        ] }),
+        /* @__PURE__ */ u3("div", { className: "role-grid", children: activeCompany.roles.map((role) => /* @__PURE__ */ u3("div", { className: "role-card", children: [
+          /* @__PURE__ */ u3("strong", { children: role.id }),
+          /* @__PURE__ */ u3("div", { className: "pill-list", children: role.permissions.map((permission) => /* @__PURE__ */ u3("span", { className: "pill pill--accent", children: permission }, permission)) })
+        ] }, role.id)) }),
+        /* @__PURE__ */ u3(
+          "form",
+          {
+            className: "form-grid",
+            onSubmit: (event) => {
+              event.preventDefault();
+              if (!canAssign || !roleId.trim()) {
+                return;
+              }
+              void createRole({
+                id: roleId.trim(),
+                permissions: selectedPermissions
+              }).then(() => {
+                setRoleId("");
+                setSelectedPermissions([]);
+              }).catch(() => void 0);
+            },
+            children: [
+              /* @__PURE__ */ u3("label", { className: "field", children: [
+                /* @__PURE__ */ u3("span", { children: "Role id" }),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    disabled: !canAssign,
+                    onInput: (event) => setRoleId(event.currentTarget.value),
+                    placeholder: "ops-manager",
+                    value: roleId
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u3("div", { className: "field field--full", children: [
+                /* @__PURE__ */ u3("span", { children: "Permissions" }),
+                /* @__PURE__ */ u3("div", { className: "checkbox-grid", children: knownPermissions.map((permission) => /* @__PURE__ */ u3("label", { className: "checkbox", children: [
+                  /* @__PURE__ */ u3(
+                    "input",
+                    {
+                      checked: selectedPermissions.includes(permission),
+                      disabled: !canAssign,
+                      onInput: () => togglePermission(permission),
+                      type: "checkbox"
+                    }
+                  ),
+                  /* @__PURE__ */ u3("span", { children: permission })
+                ] }, permission)) })
+              ] }),
+              /* @__PURE__ */ u3("button", { className: "button button--secondary", disabled: !canAssign, type: "submit", children: "Save role" })
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+        /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+          /* @__PURE__ */ u3("div", { children: [
+            /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Hiring" }),
+            /* @__PURE__ */ u3("h2", { children: "Add employee" })
+          ] }),
+          /* @__PURE__ */ u3("span", { children: "Invite permission required" })
+        ] }),
+        /* @__PURE__ */ u3(
+          "form",
+          {
+            className: "form-grid",
+            onSubmit: (event) => {
+              event.preventDefault();
+              if (!canInvite) {
+                return;
+              }
+              void createEmployee2({
+                ...employeeForm,
+                company_id: activeCompany.company.id,
+                id: employeeForm.id.trim(),
+                name: employeeForm.name.trim(),
+                reports: employeeForm.reports || null,
+                role: employeeForm.role.trim()
+              }).then(() => {
+                setEmployeeForm({
+                  company_id: activeCompany.company.id,
+                  id: "",
+                  name: "",
+                  password: "",
+                  reports: null,
+                  role: ""
+                });
+              }).catch(() => void 0);
+            },
+            children: [
+              /* @__PURE__ */ u3("label", { className: "field", children: [
+                /* @__PURE__ */ u3("span", { children: "Employee id" }),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    disabled: !canInvite,
+                    onInput: (event) => setEmployeeForm((current) => ({ ...current, id: event.currentTarget.value })),
+                    required: true,
+                    value: employeeForm.id
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u3("label", { className: "field", children: [
+                /* @__PURE__ */ u3("span", { children: "Name" }),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    disabled: !canInvite,
+                    onInput: (event) => setEmployeeForm((current) => ({ ...current, name: event.currentTarget.value })),
+                    required: true,
+                    value: employeeForm.name
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u3("label", { className: "field", children: [
+                /* @__PURE__ */ u3("span", { children: "Role title" }),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    disabled: !canInvite,
+                    onInput: (event) => setEmployeeForm((current) => ({ ...current, role: event.currentTarget.value })),
+                    required: true,
+                    value: employeeForm.role
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u3("label", { className: "field", children: [
+                /* @__PURE__ */ u3("span", { children: "Password" }),
+                /* @__PURE__ */ u3(
+                  "input",
+                  {
+                    disabled: !canInvite,
+                    onInput: (event) => setEmployeeForm((current) => ({ ...current, password: event.currentTarget.value })),
+                    required: true,
+                    type: "password",
+                    value: employeeForm.password
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u3("label", { className: "field", children: [
+                /* @__PURE__ */ u3("span", { children: "Manager" }),
+                /* @__PURE__ */ u3(
+                  "select",
+                  {
+                    disabled: !canInvite,
+                    onInput: (event) => {
+                      const value = event.currentTarget.value;
+                      setEmployeeForm((current) => ({ ...current, reports: value || null }));
+                    },
+                    value: toFieldValue(employeeForm.reports),
+                    children: [
+                      /* @__PURE__ */ u3("option", { value: "", children: "Board / none" }),
+                      activeCompany.employees.map((employee) => /* @__PURE__ */ u3("option", { value: employee.id, children: [
+                        employee.name,
+                        " (",
+                        employee.id,
+                        ")"
+                      ] }, employee.id))
+                    ]
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ u3("button", { className: "button button--secondary", disabled: !canInvite, type: "submit", children: "Add employee" })
+            ]
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ u3(Surface, { className: "stack-panel", children: [
+      /* @__PURE__ */ u3("div", { className: "panel-heading", children: [
+        /* @__PURE__ */ u3("div", { children: [
+          /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Employees" }),
+          /* @__PURE__ */ u3("h2", { children: "Org roster" })
+        ] }),
+        /* @__PURE__ */ u3("span", { children: [
+          activeCompany.employees.length,
+          " people"
+        ] })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "employee-list", children: activeCompany.employees.map((employee) => /* @__PURE__ */ u3(
+        EmployeeCard,
+        {
+          canAssign,
+          canManage,
+          canRemove,
+          canUpdateOthers,
+          currentEmployeeId,
+          employee,
+          employees: activeCompany.employees,
+          onAssignRole: async (employeeId, nextRoleId) => {
+            if (!roleIds.includes(nextRoleId)) {
+              return;
+            }
+            await assignRole(employeeId, { role_id: nextRoleId });
+          },
+          onChangeManager: async (employeeId, managerId) => {
+            await changeManager(employeeId, { reports: managerId });
+          },
+          onRemove: removeEmployee2,
+          onRevokeRole: revokeRole,
+          onUpdate: updateEmployee2,
+          roles: roleIds
+        },
+        employee.id
+      )) })
+    ] })
+  ] });
+}
+
+// src/components/views/HomeView.tsx
+function HomeView() {
+  const { bootstrapStatus } = useAppModel();
+  if (bootstrapStatus === "loading") {
+    return /* @__PURE__ */ u3("section", { className: "boot-panel", children: [
+      /* @__PURE__ */ u3("span", { className: "eyebrow", children: "Booting" }),
+      /* @__PURE__ */ u3("h1", { children: "Loading company data and restoring session." }),
+      /* @__PURE__ */ u3("p", { children: "The frontend is hydrating the directory, current company preview, and any persisted auth state." })
+    ] });
+  }
+  return /* @__PURE__ */ u3(WorkspaceSection, {});
+}
+
+// src/components/views/NotFoundView.tsx
+function NotFoundView() {
+  return /* @__PURE__ */ u3(Surface, { className: "notes-panel", children: [
+    /* @__PURE__ */ u3("span", { className: "eyebrow", children: "404" }),
+    /* @__PURE__ */ u3("h1", { children: "Page not found." }),
+    /* @__PURE__ */ u3("p", { children: "The current path does not match a registered route." }),
+    /* @__PURE__ */ u3("div", { className: "hero__actions", children: /* @__PURE__ */ u3(AppLink, { href: "/", variant: "solid", children: "Back home" }) })
+  ] });
+}
+
+// src/routes/metadata.json
+var metadata_default = [
+  {
+    id: "auth",
+    label: "Sign In",
+    path: "/auth",
+    title: "Sign In | Corp Ladder",
+    description: "Employee and company authentication"
+  },
+  {
+    id: "home",
+    label: "Workspace",
+    path: "/",
+    title: "Corp Ladder",
+    description: "Company directory, auth flows, and org management UI for Corp Ladder."
+  },
+  {
+    id: "features",
+    label: "Features",
+    path: "/features",
+    title: "Features | Corp Ladder",
+    description: "View available platform features and organization tree."
+  }
+];
+
+// src/routes/index.ts
+var routeViews = {
+  auth: AuthView,
+  features: FeaturesView,
+  home: HomeView
+};
+var routes = metadata_default.map((route) => ({
+  ...route,
+  view: routeViews[route.id]
+}));
+var notFoundRoute = {
+  description: "The requested page could not be found.",
+  id: "not-found",
+  label: "Not found",
+  path: "/404",
+  title: "Not Found | Corp Ladder",
+  view: NotFoundView
+};
+function resolveRoute(pathname) {
+  return routes.find((route) => route.path === pathname) ?? notFoundRoute;
+}
+
+// src/utils/router.ts
+function normalizePath(pathname) {
+  if (!pathname || pathname === "/") {
+    return "/";
+  }
+  const normalized = pathname.replace(/\/+$/, "");
+  return normalized.startsWith("/") ? normalized : `/${normalized}`;
+}
+function shouldHandleNavigation(event) {
+  return !event.defaultPrevented && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+}
+
+// src/contexts/router-context.tsx
+var RouterContext = X(null);
+function RouterProvider({ children }) {
+  const [currentPath, setCurrentPath] = d2(() => normalizePath(window.location.pathname));
+  y2(() => {
+    const handlePopState = () => {
+      setCurrentPath(normalizePath(window.location.pathname));
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+  const navigate = (nextPath) => {
+    const normalizedPath = normalizePath(nextPath);
+    if (normalizedPath === currentPath) {
+      return;
+    }
+    window.history.pushState({}, "", normalizedPath);
+    setCurrentPath(normalizedPath);
+  };
+  const value = {
+    currentPath,
+    currentRoute: resolveRoute(currentPath),
+    navigate,
+    routes
+  };
+  return /* @__PURE__ */ u3(RouterContext.Provider, { value, children });
+}
+function useRouter() {
+  const value = x2(RouterContext);
+  if (!value) {
+    throw new Error("useRouter must be used within RouterProvider.");
+  }
+  return value;
+}
+
+// src/components/ui/AppLink.tsx
+function AppLink({ children, className, href, onClick, variant = "ghost", ...props }) {
+  const { currentPath, navigate } = useRouter();
+  const isActive = currentPath === href;
+  return /* @__PURE__ */ u3(
+    "a",
+    {
+      ...props,
+      "aria-current": isActive ? "page" : void 0,
+      className: ["app-link", `app-link--${variant}`, isActive ? "is-active" : "", className ?? ""].filter(Boolean).join(" "),
+      href,
+      onClick: (event) => {
+        onClick?.(event);
+        if (!shouldHandleNavigation(event) || event.defaultPrevented) {
+          return;
+        }
+        event.preventDefault();
+        navigate(href);
+      },
+      children
+    }
+  );
+}
+
+// src/app.tsx
+function AppFrame() {
+  const { currentRoute, currentPath, navigate, routes: routes2 } = useRouter();
+  const { isAuthenticated, pendingAction, session, bootstrapStatus } = useAppModel();
+  const ActiveView = currentRoute.view;
+  y2(() => {
+    if (bootstrapStatus === "done" && !isAuthenticated && currentPath !== "/auth") {
+      navigate("/auth");
+    }
+  }, [bootstrapStatus, isAuthenticated, currentPath, navigate]);
+  const sessionLabel = session ? session.principal_type === "employee" ? `${session.employee.name} \xB7 ${session.company_id}` : `${session.company.name} \xB7 ${session.company_id}` : "public access";
+  return /* @__PURE__ */ u3("div", { className: "app-shell", children: [
+    /* @__PURE__ */ u3("header", { className: "topbar", children: [
+      /* @__PURE__ */ u3("div", { className: "brand-block", children: [
+        /* @__PURE__ */ u3("strong", { children: siteConfig.name }),
+        /* @__PURE__ */ u3("span", { children: isAuthenticated ? sessionLabel : siteConfig.summary })
+      ] }),
+      /* @__PURE__ */ u3("div", { className: "topbar__meta", children: [
+        /* @__PURE__ */ u3("span", { className: "topbar__status", children: pendingAction ?? sessionLabel }),
+        /* @__PURE__ */ u3("nav", { "aria-label": "Primary", children: routes2.map((route) => /* @__PURE__ */ u3(AppLink, { href: route.path, children: route.label }, route.id)) })
+      ] })
+    ] }),
+    /* @__PURE__ */ u3("main", { className: "app-content", children: /* @__PURE__ */ u3(ActiveView, {}) })
+  ] });
+}
+function App() {
+  return /* @__PURE__ */ u3(RouterProvider, { children: /* @__PURE__ */ u3(AppProvider, { children: /* @__PURE__ */ u3(AppFrame, {}) }) });
+}
+
+// src/stylesheets/theme.ts
+function getAppStyles() {
+  return `
     :root {
       --bg: #f3efe8;
       --bg-soft: rgba(255, 255, 255, 0.58);
@@ -156,7 +2601,6 @@ var Po=Object.defineProperty;var Eo=(n,e,t)=>e in n?Po(n,e,{enumerable:!0,config
     .stack-panel,
     .form-grid,
     .field,
-    .guide-list,
     .employee-list,
     .employee-card,
     .employee-card__forms,
@@ -186,8 +2630,7 @@ var Po=Object.defineProperty;var Eo=(n,e,t)=>e in n?Po(n,e,{enumerable:!0,config
       box-shadow: var(--shadow);
     }
 
-    .hero,
-    .about-hero {
+    .hero {
       display: grid;
       gap: 20px;
     }
@@ -204,7 +2647,6 @@ var Po=Object.defineProperty;var Eo=(n,e,t)=>e in n?Po(n,e,{enumerable:!0,config
     }
 
     .hero__copy h1,
-    .about-hero h1,
     .boot-panel h1,
     .notes-panel h1 {
       margin: 0;
@@ -224,7 +2666,6 @@ var Po=Object.defineProperty;var Eo=(n,e,t)=>e in n?Po(n,e,{enumerable:!0,config
 
     .hero__copy p,
     .hero-panel p,
-    .about-hero p,
     .notes-panel p,
     .employee-card p {
       margin: 0;
@@ -293,7 +2734,6 @@ var Po=Object.defineProperty;var Eo=(n,e,t)=>e in n?Po(n,e,{enumerable:!0,config
     .panel-heading span,
     .employee-card__meta span,
     .employee-card__summary span,
-    .guide-row p,
     .company-card span,
     .company-card small {
       color: var(--ink-soft);
@@ -519,7 +2959,6 @@ var Po=Object.defineProperty;var Eo=(n,e,t)=>e in n?Po(n,e,{enumerable:!0,config
     }
 
     .employee-card__summary strong,
-    .guide-row strong,
     .company-card strong,
     .role-card strong {
       font-size: 1rem;
@@ -548,18 +2987,6 @@ var Po=Object.defineProperty;var Eo=(n,e,t)=>e in n?Po(n,e,{enumerable:!0,config
       width: 16px;
       height: 16px;
       margin: 0;
-    }
-
-    .guide-row {
-      display: grid;
-      gap: 4px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .guide-row:last-child {
-      padding-bottom: 0;
-      border-bottom: 0;
     }
 
     @media (max-width: 1080px) {
@@ -604,4 +3031,50 @@ var Po=Object.defineProperty;var Eo=(n,e,t)=>e in n?Po(n,e,{enumerable:!0,config
         border-radius: 24px;
       }
     }
-  `}var fo="app-styles";function yo(){if(document.getElementById(fo))return;let n=document.createElement("style");n.id=fo,n.textContent=_o(),document.head.appendChild(n)}var vo=document.getElementById("app");if(!vo)throw new Error("Missing #app mount node.");yo();un(o(go,{}),vo);
+
+    .tree-node {
+      line-height: 1;
+      font-size: 2rem;
+    }
+
+    .tree-node__item {
+      display: flex;
+      gap: 12px;
+    }
+      
+    .tree-node__indent {
+      width: 12px;
+      height: 12px;
+      border-left: 2px solid var(--line-strong);
+    }
+      
+    .tree-node__role {
+      color: var(--ink-soft);
+    }
+
+    .tree-node__count {
+      font-weight: 200;
+    }
+  `;
+}
+
+// src/stylesheets/index.ts
+var STYLE_ELEMENT_ID = "app-styles";
+function installAppStyles() {
+  if (document.getElementById(STYLE_ELEMENT_ID)) {
+    return;
+  }
+  const styleElement = document.createElement("style");
+  styleElement.id = STYLE_ELEMENT_ID;
+  styleElement.textContent = getAppStyles();
+  document.head.appendChild(styleElement);
+}
+
+// src/main.tsx
+var mountNode = document.getElementById("app");
+if (!mountNode) {
+  throw new Error("Missing #app mount node.");
+}
+installAppStyles();
+R(/* @__PURE__ */ u3(App, {}), mountNode);
+//# sourceMappingURL=main.js.map

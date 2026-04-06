@@ -587,5 +587,29 @@ export function getAppStyles(): string {
         border-radius: 24px;
       }
     }
+
+    .tree-node {
+      line-height: 1;
+      font-size: 2rem;
+    }
+
+    .tree-node__item {
+      display: flex;
+      gap: 12px;
+    }
+      
+    .tree-node__indent {
+      width: 12px;
+      height: 12px;
+      border-left: 2px solid var(--line-strong);
+    }
+      
+    .tree-node__role {
+      color: var(--ink-soft);
+    }
+
+    .tree-node__count {
+      font-weight: 200;
+    }
   `;
 }

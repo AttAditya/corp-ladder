@@ -17,13 +17,13 @@ function TreeNode({ employee, employeeIndex, level }: TreeNodeProps) {
 
   return (
     <div className="tree-node">
-      <div className="tree-node__content" style={{ paddingLeft: `${level * 1.5}rem` }}>
+      <div className="tree-node__content">
         <div className="tree-node__item">
+          {Array(level).fill(0).map((_, idx) => (
+            <span key={idx} className="tree-node__indent" />
+          ))}
           <span className="tree-node__name">{employee.name}</span>
           <span className="tree-node__role">{employee.role}</span>
-          {directReports.length > 0 && (
-            <span className="tree-node__count">({directReports.length} report{directReports.length !== 1 ? 's' : ''})</span>
-          )}
         </div>
       </div>
       {hasChildren && (
@@ -47,12 +47,22 @@ function TreeNode({ employee, employeeIndex, level }: TreeNodeProps) {
 }
 
 export function TreeView({ employees, boardMembers }: TreeViewProps) {
+  const board = boardMembers ?? [];
+
+  if (board.length === 0) {
+    for (const emp of employees) {
+      if (emp.reports === null) {
+        board.push(emp.id);
+      }
+    }
+  }
+
   const employeeIndex: Record<string, EmployeeRecord> = {};
   employees.forEach((emp) => {
     employeeIndex[emp.id] = emp;
   });
 
-  const rootEmployees = boardMembers
+  const rootEmployees = board
     .map((id) => employeeIndex[id])
     .filter((emp) => emp !== undefined);
 
