@@ -1,0 +1,23 @@
+[
+  {
+    "id": "auth",
+    "label": "Sign In",
+    "path": "/auth",
+    "title": "Sign In | Corp Ladder",
+    "description": "Employee and company authentication"
+  },
+  {
+    "id": "home",
+    "label": "Workspace",
+    "path": "/",
+    "title": "Corp Ladder",
+    "description": "Company directory, auth flows, and org management UI for Corp Ladder."
+  },
+  {
+    "id": "features",
+    "label": "Features",
+    "path": "/features",
+    "title": "Features | Corp Ladder",
+    "description": "View available platform features and organization tree."
+  }
+]
