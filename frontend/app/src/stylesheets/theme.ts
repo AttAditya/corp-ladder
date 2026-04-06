@@ -495,7 +495,7 @@ export function getAppStyles(): string {
     }
 
     .employee-list {
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      grid-template-columns: repeat(auto-fit, 1fr);
     }
 
     .employee-list--preview {
@@ -603,7 +603,7 @@ export function getAppStyles(): string {
       height: 12px;
       border-left: 2px solid var(--line-strong);
     }
-      
+
     .tree-node__role {
       color: var(--ink-soft);
     }
