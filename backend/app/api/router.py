@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from api.v1.routes import auth, company, employee, features, root
+from api.v1.routes import company, employee, features, root
 from core.constants import API_V1_PREFIX
 from features.registry import FEATURE_ROUTERS as MODULAR_FEATURE_ROUTERS
 
@@ -9,7 +9,6 @@ LEGACY_FEATURE_ROUTERS = (
     root.router,
     company.router,
     employee.router,
-    auth.router,
     features.router,
 )
 FEATURE_ROUTERS = (*LEGACY_FEATURE_ROUTERS, *MODULAR_FEATURE_ROUTERS)

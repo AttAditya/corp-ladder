@@ -2,7 +2,6 @@ import { siteConfig } from "@/registry/site";
 
 interface RequestJsonInit extends RequestInit {
   json?: unknown;
-  token?: string | null;
 }
 
 export class ApiError extends Error {
@@ -41,10 +40,6 @@ export async function requestJson<T>(resourcePath: string, init?: RequestJsonIni
 
   if (init?.json !== undefined) {
     headers.set("Content-Type", "application/json");
-  }
-
-  if (init?.token) {
-    headers.set("Authorization", `Bearer ${init.token}`);
   }
 
   const url = `${siteConfig.apiBasePath}${normalizedPath}`;

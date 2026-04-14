@@ -4,48 +4,33 @@ import { useAppModel } from "@/contexts/app-context";
 import type { EmployeeViewModel } from "@/interfaces/app";
 import { knownPermissions, type EmployeeCreateRequest, type EmployeeUpdateRequest, type Permission } from "@/interfaces/organization";
 
-function hasPermission(permissions: Permission[], permission: Permission): boolean {
-  return permissions.includes(permission);
-}
-
 function toFieldValue(value: string | null | undefined): string {
   return value ?? "";
 }
 
 interface EmployeeCardProps {
-  canAssign: boolean;
-  canManage: boolean;
-  canRemove: boolean;
-  canUpdateOthers: boolean;
-  currentEmployeeId: string | null;
   employee: EmployeeViewModel;
   employees: EmployeeViewModel[];
-  onAssignRole: (employeeId: string, roleId: string) => Promise<void>;
   onChangeManager: (employeeId: string, managerId: string | null) => Promise<void>;
   onRemove: (employeeId: string) => Promise<void>;
   onRevokeRole: (employeeId: string, roleId: string) => Promise<void>;
   onUpdate: (employeeId: string, payload: EmployeeUpdateRequest) => Promise<void>;
+  onAssignRole: (employeeId: string, roleId: string) => Promise<void>;
   roles: string[];
 }
 
 function EmployeeCard({
-  canAssign,
-  canManage,
-  canRemove,
-  canUpdateOthers,
-  currentEmployeeId,
   employee,
   employees,
-  onAssignRole,
   onChangeManager,
   onRemove,
   onRevokeRole,
   onUpdate,
+  onAssignRole,
   roles
 }: EmployeeCardProps) {
   const [name, setName] = useState(employee.name);
   const [roleTitle, setRoleTitle] = useState(employee.role);
-  const [password, setPassword] = useState("");
   const [managerId, setManagerId] = useState(toFieldValue(employee.reports));
   const [roleId, setRoleId] = useState("");
   const [localMessage, setLocalMessage] = useState<string | null>(null);
@@ -53,16 +38,11 @@ function EmployeeCard({
   useEffect(() => {
     setName(employee.name);
     setRoleTitle(employee.role);
-    setPassword("");
     setManagerId(toFieldValue(employee.reports));
     setRoleId("");
     setLocalMessage(null);
   }, [employee.id, employee.name, employee.reports, employee.role, employee.roles.join(",")]);
 
-  const canUpdateSelf = currentEmployeeId === employee.id;
-  const canUpdate = canUpdateSelf || canUpdateOthers;
-  const canMutateRoles = canAssign && currentEmployeeId !== employee.id;
-  const canMutateAssignedRoles = canAssign && currentEmployeeId !== employee.id;
   const availableManagers = employees.filter((candidate) => candidate.id !== employee.id);
   const assignableRoles = roles.filter((candidateRole) => !employee.roles.includes(candidateRole));
 
@@ -87,17 +67,15 @@ function EmployeeCard({
         {employee.roles.map((assignedRole) => (
           <span className="pill" key={assignedRole}>
             {assignedRole}
-            {canMutateAssignedRoles && (
-              <button
-                className="pill__action"
-                onClick={() => {
-                  void onRevokeRole(employee.id, assignedRole);
-                }}
-                type="button"
-              >
-                remove
-              </button>
-            )}
+            <button
+              className="pill__action"
+              onClick={() => {
+                void onRevokeRole(employee.id, assignedRole);
+              }}
+              type="button"
+            >
+              remove
+            </button>
           </span>
         ))}
       </div>
@@ -131,15 +109,6 @@ function EmployeeCard({
               payload.role = trimmedRole;
             }
 
-            if (password.trim()) {
-              payload.password = password;
-            }
-
-            if (!canUpdate) {
-              setLocalMessage("You cannot update this employee.");
-              return;
-            }
-
             if (Object.keys(payload).length === 0) {
               setLocalMessage("No employee changes to save.");
               return;
@@ -147,30 +116,19 @@ function EmployeeCard({
 
             setLocalMessage(null);
             void onUpdate(employee.id, payload).then(() => {
-              setPassword("");
               setLocalMessage("Employee updated.");
             }).catch(() => undefined);
           }}
         >
           <label className="field">
             <span>Name</span>
-            <input disabled={!canUpdate} onInput={(event) => setName(event.currentTarget.value)} value={name} />
+            <input onInput={(event) => setName(event.currentTarget.value)} value={name} />
           </label>
           <label className="field">
             <span>Role title</span>
-            <input disabled={!canUpdate} onInput={(event) => setRoleTitle(event.currentTarget.value)} value={roleTitle} />
+            <input onInput={(event) => setRoleTitle(event.currentTarget.value)} value={roleTitle} />
           </label>
-          <label className="field">
-            <span>New password</span>
-            <input
-              disabled={!canUpdate}
-              onInput={(event) => setPassword(event.currentTarget.value)}
-              placeholder="Leave blank to keep current"
-              type="password"
-              value={password}
-            />
-          </label>
-          <button className="button button--secondary" disabled={!canUpdate} type="submit">
+          <button className="button button--secondary" type="submit">
             Save employee
           </button>
         </form>
@@ -179,11 +137,6 @@ function EmployeeCard({
           className="mini-form"
           onSubmit={(event) => {
             event.preventDefault();
-
-            if (!canManage) {
-              setLocalMessage("You do not have manage permission.");
-              return;
-            }
 
             if (managerId === toFieldValue(employee.reports)) {
               setLocalMessage("Manager did not change.");
@@ -198,7 +151,7 @@ function EmployeeCard({
         >
           <label className="field">
             <span>Manager</span>
-            <select disabled={!canManage} onInput={(event) => setManagerId(event.currentTarget.value)} value={managerId}>
+            <select onInput={(event) => setManagerId(event.currentTarget.value)} value={managerId}>
               <option value="">Board / none</option>
               {availableManagers.map((candidate) => (
                 <option key={candidate.id} value={candidate.id}>
@@ -207,7 +160,7 @@ function EmployeeCard({
               ))}
             </select>
           </label>
-          <button className="button button--secondary" disabled={!canManage} type="submit">
+          <button className="button button--secondary" type="submit">
             Update manager
           </button>
         </form>
@@ -216,11 +169,6 @@ function EmployeeCard({
           className="mini-form"
           onSubmit={(event) => {
             event.preventDefault();
-
-            if (!canMutateRoles) {
-              setLocalMessage("You cannot assign roles to this employee.");
-              return;
-            }
 
             if (!roleId) {
               setLocalMessage("Pick a role to assign.");
@@ -236,7 +184,7 @@ function EmployeeCard({
         >
           <label className="field">
             <span>Assign role</span>
-            <select disabled={!canMutateRoles} onInput={(event) => setRoleId(event.currentTarget.value)} value={roleId}>
+            <select onInput={(event) => setRoleId(event.currentTarget.value)} value={roleId}>
               <option value="">Select role</option>
               {assignableRoles.map((candidateRole) => (
                 <option key={candidateRole} value={candidateRole}>
@@ -245,7 +193,7 @@ function EmployeeCard({
               ))}
             </select>
           </label>
-          <button className="button button--secondary" disabled={!canMutateRoles} type="submit">
+          <button className="button button--secondary" type="submit">
             Assign role
           </button>
         </form>
@@ -253,13 +201,8 @@ function EmployeeCard({
 
       <button
         className="button button--danger"
-        disabled={!canRemove || currentEmployeeId === employee.id}
         onClick={() => {
-          if (!canRemove || currentEmployeeId === employee.id) {
-            return;
-          }
-
-          if (!window.confirm(`Remove ${employee.name} from ${employee.company_id}?`)) {
+          if (!window.confirm(`Remove ${employee.name}?`)) {
             return;
           }
 
@@ -277,16 +220,11 @@ export function WorkspaceSection() {
   const {
     actionError,
     activeCompany,
-    currentEmployeeId,
-    isEmployeeSession,
-    logout,
     pageError,
     pendingAction,
-    permissions,
     refreshWorkspace,
     removeEmployee,
     revokeRole,
-    session,
     updateCompany,
     updateEmployee,
     assignRole,
@@ -297,46 +235,36 @@ export function WorkspaceSection() {
   } = useAppModel();
 
   const [companyName, setCompanyName] = useState(activeCompany?.company.name ?? "");
-  const [companyPassword, setCompanyPassword] = useState("");
   const [roleId, setRoleId] = useState("");
   const [selectedPermissions, setSelectedPermissions] = useState<Permission[]>([]);
   const [employeeForm, setEmployeeForm] = useState<EmployeeCreateRequest>({
     company_id: activeCompany?.company.id ?? "",
     id: "",
     name: "",
-    password: "",
     reports: null,
     role: ""
   });
 
   useEffect(() => {
     setCompanyName(activeCompany?.company.name ?? "");
-    setCompanyPassword("");
     setEmployeeForm({
       company_id: activeCompany?.company.id ?? "",
       id: "",
       name: "",
-      password: "",
       reports: null,
       role: ""
     });
   }, [activeCompany?.company.id, activeCompany?.company.name]);
 
-  if (!session || !activeCompany) {
+  if (!activeCompany) {
     return (
       <Surface className="notice-panel">
-        <strong>No active session</strong>
-        <p>Sign in to load the authenticated workspace.</p>
+        <strong>No company selected</strong>
+        <p>Select a company from the directory to view and manage it.</p>
       </Surface>
     );
   }
 
-  const canInvite = isEmployeeSession && hasPermission(permissions, "invite");
-  const canManage = isEmployeeSession && hasPermission(permissions, "manage");
-  const canAssign = isEmployeeSession && hasPermission(permissions, "assign");
-  const canRemove = isEmployeeSession && hasPermission(permissions, "remove");
-  const canUpdateOthers = isEmployeeSession && hasPermission(permissions, "update");
-  const canUpdateCompany = isEmployeeSession && hasPermission(permissions, "update");
   const roleIds = activeCompany.roles.map((role) => role.id);
 
   const togglePermission = (permission: Permission) => {
@@ -351,11 +279,10 @@ export function WorkspaceSection() {
     <div className="page-stack">
       <section className="hero hero--workspace">
         <div className="hero__copy">
-          <span className="eyebrow">{session.principal_type} session</span>
+          <span className="eyebrow">Public access</span>
           <h1>{activeCompany.company.name}</h1>
           <p>
-            Manage employees, reporting lines, roles, and company settings from one place. The API remains unchanged;
-            this UI now consumes the existing v1 routes directly.
+            Manage employees, reporting lines, roles, and company settings from one place. No authentication required.
           </p>
           <div className="hero__metrics">
             <div className="metric-chip">
@@ -373,16 +300,16 @@ export function WorkspaceSection() {
           </div>
         </div>
         <Surface className="hero-panel hero-panel--status">
-          <span className="eyebrow">Session</span>
-          <h2>{session.company_id}</h2>
+          <span className="eyebrow">Company</span>
+          <h2>{activeCompany.company.id}</h2>
           <div className="status-list">
             <div className="status-row">
               <span>Workspace</span>
               <strong>{workspaceStatus}</strong>
             </div>
             <div className="status-row">
-              <span>Principal</span>
-              <strong>{session.principal_type}</strong>
+              <span>Employees</span>
+              <strong>{activeCompany.employees.length}</strong>
             </div>
             <div className="status-row">
               <span>Current action</span>
@@ -392,9 +319,6 @@ export function WorkspaceSection() {
           <div className="hero-panel__actions">
             <button className="button button--secondary" onClick={() => void refreshWorkspace()} type="button">
               Refresh
-            </button>
-            <button className="button" onClick={() => void logout()} type="button">
-              Logout
             </button>
           </div>
         </Surface>
@@ -406,27 +330,6 @@ export function WorkspaceSection() {
           <p>{actionError ?? pageError}</p>
         </Surface>
       )}
-
-      <Surface className="stack-panel">
-        <div className="panel-heading">
-          <div>
-            <span className="eyebrow">Access</span>
-            <h2>Effective permissions</h2>
-          </div>
-          <span>{currentEmployeeId ?? session.company_id}</span>
-        </div>
-        <div className="pill-list">
-          {permissions.length === 0 && <span className="pill pill--muted">read-only session</span>}
-          {permissions.map((permission) => (
-            <span className="pill pill--accent" key={permission}>
-              {permission}
-            </span>
-          ))}
-        </div>
-        {!isEmployeeSession && (
-          <p className="muted-copy">Company sessions can browse the workspace and use `/auth/me` plus logout, but mutations require an employee session with the relevant permissions.</p>
-        )}
-      </Surface>
 
       <div className="workspace-grid">
         <Surface className="stack-panel">
@@ -442,45 +345,25 @@ export function WorkspaceSection() {
             onSubmit={(event) => {
               event.preventDefault();
 
-              const payload: { name?: string; password?: string } = {};
+              const payload: { name?: string } = {};
               const trimmedName = companyName.trim();
 
               if (trimmedName && trimmedName !== activeCompany.company.name) {
                 payload.name = trimmedName;
               }
 
-              if (companyPassword.trim()) {
-                payload.password = companyPassword;
-              }
-
-              if (!canUpdateCompany) {
-                return;
-              }
-
               if (Object.keys(payload).length === 0) {
                 return;
               }
 
-              void updateCompany(payload).then(() => {
-                setCompanyPassword("");
-              }).catch(() => undefined);
+              void updateCompany(payload).catch(() => undefined);
             }}
           >
             <label className="field">
               <span>Company name</span>
-              <input disabled={!canUpdateCompany} onInput={(event) => setCompanyName(event.currentTarget.value)} value={companyName} />
+              <input onInput={(event) => setCompanyName(event.currentTarget.value)} value={companyName} />
             </label>
-            <label className="field">
-              <span>Rotate company password</span>
-              <input
-                disabled={!canUpdateCompany}
-                onInput={(event) => setCompanyPassword(event.currentTarget.value)}
-                placeholder="New company password"
-                type="password"
-                value={companyPassword}
-              />
-            </label>
-            <button className="button button--secondary" disabled={!canUpdateCompany} type="submit">
+            <button className="button button--secondary" type="submit">
               Save company
             </button>
           </form>
@@ -539,7 +422,7 @@ export function WorkspaceSection() {
             onSubmit={(event) => {
               event.preventDefault();
 
-              if (!canAssign || !roleId.trim()) {
+              if (!roleId.trim()) {
                 return;
               }
 
@@ -555,7 +438,6 @@ export function WorkspaceSection() {
             <label className="field">
               <span>Role id</span>
               <input
-                disabled={!canAssign}
                 onInput={(event) => setRoleId(event.currentTarget.value)}
                 placeholder="ops-manager"
                 value={roleId}
@@ -568,7 +450,6 @@ export function WorkspaceSection() {
                   <label className="checkbox" key={permission}>
                     <input
                       checked={selectedPermissions.includes(permission)}
-                      disabled={!canAssign}
                       onInput={() => togglePermission(permission)}
                       type="checkbox"
                     />
@@ -577,7 +458,7 @@ export function WorkspaceSection() {
                 ))}
               </div>
             </div>
-            <button className="button button--secondary" disabled={!canAssign} type="submit">
+            <button className="button button--secondary" type="submit">
               Save role
             </button>
           </form>
@@ -589,16 +470,12 @@ export function WorkspaceSection() {
               <span className="eyebrow">Hiring</span>
               <h2>Add employee</h2>
             </div>
-            <span>Invite permission required</span>
+            <span>No password required</span>
           </div>
           <form
             className="form-grid"
             onSubmit={(event) => {
               event.preventDefault();
-
-              if (!canInvite) {
-                return;
-              }
 
               void createEmployee({
                 ...employeeForm,
@@ -612,7 +489,6 @@ export function WorkspaceSection() {
                   company_id: activeCompany.company.id,
                   id: "",
                   name: "",
-                  password: "",
                   reports: null,
                   role: ""
                 });
@@ -622,7 +498,6 @@ export function WorkspaceSection() {
             <label className="field">
               <span>Employee id</span>
               <input
-                disabled={!canInvite}
                 onInput={(event) => setEmployeeForm((current) => ({ ...current, id: event.currentTarget.value }))}
                 required
                 value={employeeForm.id}
@@ -631,7 +506,6 @@ export function WorkspaceSection() {
             <label className="field">
               <span>Name</span>
               <input
-                disabled={!canInvite}
                 onInput={(event) => setEmployeeForm((current) => ({ ...current, name: event.currentTarget.value }))}
                 required
                 value={employeeForm.name}
@@ -640,26 +514,14 @@ export function WorkspaceSection() {
             <label className="field">
               <span>Role title</span>
               <input
-                disabled={!canInvite}
                 onInput={(event) => setEmployeeForm((current) => ({ ...current, role: event.currentTarget.value }))}
                 required
                 value={employeeForm.role}
               />
             </label>
             <label className="field">
-              <span>Password</span>
-              <input
-                disabled={!canInvite}
-                onInput={(event) => setEmployeeForm((current) => ({ ...current, password: event.currentTarget.value }))}
-                required
-                type="password"
-                value={employeeForm.password}
-              />
-            </label>
-            <label className="field">
               <span>Manager</span>
               <select
-                disabled={!canInvite}
                 onInput={(event) => {
                   const value = event.currentTarget.value;
                   setEmployeeForm((current) => ({ ...current, reports: value || null }));
@@ -674,7 +536,7 @@ export function WorkspaceSection() {
                 ))}
               </select>
             </label>
-            <button className="button button--secondary" disabled={!canInvite} type="submit">
+            <button className="button button--secondary" type="submit">
               Add employee
             </button>
           </form>
@@ -692,11 +554,6 @@ export function WorkspaceSection() {
         <div className="employee-list">
           {activeCompany.employees.map((employee) => (
             <EmployeeCard
-              canAssign={canAssign}
-              canManage={canManage}
-              canRemove={canRemove}
-              canUpdateOthers={canUpdateOthers}
-              currentEmployeeId={currentEmployeeId}
               employee={employee}
               employees={activeCompany.employees}
               key={employee.id}

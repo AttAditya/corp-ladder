@@ -5,7 +5,6 @@ class EmployeeCreateRequest(StrictModel):
     id: str
     name: str
     role: str
-    password: str
     company_id: str
     reports: str | None = None
 
@@ -13,7 +12,6 @@ class EmployeeCreateRequest(StrictModel):
 class EmployeeUpdateRequest(StrictModel):
     name: str | None = None
     role: str | None = None
-    password: str | None = None
 
 
 class ManagerUpdateRequest(StrictModel):

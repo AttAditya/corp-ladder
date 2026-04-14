@@ -22,48 +22,42 @@ export function readEmployee(employeeId: string): Promise<EmployeeResponse> {
   return requestJson<EmployeeResponse>(employeePath(employeeId));
 }
 
-export function createEmployee(payload: EmployeeCreateRequest, token: string): Promise<EmployeeResponse> {
+export function createEmployee(payload: EmployeeCreateRequest): Promise<EmployeeResponse> {
   return requestJson<EmployeeResponse>("/v1/employee", {
     json: payload,
-    method: "POST",
-    token
+    method: "POST"
   });
 }
 
-export function updateEmployee(employeeId: string, payload: EmployeeUpdateRequest, token: string): Promise<EmployeeResponse> {
+export function updateEmployee(employeeId: string, payload: EmployeeUpdateRequest): Promise<EmployeeResponse> {
   return requestJson<EmployeeResponse>(employeePath(employeeId), {
     json: payload,
-    method: "PATCH",
-    token
+    method: "PATCH"
   });
 }
 
-export function changeEmployeeManager(employeeId: string, payload: ManagerUpdateRequest, token: string): Promise<EmployeeResponse> {
+export function changeEmployeeManager(employeeId: string, payload: ManagerUpdateRequest): Promise<EmployeeResponse> {
   return requestJson<EmployeeResponse>(`${employeePath(employeeId)}/manager`, {
     json: payload,
-    method: "PATCH",
-    token
+    method: "PATCH"
   });
 }
 
-export function assignEmployeeRole(employeeId: string, payload: RoleAssignmentRequest, token: string): Promise<EmployeeResponse> {
+export function assignEmployeeRole(employeeId: string, payload: RoleAssignmentRequest): Promise<EmployeeResponse> {
   return requestJson<EmployeeResponse>(`${employeePath(employeeId)}/roles`, {
     json: payload,
-    method: "POST",
-    token
+    method: "POST"
   });
 }
 
-export function revokeEmployeeRole(employeeId: string, roleId: string, token: string): Promise<EmployeeResponse> {
+export function revokeEmployeeRole(employeeId: string, roleId: string): Promise<EmployeeResponse> {
   return requestJson<EmployeeResponse>(`${employeePath(employeeId)}/roles/${encodeURIComponent(roleId)}`, {
-    method: "DELETE",
-    token
+    method: "DELETE"
   });
 }
 
-export function removeEmployee(employeeId: string, token: string): Promise<RemoveEmployeeResponse> {
+export function removeEmployee(employeeId: string): Promise<RemoveEmployeeResponse> {
   return requestJson<RemoveEmployeeResponse>(employeePath(employeeId), {
-    method: "DELETE",
-    token
+    method: "DELETE"
   });
 }

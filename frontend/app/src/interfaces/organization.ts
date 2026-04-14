@@ -60,7 +60,6 @@ export interface RemoveEmployeeResponse {
 export interface CompanyAdminCreateRequest {
   id: string;
   name: string;
-  password: string;
   role: string;
 }
 
@@ -68,12 +67,10 @@ export interface CompanyCreateRequest {
   admin: CompanyAdminCreateRequest;
   id: string;
   name: string;
-  password: string;
 }
 
 export interface CompanyUpdateRequest {
   name?: string;
-  password?: string;
 }
 
 export interface RoleUpsertRequest {
@@ -85,14 +82,12 @@ export interface EmployeeCreateRequest {
   company_id: string;
   id: string;
   name: string;
-  password: string;
   reports?: string | null;
   role: string;
 }
 
 export interface EmployeeUpdateRequest {
   name?: string;
-  password?: string;
   role?: string;
 }
 

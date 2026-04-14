@@ -94,21 +94,21 @@ export async function createCompanyAccount(payload: CompanyCreateRequest): Promi
   return response;
 }
 
-export async function updateCompanyAccount(companyId: string, payload: CompanyUpdateRequest, token: string): Promise<CompanyWorkspaceRecord> {
-  const response = await updateCompany(companyId, payload, token);
+export async function updateCompanyAccount(companyId: string, payload: CompanyUpdateRequest): Promise<CompanyWorkspaceRecord> {
+  const response = await updateCompany(companyId, payload);
   invalidateCatalog();
   return primeWorkspace(response.company);
 }
 
-export async function upsertRoleAndReload(companyId: string, payload: RoleUpsertRequest, token: string): Promise<CompanyWorkspaceRecord> {
-  await upsertCompanyRole(companyId, payload, token);
+export async function upsertRoleAndReload(companyId: string, payload: RoleUpsertRequest): Promise<CompanyWorkspaceRecord> {
+  await upsertCompanyRole(companyId, payload);
   invalidateCompany(companyId);
   invalidateCatalog();
   return getCompanyWorkspace(companyId, true);
 }
 
-export async function createEmployeeAndReload(payload: EmployeeCreateRequest, token: string): Promise<CompanyWorkspaceRecord> {
-  await createEmployee(payload, token);
+export async function createEmployeeAndReload(payload: EmployeeCreateRequest): Promise<CompanyWorkspaceRecord> {
+  await createEmployee(payload);
   invalidateCompany(payload.company_id);
   invalidateCatalog();
   return getCompanyWorkspace(payload.company_id, true);
@@ -117,10 +117,9 @@ export async function createEmployeeAndReload(payload: EmployeeCreateRequest, to
 export async function updateEmployeeAndReload(
   employeeId: string,
   companyId: string,
-  payload: EmployeeUpdateRequest,
-  token: string
+  payload: EmployeeUpdateRequest
 ): Promise<CompanyWorkspaceRecord> {
-  await updateEmployee(employeeId, payload, token);
+  await updateEmployee(employeeId, payload);
   invalidateCompany(companyId);
   return getCompanyWorkspace(companyId, true);
 }
@@ -128,10 +127,9 @@ export async function updateEmployeeAndReload(
 export async function changeManagerAndReload(
   employeeId: string,
   companyId: string,
-  payload: ManagerUpdateRequest,
-  token: string
+  payload: ManagerUpdateRequest
 ): Promise<CompanyWorkspaceRecord> {
-  await changeEmployeeManager(employeeId, payload, token);
+  await changeEmployeeManager(employeeId, payload);
   invalidateCompany(companyId);
   invalidateCatalog();
   return getCompanyWorkspace(companyId, true);
@@ -140,22 +138,21 @@ export async function changeManagerAndReload(
 export async function assignRoleAndReload(
   employeeId: string,
   companyId: string,
-  payload: RoleAssignmentRequest,
-  token: string
+  payload: RoleAssignmentRequest
 ): Promise<CompanyWorkspaceRecord> {
-  await assignEmployeeRole(employeeId, payload, token);
+  await assignEmployeeRole(employeeId, payload);
   invalidateCompany(companyId);
   return getCompanyWorkspace(companyId, true);
 }
 
-export async function revokeRoleAndReload(employeeId: string, companyId: string, roleId: string, token: string): Promise<CompanyWorkspaceRecord> {
-  await revokeEmployeeRole(employeeId, roleId, token);
+export async function revokeRoleAndReload(employeeId: string, companyId: string, roleId: string): Promise<CompanyWorkspaceRecord> {
+  await revokeEmployeeRole(employeeId, roleId);
   invalidateCompany(companyId);
   return getCompanyWorkspace(companyId, true);
 }
 
-export async function removeEmployeeAndReload(employeeId: string, companyId: string, token: string): Promise<CompanyWorkspaceRecord> {
-  await removeEmployee(employeeId, token);
+export async function removeEmployeeAndReload(employeeId: string, companyId: string): Promise<CompanyWorkspaceRecord> {
+  await removeEmployee(employeeId);
   invalidateCompany(companyId);
   invalidateCatalog();
   return getCompanyWorkspace(companyId, true);

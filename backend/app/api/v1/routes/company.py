@@ -6,7 +6,6 @@ from fastapi import APIRouter, Depends, HTTPException, status
 
 from core.constants import ADMIN_ROLE_ID, KNOWN_PERMISSIONS
 from schemas.company import CompanyCreateRequest, CompanyUpdateRequest, RoleUpsertRequest
-from services.auth import create_token_record, current_session, delete_company_tokens, require_company_membership, require_permission
 from services.organization import company_payload, get_company, list_company_roles, public_company, public_employee, public_role, sync_company_board
 from services.store import COMPANIES, EMPLOYEES, ROLES
 
@@ -43,7 +42,6 @@ def create_company(payload: CompanyCreateRequest) -> dict[str, Any]:
         "name": payload.name,
         "board": [payload.admin.id],
         "hierarchy_version": 0,
-        "_password": payload.password,
     }
     employee = {
         "id": payload.admin.id,
@@ -53,34 +51,20 @@ def create_company(payload: CompanyCreateRequest) -> dict[str, Any]:
         "reports": None,
         "company_id": payload.id,
         "roles": [ADMIN_ROLE_ID],
-        "_password": payload.admin.password,
     }
 
     COMPANIES.UPSERT(company["id"], company)
     EMPLOYEES.UPSERT(employee["id"], employee)
     sync_company_board(payload.id)
 
-    session = create_token_record("employee", payload.id, payload.admin.id)
-    return {
-        "company": company_payload(payload.id),
-        "token": session["id"],
-        "session": {
-            "principal_type": session["principal_type"],
-            "company_id": session["company_id"],
-            "employee": public_employee(employee),
-        },
-    }
+    return {"company": company_payload(payload.id)}
 
 
 @router.patch("/{company_id}")
 def update_company(
     company_id: str,
     payload: CompanyUpdateRequest,
-    session: dict[str, Any] = Depends(current_session),
 ) -> dict[str, Any]:
-    actor = require_company_membership(session, company_id)
-    require_permission(actor, "update")
-
     updates = payload.model_dump(exclude_none=True)
     if not updates:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No company fields supplied")
@@ -88,9 +72,6 @@ def update_company(
     company = get_company(company_id)
     if payload.name is not None:
         company["name"] = payload.name
-    if payload.password is not None:
-        company["_password"] = payload.password
-        delete_company_tokens(company_id)
 
     COMPANIES.UPSERT(company_id, company)
     return {"company": company_payload(company_id)}
@@ -100,10 +81,7 @@ def update_company(
 def upsert_company_role(
     company_id: str,
     payload: RoleUpsertRequest,
-    session: dict[str, Any] = Depends(current_session),
 ) -> dict[str, Any]:
-    actor = require_company_membership(session, company_id)
-    require_permission(actor, "assign")
     get_company(company_id)
 
     if payload.id == ADMIN_ROLE_ID:

@@ -1,18 +1,17 @@
 import { useState } from "preact/hooks";
 import { Surface } from "@/components/ui/Surface";
 import { useAppModel } from "@/contexts/app-context";
+import { createCompany } from "@/api/company";
 import type { CompanyCreateRequest } from "@/interfaces/organization";
 
 const emptyCompanyForm: CompanyCreateRequest = {
   admin: {
     id: "",
     name: "",
-    password: "",
     role: ""
   },
   id: "",
-  name: "",
-  password: ""
+  name: ""
 };
 
 export function PublicPortalSection() {
@@ -21,9 +20,6 @@ export function PublicPortalSection() {
     activeCompany,
     companies,
     companiesStatus,
-    createCompany,
-    loginCompany,
-    loginEmployee,
     pageError,
     pendingAction,
     refreshCompanies,
@@ -32,25 +28,20 @@ export function PublicPortalSection() {
   } = useAppModel();
 
   const [companyForm, setCompanyForm] = useState<CompanyCreateRequest>(emptyCompanyForm);
-  const [employeeId, setEmployeeId] = useState("");
-  const [employeePassword, setEmployeePassword] = useState("");
-  const [companyId, setCompanyId] = useState("");
-  const [companyPassword, setCompanyPassword] = useState("");
 
   const handleCompanyCreate = async () => {
-    await createCompany({
+    const response = await createCompany({
       admin: {
         ...companyForm.admin,
         id: companyForm.admin.id.trim(),
         name: companyForm.admin.name.trim(),
-        password: companyForm.admin.password,
         role: companyForm.admin.role.trim()
       },
       id: companyForm.id.trim(),
-      name: companyForm.name.trim(),
-      password: companyForm.password
+      name: companyForm.name.trim()
     });
 
+    await selectPublicCompany(response.company.id);
     setCompanyForm(emptyCompanyForm);
   };
 
@@ -61,8 +52,8 @@ export function PublicPortalSection() {
           <span className="eyebrow">v1 control surface</span>
           <h1>Run the org chart from the frontend, against the existing API.</h1>
           <p>
-            Every current backend v1 ability is exposed here except modular feature packages: company signup, employee
-            and company auth, roles, employee lifecycle, reporting lines, and read-only company browsing.
+            Every current backend v1 ability is exposed here: company creation, employee
+            lifecycle, roles, reporting lines, and read-only company browsing.
           </p>
           <div className="hero__metrics">
             <div className="metric-chip">
@@ -81,8 +72,8 @@ export function PublicPortalSection() {
         </div>
         <Surface className="hero-panel hero-panel--status">
           <span className="eyebrow">Public mode</span>
-          <h2>Browse companies or sign in.</h2>
-          <p>Unauthenticated users can inspect companies. Mutations unlock after employee auth, while company auth stays read-only by backend design.</p>
+          <h2>Browse and manage companies.</h2>
+          <p>All users can inspect and modify companies without authentication. Create companies, add employees, and manage organizational structures freely.</p>
           <div className="status-list">
             <div className="status-row">
               <span>Companies</span>
@@ -138,7 +129,7 @@ export function PublicPortalSection() {
                   <small>{company.board.length} board members</small>
                 </button>
               ))}
-              {companies.length === 0 && <p className="muted-copy">Create the first company to seed the directory and bootstrap the admin session.</p>}
+              {companies.length === 0 && <p className="muted-copy">Create the first company to seed the directory.</p>}
             </div>
           </Surface>
 
@@ -225,10 +216,10 @@ export function PublicPortalSection() {
           <Surface className="stack-panel">
             <div className="panel-heading">
               <div>
-                <span className="eyebrow">Bootstrap</span>
-                <h2>Create company</h2>
+                <span className="eyebrow">Create</span>
+                <h2>New company</h2>
               </div>
-              <span>Returns an employee admin session</span>
+              <span>No password required</span>
             </div>
             <form
               className="form-grid"
@@ -253,15 +244,6 @@ export function PublicPortalSection() {
                   placeholder="Acme Corp"
                   required
                   value={companyForm.name}
-                />
-              </label>
-              <label className="field">
-                <span>Company password</span>
-                <input
-                  onInput={(event) => setCompanyForm((current) => ({ ...current, password: event.currentTarget.value }))}
-                  required
-                  type="password"
-                  value={companyForm.password}
                 />
               </label>
               <label className="field">
@@ -300,86 +282,8 @@ export function PublicPortalSection() {
                   value={companyForm.admin.role}
                 />
               </label>
-              <label className="field">
-                <span>Admin password</span>
-                <input
-                  onInput={(event) => {
-                    const value = event.currentTarget.value;
-                    setCompanyForm((current) => ({ ...current, admin: { ...current.admin, password: value } }));
-                  }}
-                  required
-                  type="password"
-                  value={companyForm.admin.password}
-                />
-              </label>
               <button className="button" type="submit">
                 Create company
-              </button>
-            </form>
-          </Surface>
-
-          <Surface className="stack-panel">
-            <div className="panel-heading">
-              <div>
-                <span className="eyebrow">Auth</span>
-                <h2>Employee login</h2>
-              </div>
-              <span>Full mutation access depends on permissions</span>
-            </div>
-            <form
-              className="form-grid"
-              onSubmit={(event) => {
-                event.preventDefault();
-                console.debug("[FORM] Employee login form submitted", { employeeId: employeeId.trim() });
-                void loginEmployee({
-                  employee_id: employeeId.trim(),
-                  password: employeePassword
-                });
-              }}
-            >
-              <label className="field">
-                <span>Employee id</span>
-                <input onInput={(event) => setEmployeeId(event.currentTarget.value)} required value={employeeId} />
-              </label>
-              <label className="field">
-                <span>Password</span>
-                <input onInput={(event) => setEmployeePassword(event.currentTarget.value)} required type="password" value={employeePassword} />
-              </label>
-              <button className="button" type="submit">
-                Sign in as employee
-              </button>
-            </form>
-          </Surface>
-
-          <Surface className="stack-panel">
-            <div className="panel-heading">
-              <div>
-                <span className="eyebrow">Auth</span>
-                <h2>Company login</h2>
-              </div>
-              <span>Useful for read-only company sessions</span>
-            </div>
-            <form
-              className="form-grid"
-              onSubmit={(event) => {
-                event.preventDefault();
-                console.debug("[FORM] Company login form submitted", { companyId: companyId.trim() });
-                void loginCompany({
-                  company_id: companyId.trim(),
-                  password: companyPassword
-                });
-              }}
-            >
-              <label className="field">
-                <span>Company id</span>
-                <input onInput={(event) => setCompanyId(event.currentTarget.value)} required value={companyId} />
-              </label>
-              <label className="field">
-                <span>Password</span>
-                <input onInput={(event) => setCompanyPassword(event.currentTarget.value)} required type="password" value={companyPassword} />
-              </label>
-              <button className="button button--secondary" type="submit">
-                Sign in as company
               </button>
             </form>
           </Surface>

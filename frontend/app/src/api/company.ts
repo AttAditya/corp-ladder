@@ -33,18 +33,16 @@ export function createCompany(payload: CompanyCreateRequest): Promise<CompanyCre
   });
 }
 
-export function updateCompany(companyId: string, payload: CompanyUpdateRequest, token: string): Promise<CompanyWorkspaceResponse> {
+export function updateCompany(companyId: string, payload: CompanyUpdateRequest): Promise<CompanyWorkspaceResponse> {
   return requestJson<CompanyWorkspaceResponse>(companyPath(companyId), {
     json: payload,
-    method: "PATCH",
-    token
+    method: "PATCH"
   });
 }
 
-export function upsertCompanyRole(companyId: string, payload: RoleUpsertRequest, token: string): Promise<RoleResponse> {
+export function upsertCompanyRole(companyId: string, payload: RoleUpsertRequest): Promise<RoleResponse> {
   return requestJson<RoleResponse>(`${companyPath(companyId)}/roles`, {
     json: payload,
-    method: "POST",
-    token
+    method: "POST"
   });
 }

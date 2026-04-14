@@ -1,8 +1,9 @@
+import { EmployeeViewModel } from "@/interfaces/app";
 import type { EmployeeRecord } from "@/interfaces/organization";
 
 interface TreeViewProps {
   employees: EmployeeRecord[];
-  boardMembers: string[];
+  boardMembers: EmployeeViewModel[];
 }
 
 interface TreeNodeProps {
@@ -47,13 +48,10 @@ function TreeNode({ employee, employeeIndex, level }: TreeNodeProps) {
 }
 
 export function TreeView({ employees, boardMembers }: TreeViewProps) {
-  const board = boardMembers ?? [];
-
-  if (board.length === 0) {
-    for (const emp of employees) {
-      if (emp.reports === null) {
-        board.push(emp.id);
-      }
+  const board = boardMembers.map((member) => member.id) ?? [];
+  for (const emp of employees) {
+    if (emp.reports === null) {
+      board.push(emp.id);
     }
   }
 
